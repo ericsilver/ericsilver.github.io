@@ -27,6 +27,11 @@
   ul { margin:.5rem 0; padding-left:1.1rem; }
   li { margin:.35rem 0; }
   .note { color:var(--muted); font-size:.9rem; }
+  .pf { list-style:none; padding:0; }
+  .pf li { display:flex; gap:.9rem; align-items:center; margin:.7rem 0; }
+  .pf img { width:60px; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff; padding:4px; flex:0 0 auto; }
+  .pname { font-weight:600; }
+  .pdesc { color:var(--muted); font-size:.92rem; }
   .paper { margin:.4rem 0; }
   .paper .meta { color:var(--muted); font-size:.9rem; }
   footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
@@ -44,10 +49,9 @@
   <main>
     <section id="essays">
       <h2>Essays</h2>
-      <p class="note">Writing on decision-making, meaning, and collective rationality, from the <em>aporal</em> notebook. Older pieces are being migrated; links will fill in.</p>
+      <p class="note">Writing on decision-making, meaning, and collective rationality, from the <em>aporal</em> notebook.</p>
       <ul>
-        <li>Personal Meaning: a Dosage Guide <span class="note">(2019)</span></li>
-        <li><span class="note">More essays migrating from the archive&hellip;</span></li>
+        <li><a href="essays/personal-meaning-a-dosage-guide.html">Personal Meaning: a Dosage Guide</a> <span class="note">(2019)</span></li>
       </ul>
     </section>
 
@@ -59,14 +63,28 @@
       </div>
     </section>
 
+    <section id="portfolio">
+      <h2>Portfolio</h2>
+      <ul class="pf">
+        <li>
+          <img src="img/pikimal-logo.png" alt="Pikimal logo">
+          <span><span class="pname">Pikimal</span> &mdash; <span class="pdesc">preference-based product recommendation engine.</span></span>
+        </li>
+        <li><span><span class="pname">WebKite</span> &mdash; <span class="pdesc">a publishing platform.</span></span></li>
+        <li><span><span class="pname">Radius</span> &mdash; <span class="pdesc">automated advertising generation.</span></span></li>
+        <li><span><span class="pname">Alt-Capital</span> &mdash; <span class="pdesc">syndicated investment.</span></span></li>
+      </ul>
+      <p class="note">Screenshots and logos for WebKite, Radius, and Alt-Capital to come.</p>
+    </section>
+
     <section id="resume">
       <h2>R&eacute;sum&eacute;</h2>
-      <p><a href="resume.pdf">Curriculum vitae (PDF)</a> <span class="note">&mdash; uploading shortly.</span></p>
+      <p><a href="resume.pdf">Curriculum vitae (PDF)</a></p>
     </section>
 
     <section id="contact">
       <h2>Contact</h2>
-      <p><a href="mailto:REPLACE_WITH_ALIAS@icloud.com">Email me</a></p>
+      <p><a href="mailto:epsilver@aporal.com">epsilver@aporal.com</a></p>
     </section>
   </main>
 
