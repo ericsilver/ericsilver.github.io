@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eric Silver</title>
+<meta name="description" content="Eric Silver — decision-making research, papers, and essays.">
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
+  * { box-sizing:border-box; }
+  html { -webkit-text-size-adjust:100%; }
+  body {
+    margin:0; background:var(--bg); color:var(--ink);
+    font:17px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap { max-width:42rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
+  header { margin-bottom:2.5rem; }
+  h1 { font-size:2rem; margin:0 0 .25rem; letter-spacing:-.01em; }
+  .tag { color:var(--muted); margin:0; }
+  h2 {
+    font-size:1.05rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--muted); margin:2.5rem 0 .75rem; padding-bottom:.4rem;
+    border-bottom:1px solid var(--rule);
+  }
+  a { color:var(--link); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  ul { margin:.5rem 0; padding-left:1.1rem; }
+  li { margin:.35rem 0; }
+  .note { color:var(--muted); font-size:.9rem; }
+  .paper { margin:.4rem 0; }
+  .paper .meta { color:var(--muted); font-size:.9rem; }
+  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Eric Silver</h1>
+    <p class="tag">Independent researcher in decision-making &mdash; how we choose among things that don't compare.</p>
+  </header>
+
+  <main>
+    <section id="essays">
+      <h2>Essays</h2>
+      <p class="note">Writing on decision-making, meaning, and collective rationality, from the <em>aporal</em> notebook. Older pieces are being migrated; links will fill in.</p>
+      <ul>
+        <li>Personal Meaning: a Dosage Guide <span class="note">(2019)</span></li>
+        <li><span class="note">More essays migrating from the archive&hellip;</span></li>
+      </ul>
+    </section>
+
+    <section id="papers">
+      <h2>Papers</h2>
+      <div class="paper">
+        <a href="https://github.com/ericsilver/novelty">Vocabulary resonance in US trademark filings: a measurement construct for commercial novelty</a>
+        <div class="meta">Working paper, 2026 &middot; code &amp; data on GitHub &middot; SSRN link to follow.</div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>R&eacute;sum&eacute;</h2>
+      <p><a href="resume.pdf">Curriculum vitae (PDF)</a> <span class="note">&mdash; uploading shortly.</span></p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p><a href="mailto:REPLACE_WITH_ALIAS@icloud.com">Email me</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="y"></span> Eric Silver &middot; aporal.com
+  </footer>
+</div>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
