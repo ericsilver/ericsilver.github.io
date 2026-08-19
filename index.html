@@ -39,6 +39,9 @@
   .paper { margin:.4rem 0; }
   .paper .meta { color:var(--muted); font-size:.9rem; }
   .precis { display:block; color:var(--muted); font-size:.92rem; }
+  .thumbed { display:flex; gap:1rem; align-items:flex-start; }
+  .thumbed > div { flex:1 1 auto; }
+  .thumbed img { flex:0 0 auto; width:88px; height:88px; object-fit:cover; border-radius:6px; border:1px solid var(--rule); background:#fff; margin-top:.2rem; }
   .earlier { margin-top:1rem; }
   footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
 </style>
@@ -69,6 +72,9 @@
       <h2>Essays</h2>
       <p class="note">Writing on decision-making, meaning, and collective rationality, from the <em>aporal</em> notebook.</p>
       <ul>
+        <li><div class="thumbed"><div><a href="essays/noble-medicine.html">Noble Medicine</a> <span class="note">(2026)</span>
+          <span class="precis">The moral argument for marketing of medicines.</span></div>
+          <a href="essays/noble-medicine.html"><img src="img/noble-medicine-thumb.jpg" alt="Dr. Silver&rsquo;s Brand Name Placebo"></a></div></li>
         <li><a href="essays/take-your-medicine.html">Take Your Medicine</a> <span class="note">(2026)</span>
           <span class="precis">&ldquo;Natural&rdquo; is the worst reason to set a pill down. The instinct behind the word is a contamination detector, and it is pointed at the wrong bottle.</span></li>
         <li><a href="essays/the-price-of-absence.html">"Nothing" is Expensive</a> <span class="note">(2026)</span>
