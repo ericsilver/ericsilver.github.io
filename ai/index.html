@@ -22,13 +22,9 @@
   .date { color:var(--muted); font-size:.95rem; margin:0 0 2rem; }
   p { margin:1.1rem 0; }
   section { scroll-margin-top:3.2rem; }
-  /* Anchored section: persistent left rule while targeted, plus a tint that fades once JS marks it. */
-  section { padding-left:.85rem; margin-left:-.85rem; border-left:3px solid transparent; border-radius:4px; }
-  section:target { border-left-color:#e6b800; }
-  section:target h2 { background:#fff6d6; padding:.1rem .35rem; margin-left:-.35rem; border-radius:4px; }
-  section.lit { animation:lit 4s ease-out forwards; }
-  @keyframes lit { 0%,35% { background:#fff6d6; } 100% { background:transparent; } }
-  @media (prefers-reduced-motion:reduce) { section.lit { animation:none; background:#fff6d6; } }
+  /* Anchored section: the whole section stays tinted while it is the hash target. */
+  section { padding:.1rem .85rem .35rem; margin:0 -.85rem; border-left:3px solid transparent; border-radius:4px; }
+  section:target { background:#fff6d6; border-left-color:#e6b800; }
   .sig { border:1px solid var(--rule); border-radius:6px; background:#fff; padding:.8rem 1rem; font-size:.95rem; color:var(--muted); }
   .sig p { margin:.4rem 0; }
   footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
@@ -92,14 +88,11 @@
   function light() {
     var id = location.hash.slice(1);
     var el = id && document.getElementById(id);
-    document.querySelectorAll('section.lit').forEach(function (s) { s.classList.remove('lit'); });
     if (!el) { document.body.style.minHeight = ''; return; }
     // Pad the page so a section near the bottom can still scroll to the top of the viewport.
     var top = el.getBoundingClientRect().top + window.pageYOffset - parseFloat(getComputedStyle(el).scrollMarginTop || 0);
     document.body.style.minHeight = (top + window.innerHeight) + 'px';
     el.scrollIntoView({ block: 'start' });
-    void el.offsetWidth; // restart the animation if the same hash is clicked again
-    el.classList.add('lit');
   }
   window.addEventListener('hashchange', light);
   window.addEventListener('load', light);
