@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Write to me &mdash; Eric Silver</title>
+<meta name="description" content="Send Eric Silver a message, anonymously if you like.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
+  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
+  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
+  h1 { font-size:1.7rem; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
+  p { margin:1.1rem 0; }
+  .note { color:var(--muted); font-size:.95rem; }
+  label { display:block; font-size:.95rem; color:var(--muted); margin:1.2rem 0 .3rem; }
+  textarea, input[type=text] { width:100%; font:inherit; color:var(--ink); background:#fff;
+    border:1px solid var(--rule); border-radius:6px; padding:.6rem .75rem; }
+  textarea { min-height:12rem; resize:vertical; }
+  textarea:focus, input:focus { outline:none; border-color:var(--link); }
+  button { font:inherit; font-size:1rem; color:#fff; background:var(--link); border:0; border-radius:6px;
+    padding:.6rem 1.2rem; margin-top:1.2rem; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:default; }
+  .hp { position:absolute; left:-9999px; }
+  .status { margin-top:1.2rem; font-size:.95rem; }
+  .status.ok { color:#2e6b2e; } .status.err { color:#a33; }
+  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="back"><a href="index.html">&larr; aporia</a></p>
+  <h1>Write to me</h1>
+  <p>Anything sent here reaches me. You don't have to say who you are; if you'd like a reply, leave a way to reach you.</p>
+
+  <form id="f" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
+    <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+    <input type="hidden" name="subject" value="aporia.institute: a message">
+    <input type="hidden" name="from_name" value="aporia.institute contact form">
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
+
+    <label for="msg">Message</label>
+    <textarea id="msg" name="message" required></textarea>
+
+    <label for="reply">How to reach you <span class="note">(optional)</span></label>
+    <input type="text" id="reply" name="reply_to_optional" autocomplete="off" placeholder="an email address, a name, or nothing">
+
+    <button type="submit" id="send">Send</button>
+    <p class="status" id="status" aria-live="polite"></p>
+  </form>
+  <p class="note">Messages travel through a form relay to my inbox. The relay sees the text you type and your connection details; I see only the text.</p>
+
+  <footer>&copy; 2026 Eric Silver &middot; aporia.institute</footer>
+</div>
+<script>
+(function () {
+  var f = document.getElementById('f'), st = document.getElementById('status'), btn = document.getElementById('send');
+  var key = f.access_key.value;
+  if (key === 'WEB3FORMS_ACCESS_KEY') {
+    btn.disabled = true;
+    st.className = 'status err';
+    st.textContent = 'The form is being set up; please check back shortly.';
+    return;
+  }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    btn.disabled = true; st.className = 'status'; st.textContent = 'Sending…';
+    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.success) { st.className = 'status ok'; st.textContent = 'Sent. Thank you.'; f.reset(); }
+        else { throw new Error(j.message || 'error'); }
+      })
+      .catch(function () { st.className = 'status err'; st.textContent = 'That didn’t go through. Please try again in a minute.'; })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
