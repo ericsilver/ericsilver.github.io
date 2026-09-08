@@ -72,7 +72,10 @@
   f.addEventListener('submit', function (e) {
     e.preventDefault();
     btn.disabled = true; st.className = 'status'; st.textContent = 'Sending…';
-    fetch(f.action, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } })
+    var data = {};
+    new FormData(f).forEach(function (v, k) { data[k] = v; });
+    fetch(f.action, { method: 'POST', body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' } })
       .then(function (r) { return r.json(); })
       .then(function (j) {
         if (j.success) { st.className = 'status ok'; st.textContent = 'Sent. Thank you.'; f.reset(); }
