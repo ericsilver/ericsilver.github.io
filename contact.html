@@ -63,7 +63,7 @@
 (function () {
   var f = document.getElementById('f'), st = document.getElementById('status'), btn = document.getElementById('send');
   var key = f.access_key.value;
-  if (key === '12847e88-1cea-4cd3-9882-7a3bc6433a07') {
+  if (!key || key.indexOf('-') < 0) {
     btn.disabled = true;
     st.className = 'status err';
     st.textContent = 'The form is being set up; please check back shortly.';
