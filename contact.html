@@ -41,7 +41,7 @@
   <p>Anything sent here reaches me. You don't have to say who you are; if you'd like a reply, leave a way to reach you.</p>
 
   <form id="f" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
-    <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY">
+    <input type="hidden" name="access_key" value="12847e88-1cea-4cd3-9882-7a3bc6433a07">
     <input type="hidden" name="subject" value="aporia.institute: a message">
     <input type="hidden" name="from_name" value="aporia.institute contact form">
     <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off">
@@ -63,7 +63,7 @@
 (function () {
   var f = document.getElementById('f'), st = document.getElementById('status'), btn = document.getElementById('send');
   var key = f.access_key.value;
-  if (key === 'WEB3FORMS_ACCESS_KEY') {
+  if (key === '12847e88-1cea-4cd3-9882-7a3bc6433a07') {
     btn.disabled = true;
     st.className = 'status err';
     st.textContent = 'The form is being set up; please check back shortly.';
