@@ -2,7 +2,7 @@
    resume-floor model (v0.3) for a single person. The whole life is simulated
    up front; a breadcrumb bar (school > role > role > ...) picks the career
    stage every tab looks at. Data (economy, education rungs, learning
-   profiles, hazards, outflow, licence families) comes from data.js. */
+   profiles, hazards, outflow, license families) comes from data.js. */
 (function () {
 "use strict";
 const D = window.LG_DATA;
@@ -54,12 +54,12 @@ function drawPerson(opts) {
 
 function qualified(c, j) { const r = JOBS[j].req; for (let k = 0; k < NC; k++) if (r[k] > c[k]) return false; return true; }
 function deficit(c, j) { const r = JOBS[j].req; let d = 0; for (let k = 0; k < NC; k++) if (r[k] > c[k]) d += r[k] - c[k]; return d; }
-// licence families: entered from school (first job after the last rung) or
+// license families: entered from school (first job after the last rung) or
 // from a job already held in the same family
 function licensedOk(j, ctx) { const f = JOBS[j].lic; if (!f) return true; return ctx.fromSchool || ctx.families.has(f); }
 // where a search goes: first job -> the rung's observed first jobs (ACS);
 // after leaving job k -> k's observed outflow (resume data); re-entry after a
-// spell out -> the last job or its outflow. Always among qualified, licence-
+// spell out -> the last job or its outflow. Always among qualified, license-
 // permitted jobs; when none of the observed destinations is open to this
 // person, openings in proportion to employment.
 function searchWeights(c, ctx) {
@@ -281,10 +281,10 @@ function vOpps(el) { if (!LIFE) return;
     const vb = key === "wage" ? JOBS[b.j].wage : key === "title" ? JOBS[b.j].title : key === "emp" ? JOBS[b.j].emp : b[key]; return (va > vb ? 1 : va < vb ? -1 : 0) * oppSort.dir; });
   const th = (label, k, cls) => h("th", { class: cls || "", onclick: () => { if (oppSort.key === k) oppSort.dir *= -1; else oppSort = { key: k, dir: k === "title" ? 1 : -1 }; render(); } }, label + (oppSort.key === k ? (oppSort.dir > 0 ? " ▲" : " ▼") : ""));
   const sel2 = h("select", { onchange: e => { oppFilter = e.target.value; render(); } },
-    ...[["qual", "fully qualified"], ["lic", "qualified but licence-gated"], ["reach", "close: 1–4 levels short"], ["reach8", "5–8 levels short"], ["all", "every job"]].map(([v, l]) => h("option", { value: v, selected: v === oppFilter ? "" : null }, l)));
+    ...[["qual", "fully qualified"], ["lic", "qualified but license-gated"], ["reach", "close: 1–4 levels short"], ["reach8", "5–8 levels short"], ["all", "every job"]].map(([v, l]) => h("option", { value: v, selected: v === oppFilter ? "" : null }, l)));
   const st = LIFE.stages[sel];
   el.append(h("div", { class: "card" }, h("h2", null, "What was open " + stageWhere()),
-    h("p", { class: "meta" }, "Hiring requires meeting every one of a job's 69 requirements, abilities included, with no tolerance. “Short” counts total missing levels. Licensed occupations can be entered straight from school or from a job in the same licence family. “Chance” is where the search lands: " +
+    h("p", { class: "meta" }, "Hiring requires meeting every one of a job's 69 requirements, abilities included, with no tolerance. “Short” counts total missing levels. Licensed occupations can be entered straight from school or from a job in the same license family. “Chance” is where the search lands: " +
       (st.kind === "entry" ? "the first jobs people with this schooling actually take (ACS)" : "the occupations people leaving this one actually move to (résumé data)") +
       ", among the jobs this person qualifies for" + (ev.fallback ? ". None of those observed destinations is open to this person, so the search takes openings in proportion to employment." : ".")),
     h("div", { class: "row" }, "Show ", sel2, h("span", { class: "meta" }, rows.length + " jobs")),
@@ -354,13 +354,13 @@ function vSurvey(el) {
 
 // ---------------------------------------------------------------- About
 function vAbout(el) { el.append(h("div", { class: "card" }, h("h2", null, "How the model works (as reproduced here)"),
-  h("p", null, "One person at a time through the synthetic-workforce model: the same 723-occupation × 69-component economy (O*NET requirement levels, OEWS wages and employment), education paths, learning profiles, separation rates, and licence families the population is built from. A single person sees every job as open; competition for scarce openings exists only at population scale."),
+  h("p", null, "One person at a time through the synthetic-workforce model: the same 723-occupation × 69-component economy (O*NET requirement levels, OEWS wages and employment), education paths, learning profiles, separation rates, and license families the population is built from. A single person sees every job as open; competition for scarce openings exists only at population scale."),
   h("ul", { style: "margin-left:18px" },
     h("li", null, h("b", null, "Hiring. "), "A job can be taken only if every one of its 69 requirements is met, abilities included, with no tolerance."),
     h("li", null, h("b", null, "Schooling. "), "Everyone passes through less-than-high-school schooling, most through high school, and some through an associate degree, one of " + R.filter(r => r.level === "ba").length + " bachelor's fields, and one of " + R.filter(r => ["ma", "prof", "phd"].includes(r.level)).length + " graduate rungs (degree type × bachelor's field). Each rung gives each skill level with the smallest probability that still lets that rung's graduates qualify, in the shares observed, for the first jobs they actually take (ACS 2015–19). Cost rises with the square of the level, so low levels come out near universal and high levels selective. No rung has an admission requirement."),
     h("li", null, h("b", null, "Learning in a job. "), "Each occupation teaches each skill level with the smallest probability that lets the people who leave it qualify, in the observed shares, for the occupations they move to (résumé data), given what they arrived with from school. Skills are drawn independently, and a spell's gains arrive one level a year. Skills never fall back."),
     h("li", null, h("b", null, "Moving. "), "Each year in a job carries that occupation's published chances (BLS Employment Projections) of changing occupation or leaving the workforce for a year; occupation changes run " + DL.CHURN_Y + "× as often under 25 and " + DL.CHURN_M + "× at 25–34, matching NLSY career histories. A first job is drawn from the first jobs people with that schooling take; a move is drawn from where people leaving that occupation go; re-entry returns to the last job or its destinations. Always among jobs the person fully qualifies for."),
-    h("li", null, h("b", null, "Licensing. "), D.licence.length + " licence families (" + D.licence.join(", ") + ") can be entered straight from school or from a job in the same family, never from outside it.")),
+    h("li", null, h("b", null, "Licensing. "), D.licence.length + " license families (" + D.licence.join(", ") + ") can be entered straight from school or from a job in the same family, never from outside it.")),
   h("p", { class: "meta", style: "margin-top:8px" }, "Known limits: requirements are O*NET incumbent ratings of jobs, not of people; associate degrees carry no field (ACS records field only for bachelor's and above); graduate rungs use the bachelor's field; the learning profiles assume each occupation's entrants arrive with that occupation's average schooling; no caregiving, disability, or geography."))); }
 
 // ---------------------------------------------------------------- boot
