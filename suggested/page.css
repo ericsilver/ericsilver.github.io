@@ -5,7 +5,7 @@
 /* Hallmark · waive 49b · paper and book titles set as links wrap on phones, up to six lines at 320 · a citation title is the owner's exact wording and cannot shorten */
 /* Hallmark · dismissed 58 · the register's seven full abstracts and the Books rows run past the budget on an Index-First page; the words are the owner's and a redesign keeps them */
 /* Hallmark · dropped img/noble-medicine-thumb.jpg, img/marriage-contract-thumb.jpg, img/health-users-guide-thumb.jpg · the full-size sources of the same pictures replace them */
-/* Hallmark · reworded the h1 "Eric Silver" to "An institute devoted to being stuck." · the name moves to the byline and 58 names the hero */
+/* Hallmark · reworded the h1 "Eric Silver" to "An institute in name only." at the owner's direction: the title has to show the name is a known pretense · the name moves to the byline */
 @import url("./fonts.css");
 @import url("./tokens.css");
 @import url("./base.css");
@@ -37,7 +37,7 @@ a:active { color: var(--color-accent-2); }
 /* The hero: the head on the slate, the institute's ledger on the sheet */
 .hero { display: grid; align-items: center; min-height: 100dvh; padding-block: calc(56px + var(--space-sm) + var(--space-md)) var(--space-md); }
 .hero__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-3xl); align-items: center; }
-.hero h1 { color: var(--color-ink); letter-spacing: -0.035em; line-height: 0.95; }
+.hero h1 { color: var(--color-ink); font-size: clamp(2.75rem, 7.4vw - 1.05rem, 5.25rem); letter-spacing: -0.035em; line-height: 0.95; }
 .hero .lead { margin-top: var(--space-lg); color: var(--color-ink-2); }
 .byline { display: block; margin-bottom: var(--space-2xs); color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 600; letter-spacing: var(--tracking-display); line-height: 1.2; }
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-lg); }
