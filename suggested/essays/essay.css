@@ -1,0 +1,87 @@
+/* Hallmark · shape: Long Document · genre: editorial · theme: Almanac, from /suggested · redesign: full · copy: verbatim · job: read
+ * hero: the title alone, on the slate · nav: the floating strip · footer: the signoff · imagery: the essays' own figures · signature: the sheet from the home page's register, carrying the prose
+ * axes: mid/grotesk-sans/chromatic-magenta · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: S, a reading page has one move; it keeps the home page's side column and sheet so it reads as the same place */
+/* Hallmark · reworded "source ↗" to "source" · 63 names the glued arrow · the date line's middle dots become separate lines · 63 */
+/* Hallmark · dismissed 58 · an essay is a long document; the words are the owner's */
+/* Hallmark · waive 44c · the hero ends at 254px on a reading page · the essay itself starts on the first screen, so the title needs no more room */
+/* Hallmark · waive 44a · the title sits close to the essay below it · a reader comes for the essay, and its first paragraph belongs on the first screen */
+/* Hallmark · waive 78 · section heads render at 31px in running prose · a bigger head would interrupt the essay, which reads as one argument */
+/* Hallmark · dismissed 77 · one document, not a landing page; hero, article and footer are its three parts */
+@import url("../page.css");
+
+.essay-head { padding-block: calc(56px + var(--space-sm) + var(--space-2xl)) var(--space-xl); }
+.essay-head h1 { max-width: 18ch; color: var(--color-ink); letter-spacing: -0.035em; line-height: 0.98; }
+
+.essay-body { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gap-columns); padding-bottom: var(--section-gap-s); }
+.essay-side { grid-column: 1 / span 4; position: sticky; top: var(--nav-clear); align-self: start; }
+.essay-meta { display: flex; flex-direction: column; gap: var(--space-3xs); color: var(--color-ink-2); font-size: var(--text-body); line-height: 1.35; }
+.essay-meta span:first-child { color: var(--color-ink); font: 600 var(--text-lg)/1.25 var(--font-display); letter-spacing: var(--tracking-display); }
+.essay-side .links { flex-direction: column; gap: 0; margin-top: var(--space-md); padding-top: var(--space-xs); border-top: var(--rule-hair) solid var(--color-rule-2); font-size: var(--text-body); }
+
+.sheet { --prose: clamp(1.125rem, 0.25vw + 1.05rem, 1.25rem); grid-column: 5 / -1; padding: var(--space-2xl); background: var(--color-sheet); border-top: var(--rule-bar) solid var(--color-ink); color: var(--color-ink-2); font-size: var(--prose); line-height: 1.55; }
+.sheet > p, .sheet > h2 { max-width: 30em; }
+.sheet > ol, .sheet > ul, .colophon { max-width: 46em; }
+.sheet > p { margin: 0; }
+.sheet > p + p { margin-top: 1em; }
+.sheet > figure + p, .sheet > .figure-gap + p { margin-top: 0; }
+.sheet > h2 { margin: var(--space-2xl) 0 var(--space-sm); color: var(--color-ink); font-size: var(--text-2xl); line-height: 1.15; text-wrap: balance; }
+.sheet > h2 + p { margin-top: 0; }
+.sheet .lede { color: var(--color-ink); font-size: var(--text-xl); line-height: 1.3; }
+.sheet .lede + p { margin-top: var(--space-lg); }
+.sheet a { overflow-wrap: anywhere; }
+.sheet a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.sheet [id] { scroll-margin-top: var(--nav-clear); }
+
+/* Notes */
+sup.fn { font-family: var(--font-outlier); font-size: 0.68em; line-height: 0; vertical-align: super; }
+sup.fn a { padding: 0 0.15em; text-decoration: none; color: var(--color-accent); }
+sup.fn a:hover { text-decoration: underline; }
+sup.fn a:active { color: var(--color-accent-2); }
+sup.fn a:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; }
+.colophon { margin-top: var(--space-2xl) !important; padding-top: var(--space-md); border-top: var(--rule-hair) solid var(--color-rule); color: var(--color-muted); font-size: var(--text-sm); line-height: 1.45; }
+.sources { margin: 0; padding-left: 1.75rem; color: var(--color-muted); font-size: var(--text-sm); line-height: 1.45; }
+ul.sources { padding-left: 1.1rem; }
+.sources li { padding-block: var(--space-2xs); }
+.sources li:target { background: color-mix(in oklab, var(--color-accent) 9%, transparent); }
+.sources .src { white-space: nowrap; }
+.sources .back-ref { display: inline-block; margin-left: var(--space-2xs); padding-inline: var(--space-2xs); text-decoration: none; }
+
+/* Figures take the sheet's full width; the prose keeps its measure */
+.sheet figure { margin: var(--space-xl) 0; }
+.sheet figure img { display: block; width: 100%; height: auto; }
+.sheet figcaption { max-width: 40em; margin-top: var(--space-xs); color: var(--color-muted); font-size: var(--text-sm); line-height: 1.45; }
+.credit { font-size: var(--text-xs); }
+.figure-open { display: block; }
+figure.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); align-items: start; }
+figure.pair figcaption { grid-column: 1 / -1; margin-top: 0; }
+figure.pair img { aspect-ratio: 3 / 4; object-fit: cover; }
+
+/* The adherence chart, as a list so it reads at any width */
+.bars__title { color: var(--color-ink); font: 600 var(--text-lg)/1.25 var(--font-display); letter-spacing: var(--tracking-display); }
+.bars__sub { margin-top: var(--space-2xs); color: var(--color-muted); font-size: var(--text-sm); line-height: 1.4; }
+.bars__list { margin: var(--space-md) 0 0; padding: 0; list-style: none; border-top: var(--rule-hair) solid var(--color-rule-2); }
+.bars__list li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 3.25rem; grid-template-areas: "label track value" "note track value"; column-gap: var(--space-md); align-items: center; padding-block: var(--space-xs); border-bottom: var(--rule-hair) solid var(--color-rule); }
+.bars__label { grid-area: label; color: var(--color-ink); font-size: var(--text-md); font-weight: 500; line-height: 1.25; }
+.bars__note { grid-area: note; color: var(--color-muted); font-size: var(--text-xs); line-height: 1.3; }
+.bars__track { grid-area: track; display: block; height: 18px; background: var(--color-paper-2); }
+.bars__fill { display: block; height: 100%; background: var(--color-ink); }
+.bars__value { grid-area: value; color: var(--color-ink); font: 500 var(--text-md)/1 var(--font-outlier); text-align: right; }
+.bars__foot { margin-top: var(--space-xs); color: var(--color-muted); font-size: var(--text-xs); }
+
+.close { padding-block: var(--space-xl); }
+.close .signoff { margin-top: 0; padding-top: 0; border-top: 0; }
+
+@media (max-width: 60rem) {
+  .essay-head { padding-block: calc(56px + var(--space-sm) + var(--space-xl)) var(--space-lg); }
+  .essay-side, .sheet { grid-column: 1 / -1; }
+  .essay-side { position: static; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--space-sm) var(--space-lg); margin-bottom: var(--space-lg); }
+  .essay-side .links { flex-direction: row; gap: 0 var(--space-md); margin-top: 0; padding-top: 0; border-top: 0; }
+  .sheet { padding: var(--space-xl); }
+  .essay-body { padding-bottom: var(--space-2xl); }
+}
+@media (max-width: 40rem) {
+  .sheet { margin-inline: calc(-1 * var(--space-xs)); padding: var(--space-lg) var(--space-md); }
+  .sheet > h2 { margin-top: var(--space-xl); }
+  .bars__list li { grid-template-columns: minmax(0, 1fr) 3.25rem; grid-template-areas: "label value" "note value" "track track"; row-gap: var(--space-2xs); }
+}
