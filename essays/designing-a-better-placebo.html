@@ -3,49 +3,60 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Designing a Better Placebo &mdash; Eric Silver</title>
+<title>Designing a Better Placebo, by Eric Silver</title>
 <meta name="description" content="A placebo is a product with no disclosed ingredients, no price standard, and two customers who want opposite things from it: the regulator wants it inert, the clinic wants it to work.">
-<!-- DRAFT MARKER 1 of 2: noindex keeps this out of search while in development. -->
+<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development. -->
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
-  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
-  h1 { font-size:1.7rem; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
-  h2 { font-size:1.15rem; letter-spacing:-.005em; margin:2.4rem 0 .4rem; }
-  .date { color:var(--muted); font-size:.95rem; margin:0 0 2rem; }
-  p { margin:1.1rem 0; }
-  .lede { font-size:1.15rem; line-height:1.55; }
-  sup.fn { font-size:.68em; line-height:0; vertical-align:super; }
-  sup.fn a { padding:0 .1em; }
-  figure { margin:2rem 0; }
-  figure img, figure svg { max-width:100%; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff; display:block; }
-  figcaption { color:var(--muted); font-size:.85rem; margin-top:.5rem; line-height:1.5; }
-  .credit { font-size:.8rem; }
-  .colophon { color:var(--muted); font-size:.88rem; border-top:1px solid var(--rule); padding-top:1rem; margin-top:2.5rem; }
-  .sources { font-size:.86rem; color:var(--muted); line-height:1.5; padding-left:1.6rem; }
-  .sources li { margin:.5rem 0; }
-  .sources li:target { background:#fff6d6; }
-  .sources .src { white-space:nowrap; }
-  .sources .back-ref { margin-left:.25rem; }
-  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
-</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../css/essay.css">
 </head>
 <body>
-<div class="wrap">
-  <p class="back"><a href="../index.html#essays">&larr; aporia</a></p>
-  <article>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="../" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
     <h1>Designing a Better Placebo</h1>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <aside class="essay-side">
+      <p class="essay-meta"><span>Eric Silver</span><span>August 24, 2026</span><span>Draft</span></p>
+      <ul class="links"><li><a href="../#essays">All essays</a></li><li><a href="#sources">Sources</a></li></ul>
+    </aside>
+    <article class="sheet">
     <!-- DRAFT MARKER 2 of 2: drop or change this label when linked from the homepage. -->
-    <p class="date">Eric Silver &middot; August 24, 2026 &middot; draft</p>
 
     <p>Placebo is Latin for &ldquo;I shall please.&rdquo; For most of its history the word meant exactly that and nothing more clinical: a flatterer in Chaucer, a mourner paid to sing pleasing verses at a funeral, and then, by the eighteenth century, whatever a physician gave a patient not to cure them but to please them.<sup class="fn"><a href="#fn-37" id="ref-37">37</a></sup> It took two centuries for the word&rsquo;s job to reverse. By the year the current guidance for drug trials was finalized, a placebo was no longer something given to comfort a patient; it was an absence, built specifically so a molecule&rsquo;s own effect could be seen against it, and pleasing had nothing to do with the design at all.<sup class="fn"><a href="#fn-1" id="ref-1">1</a></sup> Somewhere in that conversion, comfort stopped being medicine&rsquo;s business and became medicine&rsquo;s control group &mdash; the one thing every trial has to build, and the one thing no trial has any reason to build well, because pleasing the patient was never what the control arm was for anymore. This is an essay about that conversion, and about what it would take to reverse only half of it: keep the science that isolating a molecule buys, and stop pretending the other half &mdash; the pleasing, the comfort, the actual caring for a person &mdash; was ever the same project.</p>
     <p>Once comfort had been redefined as an absence, two different parties wanted different things from it, and neither wanted what the word used to promise. The regulator wants a placebo inert to the point of invisibility: a control so free of its own effect that whatever the real drug does stands out cleanly against it. The clinic &mdash; or the patient, or the parent buying a chewable dextrose tablet for a child who has a stomachache and no diagnosis &mdash; wants the opposite: a placebo that works, which is to say, a placebo that does what the word once promised on its own. Nobody has ever had to reconcile these, because nobody standardizes what a placebo is made of, how it is given, or by whom.</p>
@@ -160,8 +171,21 @@
       <li id="fn-60" value="60">J. Woodcock &amp; L. M. LaVange, &ldquo;Master Protocols to Study Multiple Therapies, Multiple Diseases, or Both,&rdquo; New England Journal of Medicine 377 (2017). Platform trials such as I-SPY2, RECOVERY, and Solidarity share one control arm across multiple competing therapies and sponsors, run by an independent trial infrastructure rather than any single company. <a class="src" href="https://doi.org/10.1056/NEJMra1510062" target="_blank" rel="noopener">source&nbsp;&#8599;</a> <a class="back-ref" href="#ref-60" title="back to text">&#8617;</a></li>
       <li id="fn-61" value="61">The Cardiac Arrhythmia Suppression Trial (CAST) Investigators, &ldquo;Preliminary Report: Effect of Encainide and Flecainide on Mortality in a Randomized Trial of Arrhythmia Suppression after Myocardial Infarction,&rdquo; New England Journal of Medicine 321 (1989). Drugs that reliably suppressed the arrhythmia believed to cause sudden cardiac death were stopped early after increasing mortality relative to placebo, despite correcting the physical signal they targeted. <a class="src" href="https://doi.org/10.1056/NEJM198908103210629" target="_blank" rel="noopener">source&nbsp;&#8599;</a> <a class="back-ref" href="#ref-61" title="back to text">&#8617;</a></li>
     </ol>
-  </article>
-  <footer><a href="../index.html">aporia.institute &mdash; Eric Silver</a></footer>
-</div>
+  
+    </article>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="../ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 </body>
 </html>

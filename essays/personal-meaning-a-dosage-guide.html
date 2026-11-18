@@ -3,34 +3,73 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Personal Meaning: a Dosage Guide &mdash; Eric Silver</title>
+<title>Personal Meaning: a Dosage Guide, by Eric Silver</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
-  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
-  h1 { font-size:1.7rem; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
-  .date { color:var(--muted); font-size:.95rem; margin:0 0 2rem; }
-  p { margin:1.1rem 0; }
-  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
-</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../css/essay.css">
 </head>
 <body>
-<div class="wrap">
-  <p class="back"><a href="../index.html#essays">&larr; aporia</a></p>
-  <article>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="../" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
     <h1>Personal Meaning: a Dosage Guide</h1>
-    <p class="date">Eric Silver &middot; December 18, 2019</p>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <aside class="essay-side">
+      <p class="essay-meta"><span>Eric Silver</span><span>December 18, 2019</span></p>
+      <ul class="links"><li><a href="../#essays">All essays</a></li></ul>
+    </aside>
+    <article class="sheet">
     <p>For some, the tragedy of the end of work would be that workers would lose their personal meaning. My read is that this belief decries workaholism; meaning is available nearly everywhere: from the sublime to the absurd. We are made better when we find our purpose in groups. We are made worse when we find our purpose in Farmville. And yet, in both cases we do find purpose.</p>
     <p>There is an empirical question: if personal meaning is a good whose absence is costly, what is the minimum effective dose? If the sole source of this is work, what factors influence its efficacy? And at which dosage is work a poison?</p>
-  </article>
-  <footer><a href="../index.html">aporia.institute &mdash; Eric Silver</a> &middot; recovered from the archive</footer>
-</div>
+  
+    </article>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="../ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 </body>
 </html>

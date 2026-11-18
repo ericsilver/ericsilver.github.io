@@ -10,35 +10,47 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
-  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
-  * { box-sizing:border-box; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
-  h1 { font-size:1.7rem; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
-  p { margin:1.1rem 0; }
-  .note { color:var(--muted); font-size:.95rem; }
-  label { display:block; font-size:.95rem; color:var(--muted); margin:1.2rem 0 .3rem; }
-  textarea, input[type=text] { width:100%; font:inherit; color:var(--ink); background:#fff;
-    border:1px solid var(--rule); border-radius:6px; padding:.6rem .75rem; }
-  textarea { min-height:12rem; resize:vertical; }
-  textarea:focus, input:focus { outline:none; border-color:var(--link); }
-  button { font:inherit; font-size:1rem; color:#fff; background:var(--link); border:0; border-radius:6px;
-    padding:.6rem 1.2rem; margin-top:1.2rem; cursor:pointer; }
-  button:disabled { opacity:.5; cursor:default; }
-  .hp { position:absolute; left:-9999px; }
-  .status { margin-top:1.2rem; font-size:.95rem; }
-  .status.ok { color:#2e6b2e; } .status.err { color:#a33; }
-  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
-</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="./css/essay.css">
 </head>
 <body>
-<div class="wrap">
-  <p class="back"><a href="index.html">&larr; aporia</a></p>
-  <h1>Write to me</h1>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="./" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="./#papers">Papers</a></li>
+    <li><a href="./#essays">Essays</a></li>
+    <li><a href="./#books">Books</a></li>
+    <li><a href="./#portfolio">Portfolio</a></li>
+    <li><a href="./resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="./#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="./#papers">Papers</a></li>
+    <li><a href="./#essays">Essays</a></li>
+    <li><a href="./#books">Books</a></li>
+    <li><a href="./#portfolio">Portfolio</a></li>
+    <li><a href="./resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="./#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
+    <h1>Write to me</h1>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <article class="sheet sheet--solo">
   <p>Anything sent here reaches me. You don't have to say who you are; if you'd like a reply, leave a way to reach you.</p>
 
   <form id="f" action="https://api.web3forms.com/submit" method="POST" accept-charset="UTF-8">
@@ -53,13 +65,27 @@
     <label for="reply">How to reach you <span class="note">(optional)</span></label>
     <input type="text" id="reply" name="reply_to_optional" autocomplete="off" placeholder="an email address, a name, or nothing">
 
-    <button type="submit" id="send">Send</button>
+    <button class="btn btn--primary" type="submit" id="send">Send</button>
     <p class="status" id="status" aria-live="polite"></p>
   </form>
   <p class="note">Messages travel through a form relay to my inbox. The relay sees the text you type and your connection details; I see only the text.</p>
 
-  <footer>&copy; 2026 Eric Silver &middot; aporia.institute</footer>
-</div>
+  
+    </article>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="./ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 <script>
 (function () {
   var f = document.getElementById('f'), st = document.getElementById('status'), btn = document.getElementById('send');

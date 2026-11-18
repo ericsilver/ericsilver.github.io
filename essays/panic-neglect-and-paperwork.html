@@ -3,62 +3,61 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Panic, Neglect, and Paperwork &mdash; Eric Silver</title>
+<title>Panic, Neglect, and Paperwork, by Eric Silver</title>
 <meta name="description" content="Public problems get over-fixed, then defunded, then return. Each turn of the cycle leaves rules behind, some fixes only hide the problem, and the people who show up to argue about it are not the people who vote on it.">
-<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development.
-     Remove it only when the essay is surfaced on the homepage (see SKILL.md). -->
+<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development. -->
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
-  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; --aibg:#f4f6f8; --aiedge:#c9d3dc; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
-  h1 { font-size:1.7rem; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
-  h2 { font-size:1.15rem; letter-spacing:-.005em; margin:2.4rem 0 .4rem; }
-  h3 { font-size:1rem; margin:1.8rem 0 .3rem; }
-  .date { color:var(--muted); font-size:.95rem; margin:0 0 .6rem; }
-  .disclosure { color:var(--muted); font-size:.85rem; margin:0 0 2rem; }
-  p { margin:1.1rem 0; }
-  .lede { font-size:1.15rem; line-height:1.55; }
-  figure { margin:2rem 0; }
-  figure img { max-width:100%; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff; }
-  figcaption { color:var(--muted); font-size:.85rem; margin-top:.5rem; line-height:1.5; }
-  blockquote { margin:1.2rem 0 1.2rem 1rem; padding-left:1rem; border-left:3px solid var(--rule); color:#333; }
-  .sources { font-size:.88rem; color:var(--muted); line-height:1.55; }
-  .sources li { margin:.45rem 0; }
-  /* AI background blocks: collapsed by default, labelled as AI-supported research. */
-  details.ai { margin:1.4rem 0; background:var(--aibg); border:1px solid var(--aiedge); border-radius:8px; padding:.15rem .95rem; font-size:.92rem; line-height:1.6; }
-  details.ai summary { cursor:pointer; list-style:none; padding:.55rem 0; color:#2a3f52; font-weight:600; display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap; }
-  details.ai summary::-webkit-details-marker { display:none; }
-  details.ai summary::before { content:"\25B8"; font-weight:400; color:#6f8395; }
-  details.ai[open] summary::before { content:"\25BE"; }
-  details.ai summary .tag { font-size:.72rem; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:#fff; background:#6f8395; border-radius:3px; padding:.05rem .4rem; }
-  details.ai summary .tag a { color:#fff; }
-  details.ai p { margin:.75rem 0; }
-  details.ai ul, details.ai ol { padding-left:1.2rem; margin:.6rem 0; }
-  details.ai li { margin:.35rem 0; }
-  details.ai table { border-collapse:collapse; font-size:.85rem; margin:.6rem 0; width:100%; }
-  details.ai th, details.ai td { text-align:left; padding:.25rem .5rem; border-bottom:1px solid var(--aiedge); vertical-align:top; }
-  details.ai th { font-weight:600; color:#2a3f52; }
-  .tablewrap { overflow-x:auto; }
-  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
-</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../css/essay.css">
 </head>
 <body>
-<div class="wrap">
-  <p class="back"><a href="../index.html#essays">&larr; aporia</a></p>
-  <article>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="../" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
     <h1>Panic, Neglect, and Paperwork</h1>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <aside class="essay-side">
+      <p class="essay-meta"><span>Eric Silver</span><span>September 9, 2026</span><span>Draft</span></p>
+      <ul class="links"><li><a href="../#essays">All essays</a></li><li><a href="#sources">Sources</a></li></ul>
+    </aside>
+    <article class="sheet">
     <!-- DRAFT MARKER 2 of 2: the "draft" label. Drop it (or bump to "second draft" etc.)
          when the essay is surfaced on the homepage. -->
-    <p class="date">Eric Silver &middot; September 9, 2026 &middot; draft</p>
     <p class="disclosure"><a href="../ai/index.html">AI</a> <a href="../ai/index.html#edited">edited</a> <a href="../ai/index.html#ideated">ideated</a> <a href="../ai/index.html#supported">supported</a>. The shaded &ldquo;AI background&rdquo; blocks below are research notes drafted by an AI and checked against their sources; the argument is mine.</p>
 
     <p class="lede">In the early 1970s New York City had a tuberculosis program that worked, and by the end of the decade it had almost nothing &mdash; because the program had worked. Cases had been falling for decades. The federal categorical grant that paid for TB control was eliminated in 1972 and not restored for nine years; the city's fiscal crisis took a fifth of the health department's budget; six of its fourteen chest clinics closed. Cases bottomed out in 1978 and then climbed for fourteen years, to a 1992 peak nearly three times the low, with a multidrug-resistant strain that had not existed when the clinics were open. Bringing it back under control cost the city and the federal government something over a billion dollars. The cheap program was cut because it was cheap and because it was working; the expensive one was bought because the cheap one was gone.</p>
@@ -253,7 +252,7 @@
 
     <p>None of this is new. What I've wanted to show is that the four are the same intervention seen from four sides, and that the alternatives &mdash; the sweep, the hidden tax, the audit contractor, the public comment period &mdash; each change the loop's phase without touching its amplitude. The city's TB clinics were closed by a budget that could see their cost and not their output. Fifty years on, Medicaid's oversight budget can see its reports and not its recoveries. Same problem: a sensor pointed at the wrong thing.</p>
 
-    <h2>Sources</h2>
+    <h2 id="sources">Sources</h2>
     <ul class="sources">
       <li>Frieden, T.R., Fujiwara, P.I., Washko, R.M., Hamburg, M.A., &ldquo;Tuberculosis in New York City &mdash; turning the tide,&rdquo; <em>New England Journal of Medicine</em> 333 (1995): 229&ndash;33. Barr, R.G. et al., &ldquo;Neighborhood Poverty and the Resurgence of Tuberculosis in New York City, 1984&ndash;1992,&rdquo; <em>American Journal of Public Health</em> 91 (2001): 1487&ndash;93. Freudenberg, N. et al., &ldquo;The Impact of New York City's 1975 Fiscal Crisis on the Tuberculosis, HIV, and Homicide Syndemic,&rdquo; <em>American Journal of Public Health</em> 96 (2006): 424&ndash;34. Institute of Medicine, <em>Ending Neglect: The Elimination of Tuberculosis in the United States</em> (2000).</li>
       <li>Brudney, K., Dobkin, J., &ldquo;Resurgent tuberculosis in New York City,&rdquo; <em>American Review of Respiratory Disease</em> 144 (1991): 745&ndash;49.</li>
@@ -309,8 +308,21 @@
       <li>OECD, <em>Innovative Citizen Participation and New Democratic Institutions: Catching the Deliberative Wave</em> (2020).</li>
       <li>CMS, <em>Medicaid Program; Ensuring Access to Medicaid Services</em>, final rule, CMS-2442-F, 89 Fed. Reg. 40542 (May 10, 2024).</li>
     </ul>
-  </article>
-  <footer>&copy; 2026 Eric Silver &middot; aporia.institute</footer>
-</div>
+  
+    </article>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="../ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 </body>
 </html>

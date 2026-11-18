@@ -3,46 +3,65 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Mores of Use &mdash; Eric Silver</title>
+<title>The Mores of Use, by Eric Silver</title>
 <meta name="description" content="Norms around AI use are diverging: inside the university prose is evidence of a mind, outside it writing has long been staff work. Where email between colleagues falls, and a disclosure practice cheap enough to survive.">
-<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development.
-     Remove it only when the essay is surfaced on the homepage (see SKILL.md). -->
+<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development. -->
 <meta name="robots" content="noindex">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
-  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
-  html { scroll-behavior:smooth; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
-  h1 { font-size:1.7rem; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
-  h2 { font-size:1.15rem; letter-spacing:-.005em; margin:2.4rem 0 .4rem; }
-  .date { color:var(--muted); font-size:.95rem; margin:0 0 2rem; }
-  p { margin:1.1rem 0; }
-  .lede { font-size:1.15rem; line-height:1.55; }
-  figure { margin:1.6rem 0; }
-  figure img { display:block; max-width:26rem; width:100%; height:auto; margin:0 auto; border:1px solid var(--rule); border-radius:10px; }
-  figcaption { color:var(--muted); font-size:.85rem; line-height:1.5; margin-top:.6rem; text-align:center; }
-  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
-</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="../css/essay.css">
 </head>
 <body>
-<div class="wrap">
-  <p class="back"><a href="../index.html#essays">&larr; aporia</a></p>
-  <article>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="../" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="../#papers">Papers</a></li>
+    <li><a href="../#essays">Essays</a></li>
+    <li><a href="../#books">Books</a></li>
+    <li><a href="../#portfolio">Portfolio</a></li>
+    <li><a href="../resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
     <h1>The Mores of Use</h1>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <aside class="essay-side">
+      <p class="essay-meta"><span>Eric Silver</span><span>September 1, 2026</span><span>Draft</span></p>
+      <ul class="links"><li><a href="../#essays">All essays</a></li></ul>
+    </aside>
+    <article class="sheet">
     <!-- DRAFT MARKER 2 of 2: the "draft" label. Drop it (or bump to "second draft" etc.)
          when the essay is surfaced on the homepage. -->
-    <p class="date">Eric Silver &middot; September 1, 2026 &middot; draft</p>
 
     <p class="lede">This week a colleague I admire replied to one of my emails with two words and a screenshot, and I learned that a rule had formed while I wasn't looking. The email was mine &mdash; my ideas, my structure, my claims &mdash; but an AI had proofed it, and to my colleague that made it something else. I had disclosed the AI's role in the paper the email described. It had not occurred to me that the email needed its own disclosure. Apparently it did.</p>
 
-    <figure>
+    <figure class="figure--narrow">
       <img src="../img/pangram-verdict.png" alt="Screenshot of the Pangram AI detector reporting: AI Generated, 204 words scanned, 100% of this text is AI." width="1170" height="870">
       <figcaption>The screenshot. The detector's verdict on my email, with the email itself cropped out.</figcaption>
     </figure>
@@ -68,8 +87,21 @@
 
     <h2>Tell me when I get it wrong</h2>
     <p>I correspond from a small circle &mdash; papers, government analysts, seven-year-olds, and chatbots &mdash; which means I will misjudge norms I can't see from here. If the degree to which I've used AI in something I sent you gave offense, if a message of mine read as inauthentic, or if these disclosures themselves seem miscalibrated &mdash; too coarse, too fine, or beside the point &mdash; I am asking you, sincerely, to reply and say so &mdash; <a href="../contact.html">anonymously if you like</a>. The mores are being written in exchanges like that one, and I would rather be corrected than quietly resented.</p>
-  </article>
-  <footer>&copy; 2026 Eric Silver &middot; aporia.institute</footer>
-</div>
+  
+    </article>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="../ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 </body>
 </html>
