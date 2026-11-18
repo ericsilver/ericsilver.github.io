@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 542" width="560" height="542" role="img" font-family='-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'>
+<title>Share of work time removed by major occupation group, substantial scenario with robots</title>
+<rect width="560" height="542" fill="#ffffff"/>
+<rect x="198.0" y="8.0" width="12.0" height="12.0" fill="#0072B2" rx="2"/>
+<text x="215.0" y="18.0" font-size="12.5" fill="#666666" text-anchor="start" font-weight="400">AI</text>
+<rect x="247.4" y="8.0" width="12.0" height="12.0" fill="#D55E00" rx="2"/>
+<text x="264.4" y="18.0" font-size="12.5" fill="#666666" text-anchor="start" font-weight="400">Robots</text>
+<line x1="198.0" y1="40.0" x2="198.0" y2="508.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="198.0" y="524.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">0%</text>
+<line x1="277.5" y1="40.0" x2="277.5" y2="508.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="277.5" y="524.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">5%</text>
+<line x1="357.0" y1="40.0" x2="357.0" y2="508.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="357.0" y="524.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">10%</text>
+<line x1="436.5" y1="40.0" x2="436.5" y2="508.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="436.5" y="524.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">15%</text>
+<line x1="516.0" y1="40.0" x2="516.0" y2="508.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="516.0" y="524.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">20%</text>
+<text x="190.0" y="59.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Computer and mathematical</text>
+<rect x="198.0" y="49.0" width="272.5" height="13.0" fill="#0072B2" rx="2"/>
+<text x="475.5" y="59.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">17%</text>
+<text x="190.0" y="80.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Sales</text>
+<rect x="198.0" y="70.0" width="160.1" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="360.1" y="70.0" width="102.4" height="13.0" fill="#D55E00" rx="2"/>
+<text x="467.5" y="80.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">17%</text>
+<text x="190.0" y="101.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Office and administrative support</text>
+<rect x="198.0" y="91.0" width="217.3" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="417.3" y="91.0" width="34.9" height="13.0" fill="#D55E00" rx="2"/>
+<text x="457.2" y="101.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">16%</text>
+<text x="190.0" y="122.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Transportation</text>
+<rect x="198.0" y="112.0" width="45.5" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="245.5" y="112.0" width="204.4" height="13.0" fill="#D55E00" rx="2"/>
+<text x="454.8" y="122.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">16%</text>
+<text x="190.0" y="143.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Legal</text>
+<rect x="198.0" y="133.0" width="216.1" height="13.0" fill="#0072B2" rx="2"/>
+<text x="419.1" y="143.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">14%</text>
+<text x="190.0" y="164.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Business and financial</text>
+<rect x="198.0" y="154.0" width="205.2" height="13.0" fill="#0072B2" rx="2"/>
+<text x="410.1" y="164.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">13%</text>
+<text x="190.0" y="185.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Farming, fishing and forestry</text>
+<rect x="198.0" y="175.0" width="30.7" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="230.7" y="175.0" width="167.6" height="13.0" fill="#D55E00" rx="2"/>
+<text x="403.3" y="185.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">13%</text>
+<text x="190.0" y="206.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Science</text>
+<rect x="198.0" y="196.0" width="152.6" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="352.6" y="196.0" width="36.3" height="13.0" fill="#D55E00" rx="2"/>
+<text x="393.9" y="206.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">12%</text>
+<text x="190.0" y="227.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Management</text>
+<rect x="198.0" y="217.0" width="177.6" height="13.0" fill="#0072B2" rx="2"/>
+<text x="382.1" y="227.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">11%</text>
+<text x="190.0" y="248.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Architecture and engineering</text>
+<rect x="198.0" y="238.0" width="150.4" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="350.4" y="238.0" width="3.6" height="13.0" fill="#D55E00" rx="2"/>
+<text x="359.0" y="248.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">10%</text>
+<text x="190.0" y="269.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Protective service</text>
+<rect x="198.0" y="259.0" width="51.9" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="251.9" y="259.0" width="97.3" height="13.0" fill="#D55E00" rx="2"/>
+<text x="354.2" y="269.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">10%</text>
+<text x="190.0" y="290.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Arts and media</text>
+<rect x="198.0" y="280.0" width="138.7" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="338.7" y="280.0" width="0.9" height="13.0" fill="#D55E00" rx="2"/>
+<text x="344.6" y="290.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">9%</text>
+<text x="190.0" y="311.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Education</text>
+<rect x="198.0" y="301.0" width="141.2" height="13.0" fill="#0072B2" rx="2"/>
+<text x="344.2" y="311.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">9%</text>
+<text x="190.0" y="332.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Personal care</text>
+<rect x="198.0" y="322.0" width="64.3" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="264.3" y="322.0" width="71.7" height="13.0" fill="#D55E00" rx="2"/>
+<text x="341.1" y="332.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">9%</text>
+<text x="190.0" y="353.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Building and grounds</text>
+<rect x="198.0" y="343.0" width="6.7" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="206.7" y="343.0" width="126.0" height="13.0" fill="#D55E00" rx="2"/>
+<text x="337.6" y="353.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">8%</text>
+<text x="190.0" y="374.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Healthcare practitioners</text>
+<rect x="198.0" y="364.0" width="108.7" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="308.7" y="364.0" width="8.4" height="13.0" fill="#D55E00" rx="2"/>
+<text x="322.1" y="374.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">7%</text>
+<text x="190.0" y="395.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Construction and extraction</text>
+<rect x="198.0" y="385.0" width="23.5" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="223.5" y="385.0" width="85.9" height="13.0" fill="#D55E00" rx="2"/>
+<text x="314.4" y="395.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">7%</text>
+<text x="190.0" y="416.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Production</text>
+<rect x="198.0" y="406.0" width="36.2" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="236.2" y="406.0" width="63.7" height="13.0" fill="#D55E00" rx="2"/>
+<text x="304.9" y="416.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">6%</text>
+<text x="190.0" y="437.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Food preparation and serving</text>
+<rect x="198.0" y="427.0" width="39.9" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="239.9" y="427.0" width="58.9" height="13.0" fill="#D55E00" rx="2"/>
+<text x="303.8" y="437.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">6%</text>
+<text x="190.0" y="458.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Community and social service</text>
+<rect x="198.0" y="448.0" width="89.0" height="13.0" fill="#0072B2" rx="2"/>
+<text x="293.2" y="458.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">6%</text>
+<text x="190.0" y="479.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Healthcare support</text>
+<rect x="198.0" y="469.0" width="41.9" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="241.9" y="469.0" width="16.6" height="13.0" fill="#D55E00" rx="2"/>
+<text x="263.5" y="479.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">4%</text>
+<text x="190.0" y="500.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Installation and repair</text>
+<rect x="198.0" y="490.0" width="44.3" height="13.0" fill="#0072B2" rx="2"/>
+<rect x="244.3" y="490.0" width="9.5" height="13.0" fill="#D55E00" rx="2"/>
+<text x="258.7" y="500.0" font-size="12" fill="#666666" text-anchor="start" font-weight="400">4%</text>
+</svg>

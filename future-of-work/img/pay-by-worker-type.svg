@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 486" width="560" height="486" role="img" font-family='-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'>
+<title>Real pay change by career stage, schooling and bachelor's field, substantial scenario, 2030</title>
+<rect width="560" height="486" fill="#ffffff"/>
+<line x1="282.0" y1="34.0" x2="282.0" y2="448.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="282.0" y="464.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">+6%</text>
+<line x1="346.0" y1="34.0" x2="346.0" y2="448.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="346.0" y="464.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">+8%</text>
+<line x1="410.0" y1="34.0" x2="410.0" y2="448.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="410.0" y="464.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">+10%</text>
+<line x1="474.0" y1="34.0" x2="474.0" y2="448.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="474.0" y="464.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">+12%</text>
+<line x1="538.0" y1="34.0" x2="538.0" y2="448.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="538.0" y="464.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">+14%</text>
+<line x1="433.9" y1="34.0" x2="433.9" y2="448.0" stroke="#9a9a9a" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="437.9" y="32.0" font-size="11.5" fill="#666666" text-anchor="start" font-weight="400">all workers +10.7%</text>
+<text x="8.0" y="52.0" font-size="12.5" fill="#1a1a1a" text-anchor="start" font-weight="600">Career stage</text>
+<text x="240.0" y="74.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Early career (under 8 years)</text>
+<line x1="365.7" y1="70.0" x2="498.5" y2="70.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="446.3" cy="70.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="95.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Mid career (8 to 22)</text>
+<line x1="362.6" y1="91.0" x2="494.6" y2="91.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="435.0" cy="91.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="116.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Late career (over 22)</text>
+<line x1="360.8" y1="112.0" x2="492.5" y2="112.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="428.9" cy="112.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="8.0" y="145.0" font-size="12.5" fill="#1a1a1a" text-anchor="start" font-weight="600">Schooling</text>
+<text x="240.0" y="167.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Less than high school</text>
+<line x1="378.2" y1="163.0" x2="506.7" y2="163.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="451.6" cy="163.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="188.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">High school</text>
+<line x1="376.7" y1="184.0" x2="498.5" y2="184.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="446.9" cy="184.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="209.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Associate</text>
+<line x1="363.7" y1="205.0" x2="492.5" y2="205.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="435.3" cy="205.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="230.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Bachelor's</text>
+<line x1="350.3" y1="226.0" x2="482.8" y2="226.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="410.7" cy="226.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="251.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Graduate</text>
+<line x1="351.6" y1="247.0" x2="470.2" y2="247.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="408.4" cy="247.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="8.0" y="280.0" font-size="12.5" fill="#1a1a1a" text-anchor="start" font-weight="600">Bachelor's field: four smallest and four largest gains</text>
+<text x="240.0" y="302.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Computer science</text>
+<line x1="292.7" y1="298.0" x2="458.6" y2="298.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="354.7" cy="298.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="323.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Computer and information systems</text>
+<line x1="305.8" y1="319.0" x2="480.3" y2="319.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="382.9" cy="319.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="344.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Accounting</text>
+<line x1="353.3" y1="340.0" x2="471.5" y2="340.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="384.1" cy="340.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="365.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Finance</text>
+<line x1="335.3" y1="361.0" x2="476.7" y2="361.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="391.1" cy="361.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="386.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">General education</text>
+<line x1="378.2" y1="382.0" x2="473.6" y2="382.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="425.6" cy="382.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="407.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Criminal justice and fire protection</text>
+<line x1="360.8" y1="403.0" x2="492.0" y2="403.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="426.4" cy="403.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="428.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Nursing</text>
+<line x1="392.5" y1="424.0" x2="468.6" y2="424.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="428.5" cy="424.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="240.0" y="449.0" font-size="12.5" fill="#1a1a1a" text-anchor="end" font-weight="400">Physical fitness, parks and recreation</text>
+<line x1="365.7" y1="445.0" x2="490.8" y2="445.0" stroke="#0072B2" stroke-width="2"/>
+<circle cx="431.1" cy="445.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+</svg>

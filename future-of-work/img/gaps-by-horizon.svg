@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 290" width="560" height="290" role="img" font-family='-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif'>
+<title>Gap in pay and employment between more and less exposed occupations, by horizon, substantial scenario</title>
+<rect width="560" height="290" fill="#ffffff"/>
+<line x1="50.0" y1="30.0" x2="410.0" y2="30.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="44.0" y="34.0" font-size="12" fill="#666666" text-anchor="end" font-weight="400">0%</text>
+<line x1="50.0" y1="84.0" x2="410.0" y2="84.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="44.0" y="88.0" font-size="12" fill="#666666" text-anchor="end" font-weight="400">-1%</text>
+<line x1="50.0" y1="138.0" x2="410.0" y2="138.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="44.0" y="142.0" font-size="12" fill="#666666" text-anchor="end" font-weight="400">-2%</text>
+<line x1="50.0" y1="192.0" x2="410.0" y2="192.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="44.0" y="196.0" font-size="12" fill="#666666" text-anchor="end" font-weight="400">-3%</text>
+<line x1="50.0" y1="246.0" x2="410.0" y2="246.0" stroke="#e5e5e5" stroke-width="1"/>
+<text x="44.0" y="250.0" font-size="12" fill="#666666" text-anchor="end" font-weight="400">-4%</text>
+<text x="70.0" y="264.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">Today's workforce</text>
+<text x="230.0" y="264.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">2030</text>
+<text x="390.0" y="264.0" font-size="12" fill="#666666" text-anchor="middle" font-weight="400">Every job re-chosen</text>
+<path d="M70.0,216.9 L230.0,171.0 L390.0,88.3" fill="none" stroke="#0072B2" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="70.0" cy="216.9" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="70.0" y="207.9" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="400">-3.5%</text>
+<circle cx="230.0" cy="171.0" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="230.0" y="162.0" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="400">-2.6%</text>
+<circle cx="390.0" cy="88.3" r="4.5" fill="#0072B2" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="390.0" y="107.3" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="400">-1.1%</text>
+<text x="404.0" y="92.3" font-size="13" fill="#0072B2" text-anchor="start" font-weight="600">Pay</text>
+<path d="M70.0,48.8 L230.0,84.3 L390.0,145.9" fill="none" stroke="#D55E00" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="70.0" cy="48.8" r="4.5" fill="#D55E00" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="70.0" y="67.8" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="400">-0.3%</text>
+<circle cx="230.0" cy="84.3" r="4.5" fill="#D55E00" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="230.0" y="103.3" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="400">-1.0%</text>
+<circle cx="390.0" cy="145.9" r="4.5" fill="#D55E00" fill-opacity="1.0" stroke="#ffffff" stroke-width="1.5"/>
+<text x="390.0" y="136.9" font-size="12" fill="#1a1a1a" text-anchor="middle" font-weight="400">-2.1%</text>
+<text x="404.0" y="149.9" font-size="13" fill="#D55E00" text-anchor="start" font-weight="600">Employment</text>
+</svg>

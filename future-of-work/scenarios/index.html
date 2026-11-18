@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Automation scenarios · draft</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="topbar">
+  <a class="back" href="/">&larr; aporia</a>
+  <nav class="pages" aria-label="Future of work pages">
+    <a href="/future-of-work/">Summary</a>
+    <a href="/future-of-work/scenarios/" aria-current="page">Scenarios</a>
+    <a href="/workforce-explorer/">Workforce explorer</a>
+  </nav>
+</div>
+<header>
+  <h1>Automation scenarios <span class="draft">· draft</span></h1>
+  <p class="sub">Choose an exposure index, how much of today's work it removes, and whether robots are added. Every panel then shows the same scenario for the whole economy, for one occupation, or for one type of worker. These are scenarios, not forecasts.</p>
+</header>
+<main>
+  <aside id="side" aria-label="Scenario controls">
+    <div class="card">
+      <h2>Scenario</h2>
+      <h3 id="lab-index">Exposure index</h3>
+      <div id="ctl-index" class="opts" role="radiogroup" aria-labelledby="lab-index"></div>
+      <div id="index-note" class="meta" style="margin-top:6px"></div>
+      <h3 id="lab-level">Intensity <span class="meta">share of work time removed</span></h3>
+      <div id="ctl-level" class="steps" role="radiogroup" aria-labelledby="lab-level"></div>
+      <div id="level-note" class="meta"></div>
+      <h3 id="lab-robots">Robots <span class="meta">share of robot-feasible task time automated</span></h3>
+      <div id="ctl-robots" class="steps" role="radiogroup" aria-labelledby="lab-robots"></div>
+      <div id="robots-note" class="meta"></div>
+      <h3>Work time removed in this scenario</h3>
+      <div id="meter"></div>
+    </div>
+    <div class="card">
+      <h2>Show effects for</h2>
+      <div id="ctl-scope" class="steps scope" role="radiogroup" aria-label="Scope"></div>
+      <div id="pick-occ" class="pick hidden">
+        <label for="occ-q">Occupation</label>
+        <input id="occ-q" type="text" autocomplete="off" spellcheck="false" placeholder="Type a job title" role="combobox" aria-expanded="false" aria-controls="occ-list" aria-autocomplete="list">
+        <ul id="occ-list" class="suggest hidden" role="listbox"></ul>
+        <div id="occ-cur" class="meta"></div>
+      </div>
+      <div id="pick-coh" class="pick hidden">
+        <label for="coh-fam">Shared experience</label>
+        <select id="coh-fam"></select>
+        <label for="coh-id">Worker type</label>
+        <select id="coh-id"></select>
+      </div>
+    </div>
+  </aside>
+  <section id="content"><p class="meta">Loading scenarios…</p></section>
+</main>
+<section class="about">
+  <div>
+    <h2>What you are looking at</h2>
+    <p>Each scenario removes a share of the time people spend on work tasks and hands that work to AI or robots. Output per worker in an occupation rises by the time saved. Wages, prices and people's occupations then adjust until every occupation's labor market clears. The economy has 551 occupations and about 136 million simulated workers, whose schooling and job histories decide which occupations they qualify for and can enter.</p>
+    <p>An exposure index says which tasks go first. The observed-use index starts from where AI is used today and moves toward what the task labels rate as feasible; the other two apply assumed adoption fractions to published task ratings. The robot setting removes part of the time spent on tasks that a robot could do in an existing workplace. Intensity levels are listed by the share of all work time each one removes, because the indexes do not share a grid.</p>
+  </div>
+  <div>
+    <h2>What the model leaves out</h2>
+    <ul>
+      <li>AI and robots cost nothing and workers receive all of the gain, so the pay levels are upper bounds.</li>
+      <li>Nobody is unemployed: every worker holds the best-paid occupation open to them at the new wages.</li>
+      <li>New tasks for people appear only through the reinstatement dial of the observed-use index.</li>
+      <li>The workforce is today's. Retirements and new entrants, who shift the effect from pay toward employment over time, are not in these runs.</li>
+      <li>The largest levels stop short of removing every exposed task.</li>
+    </ul>
+  </div>
+</section>
+<footer>
+  <p class="src">Observed exposure and robot exposure: Anthropic Economic Index (CC-BY). Task labels: Eloundou et al. (2024). Task scores: Schaal (2025). Scenario dials: Korinek, Jones, Sacher, Cotter and McCrory (2026). Occupations and requirements: O*NET; employment and pay: BLS Occupational Employment and Wage Statistics.</p>
+  <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a></p>
+  <p>aporia.institute — Eric Silver</p>
+</footer>
+<div id="tip" role="tooltip"></div>
+<script src="app.js"></script>
+</body>
+</html>

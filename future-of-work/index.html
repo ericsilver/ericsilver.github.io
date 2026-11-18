@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An occupation-level simulation of AI, robots and the labor market &mdash; Eric Silver</title>
+<meta name="description" content="A simulated workforce of 136 million in 551 occupations, run under the scenario settings of the Anthropic Institute's economic scenarios, with effects by career stage, schooling and occupation.">
+<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development. -->
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<style>
+  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
+  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
+  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
+  h1 { font-size:1.7rem; line-height:1.25; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
+  h2 { font-size:1.15rem; line-height:1.4; letter-spacing:-.005em; margin:2.4rem 0 .4rem; }
+  .date { color:var(--muted); font-size:.95rem; margin:0 0 .4rem; }
+  .pages { color:var(--muted); font-size:.92rem; margin:0 0 2rem; }
+  .pages b { color:var(--ink); font-weight:600; }
+  p { margin:1.1rem 0; }
+  ul.plain { padding-left:1.2rem; } ul.plain li { margin:.55rem 0; }
+  figure { margin:2rem 0; }
+  figure img { display:block; width:100%; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff; }
+  figcaption { color:var(--muted); font-size:.85rem; margin-top:.5rem; line-height:1.5; }
+  .tablewrap { overflow-x:auto; margin:1.4rem 0 .4rem; }
+  table { border-collapse:collapse; width:100%; font-size:.82rem; line-height:1.35; font-variant-numeric:tabular-nums; }
+  table.wide { font-size:.78rem; } table.wide th, table.wide td { padding:.4rem .3rem; } table.wide td:first-child { white-space:normal; }
+  caption { caption-side:top; text-align:left; font-weight:600; font-size:.9rem; padding-bottom:.4rem; }
+  th, td { padding:.4rem .5rem; border-bottom:1px solid var(--rule); text-align:right; vertical-align:bottom; }
+  th { font-weight:600; color:var(--muted); }
+  th:first-child, td:first-child { text-align:left; padding-left:0; }
+  td:first-child { white-space:nowrap; }
+  .tnote { color:var(--muted); font-size:.85rem; line-height:1.5; margin:.5rem 0 1.4rem; }
+  .colophon { color:var(--muted); font-size:.88rem; border-top:1px solid var(--rule); padding-top:1rem; margin-top:2.5rem; }
+  .sources { font-size:.88rem; color:var(--muted); line-height:1.55; }
+  .sources li { margin:.45rem 0; }
+  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="back"><a href="/">&larr; aporia</a></p>
+  <article>
+    <h1>An occupation-level simulation of AI, robots and the labor market</h1>
+    <!-- DRAFT MARKER 2 of 2: the "draft" label. -->
+    <p class="date">Eric Silver &middot; November 18, 2026 &middot; draft</p>
+    <p class="pages"><b>Summary</b> &middot; <a href="/future-of-work/scenarios/">Scenarios</a> &middot; <a href="/workforce-explorer/">Workforce explorer</a></p>
+
+    <p>In a scenario where AI takes 7.7% of work time by 2030, output is 10% higher than without AI, real pay rises 9.7% in cognitive occupations and 12.1% in all others, and 0.3% of workers change occupation. The scenario is the &ldquo;substantial change&rdquo; case of the Anthropic Institute&rsquo;s <a href="https://www.anthropic.com/institute/econ-scenarios">Economic Scenarios for Transformative AI</a>, run through a model with 551 occupations and a simulated workforce that stands for 136 million workers. The numbers on this page are scenarios, not forecasts.</p>
+
+    <h2>The model follows simulated workers, so effects can be read for a career stage, a degree or an occupation</h2>
+
+    <p>The workforce is 591,529 simulated careers, weighted to stand for 136 million workers in 551 occupations. A career starts at one of 304 combinations of schooling level and degree field from the American Community Survey, enters a first job typical of that schooling, and moves along the occupation-to-occupation transitions observed in r&eacute;sum&eacute; data. A worker&rsquo;s skills are the requirements of the jobs they have held, and a worker can enter an occupation when they hold all of its important O*NET requirements and meet its license and experience rules.</p>
+
+    <p>Automation removes tasks from occupations and raises output per worker by the time saved. Wages, prices and workers&rsquo; occupations then adjust until all 551 labor markets clear. The solution is exact and takes a few minutes on a desktop computer, so each result below is one run that can be tabulated for any group of simulated workers.</p>
+
+    <h2>Automation indexes are inputs that can be swapped and combined</h2>
+
+    <p>The model needs one thing from an automation index: which tasks lose time, in which occupations. The runs here take today&rsquo;s pattern from Anthropic&rsquo;s observed exposure (the share of an occupation&rsquo;s task time on tasks with significant work use of Claude), the ceiling from the task labels of Eloundou and coauthors, and physical tasks from Anthropic&rsquo;s robot exposure ratings. Two indexes are combined by removing the tasks that either one takes. The <a href="/future-of-work/scenarios/">scenarios page</a> also runs the Eloundou labels alone and Schaal&rsquo;s (2025) index.</p>
+
+    <h2>The scenarios use the five settings of Korinek, Jones, Sacher, Cotter and McCrory</h2>
+
+    <p>Their report defines a scenario by the share of work AI can affect, the share of those task instances where it is used, the gain per instance, the share of use that automates rather than assists, and the number of new tasks created per task automated. Here each occupation&rsquo;s affected share starts at its observed exposure, 13% of work time on average, and moves toward its Eloundou exposure, 45% on average, until the economy-wide mean equals the scenario&rsquo;s value. Automated time removes whole tasks, net of the share replaced by new tasks, and a removed task can take a job requirement with it. Assisted time is saved on tasks that stay in the job.</p>
+
+    <div class="tablewrap">
+    <table class="wide">
+      <caption>Scenario settings and the work time they remove</caption>
+      <thead><tr><th>Scenario</th><th>Work affected</th><th>Used on</th><th>Automated</th><th>New tasks per task automated</th><th>Time removed</th><th>Of which assisted</th></tr></thead>
+      <tbody>
+        <tr><td>Modest, 2030</td><td>20%</td><td>20%</td><td>50%</td><td>0.50</td><td>1.0%</td><td>0.5%</td></tr>
+        <tr><td>Substantial, 2030</td><td>30%</td><td>40%</td><td>75%</td><td>0.25</td><td>7.7%</td><td>1.1%</td></tr>
+        <tr><td>Extreme, 2030</td><td>45%</td><td>60%</td><td>90%</td><td>0</td><td>26.6%</td><td>1.5%</td></tr>
+        <tr><td>Robots</td><td>10%</td><td>40%</td><td>100%</td><td>0</td><td>3.5%</td><td>0</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tnote">The extreme scenario&rsquo;s affected share stops at the Eloundou ceiling of 45%; the report uses 50%. The robot row counts tasks a robot could do in an existing workplace. Tasks are removed whole, so the modest settings imply 1.5% of time and 1.0% is removed. A further run scales observed exposure to the 2.08% of work hours that workers reported saving in the third quarter of 2026; it removes 1.9%.</p>
+
+    <h2>Substantial scenario, 2030: output rises 10%, and pay rises 9.7% in cognitive occupations against 12.1% in all others</h2>
+
+    <div class="tablewrap">
+    <table>
+      <caption>The substantial scenario in the report and in this simulation</caption>
+      <thead><tr><th></th><th>Korinek et al., two groups</th><th>This simulation</th></tr></thead>
+      <tbody>
+        <tr><td>Output, against no AI</td><td>+8.3%</td><td>+10.1%</td></tr>
+        <tr><td>Wage, cognitive occupations</td><td>&minus;0.3%</td><td>+9.7%</td></tr>
+        <tr><td>Wage, all other occupations</td><td>+5.9%</td><td>+12.1%</td></tr>
+        <tr><td>Employment, cognitive occupations</td><td>&minus;3.9%</td><td>&minus;0.3%</td></tr>
+        <tr><td>Unemployment, cognitive workers</td><td>2.9% to 4.5%</td><td>not in the model</td></tr>
+        <tr><td>Labor share of income</td><td>60% to 56%</td><td>all gains go to labor</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <p>The levels differ for a known reason. This model has no capital: AI is free and labor receives the whole gain, so its pay levels are upper bounds. The comparable quantity is the difference between the two groups, 2.4 points here against 6.2 in the report.</p>
+
+    <p>Employment moves less here because few workers have a better-paid occupation open to them and the model has no unemployment, so the adjustment falls on pay first. Compare an occupation at the 75th percentile of time removed (12.4%) with one at the 25th (0.7%). For today&rsquo;s workforce, pay is 3.5% lower and employment 0.3% lower in the more exposed occupation. By 2030, after 3.5 years of retirements and new entrants, the gaps are 2.6% and 1.0%. Once every job has been re-chosen they are 1.1% and 2.1%.</p>
+
+    <figure>
+      <a href="img/gaps-by-horizon.svg"><img src="img/gaps-by-horizon.svg" alt="Line chart: the pay gap between more and less exposed occupations shrinks from 3.5% to 2.6% to 1.1% as the workforce turns over, while the employment gap grows from 0.3% to 1.0% to 2.1%."></a>
+      <figcaption>Difference between an occupation at the 75th percentile of time removed and one at the 25th, substantial scenario. Today&rsquo;s workforce: no one has been replaced. 2030: workers who left over 3.5 years are replaced by entrants who choose occupations at the new wages. Every job re-chosen: all workers have been replaced.</figcaption>
+    </figure>
+
+    <div class="tablewrap">
+    <table class="wide">
+      <caption>Results by scenario, 2030</caption>
+      <thead><tr><th>Scenario</th><th>Time removed</th><th>Output</th><th>Wage, cognitive</th><th>Wage, other</th><th>Median real pay</th><th>Lower real pay</th><th>Change occu&shy;pation</th></tr></thead>
+      <tbody>
+        <tr><td>Measured use, today</td><td>1.9%</td><td>+2.1%</td><td>+1.8%</td><td>+2.7%</td><td>+2.3%</td><td>1.9%</td><td>0.1%</td></tr>
+        <tr><td>Modest</td><td>1.0%</td><td>+1.1%</td><td>+1.1%</td><td>+1.4%</td><td>+1.4%</td><td>0.7%</td><td>0.0%</td></tr>
+        <tr><td>Substantial</td><td>7.7%</td><td>+10.1%</td><td>+9.7%</td><td>+12.1%</td><td>+10.7%</td><td>0.3%</td><td>0.3%</td></tr>
+        <tr><td>Extreme</td><td>26.6%</td><td>+48.1%</td><td>+46.0%</td><td>+58.3%</td><td>+53.6%</td><td>0.0%</td><td>0.8%</td></tr>
+        <tr><td>Robots only</td><td>3.5%</td><td>+2.4%</td><td>+2.4%</td><td>+1.3%</td><td>+2.6%</td><td>7.2%</td><td>0.2%</td></tr>
+        <tr><td>Substantial with robots</td><td>11.1%</td><td>+13.0%</td><td>+12.5%</td><td>+13.9%</td><td>+13.8%</td><td>0.3%</td><td>0.4%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tnote">Lower real pay and change occupation are shares of workers. The measured-use row is solved for today&rsquo;s workforce; the others are 2030. The report&rsquo;s modest and extreme scenarios put the cognitive wage at +0.4% and &minus;11.5% and the other wage at +1.1% and +33.6%. Here the difference between the two groups is 0.3 points in the modest scenario and 12 points in the extreme one.</p>
+
+    <h2>Gains differ little by career stage and schooling, and more by occupation</h2>
+
+    <p>In the substantial scenario, real pay in 2030 is 11.1% higher for early-career workers, 10.8% for mid-career and 10.6% for late-career. By schooling it runs from 11.3% for workers without a high school diploma to 9.9% for those with graduate degrees. Across the 28 bachelor&rsquo;s fields that each hold at least 0.2% of workers it runs from 8.3% (computer science) to 10.7%. Within each of these groups the range from the 10th to the 90th percentile is typically about four points, wider than any difference between groups, because a worker&rsquo;s occupation carries most of the effect.</p>
+
+    <figure>
+      <a href="img/pay-by-worker-type.svg"><img src="img/pay-by-worker-type.svg" alt="Dot plot of real pay change by career stage, schooling and bachelor's field. Means lie between 8.3% and 11.3%; each group's 10th to 90th percentile range spans about four points."></a>
+      <figcaption>Real pay change by 2030 in the substantial scenario, for workers still in the workforce: mean (dot) and 10th to 90th percentile (line). The bachelor&rsquo;s fields are the four lowest and four highest of the 28 that each hold at least 0.2% of workers.</figcaption>
+    </figure>
+
+    <p>Across occupations, weighted by employment, the real wage change is 8.2% at the 5th percentile, 11.0% at the median and 13.0% at the 95th. Cognitive occupations lose 11.4% of their work time and all others 2.5%. The 0.3% of workers who end with lower real pay all start in one occupation, where a dropped requirement opens entry and the wage falls.</p>
+
+    <figure>
+      <a href="img/occupation-wage-distribution.svg"><img src="img/occupation-wage-distribution.svg" alt="Histogram of occupation real wage changes weighted by employment. Cognitive occupations cluster between 8% and 11%; other occupations between 11% and 13.5%."></a>
+      <figcaption>Occupations by change in real wage, weighted by employment, substantial scenario, 2030. Cognitive occupations are the twelve major groups the report treats as exposed to AI.</figcaption>
+    </figure>
+
+    <h2 id="relative-pay">Real pay rises for nearly every worker while the pay premium for a degree shrinks</h2>
+    <p>The model gives each worker&rsquo;s real pay and their place among all workers, and the two move differently. In the substantial scenario in 2030, real pay falls for 0.3% of workers, while 12.5% fall at least one percentile point in the pay distribution. Workers with a bachelor&rsquo;s or graduate degree earn 65.5% more than workers with high school only before the scenario and 63.9% more after. For a bachelor&rsquo;s degree in computer science the premium falls from 102% to 97%. In the extreme scenario no worker&rsquo;s real pay falls, a third of workers lose at least one percentile point, and the degree premium falls to 59.3%.</p>
+    <table class="wide">
+      <caption>Real pay and relative pay by scenario</caption>
+      <thead><tr><th>Scenario</th><th>Real pay falls</th><th>Place in the pay distribution falls 1+ points</th><th>Falls 5+ points</th><th>Degree premium over high school only</th><th>Computer science bachelor&rsquo;s premium</th><th>90th to 10th percentile pay ratio</th></tr></thead>
+      <tbody>
+        <tr><td>Measured use, today</td><td>1.9%</td><td>6.0%</td><td>0.0%</td><td>66.5% to 66.2%</td><td>105% to 103%</td><td>3.97 to 3.98</td></tr>
+        <tr><td>Substantial</td><td>0.3%</td><td>12.5%</td><td>0.3%</td><td>65.5% to 63.9%</td><td>102% to 97%</td><td>4.04 to 3.92</td></tr>
+        <tr><td>Extreme</td><td>0.0%</td><td>32.9%</td><td>4.4%</td><td>65.5% to 59.3%</td><td>102% to 86%</td><td>4.04 to 3.74</td></tr>
+        <tr><td>Robots only</td><td>7.2%</td><td>9.8%</td><td>0.0%</td><td>65.5% to 66.8%</td><td>102% to 104%</td><td>4.04 to 4.13</td></tr>
+        <tr><td>Substantial with robots</td><td>0.3%</td><td>13.2%</td><td>0.3%</td><td>65.5% to 65.2%</td><td>102% to 99%</td><td>4.04 to 4.01</td></tr>
+        <tr><td>Substantial, demand elasticity 1.6</td><td>0.3%</td><td>6.2%</td><td>0.3%</td><td>65.6% to 66.4%</td><td>102% to 105%</td><td>4.04 to 4.06</td></tr>
+      </tbody>
+    </table>
+    <p class="tnote">Shares are of workers. The measured-use row is today&rsquo;s workforce; the others are workers still in the workforce in 2030. The degree premium is the mean pay of workers with a bachelor&rsquo;s or graduate degree over the mean pay of workers with high school only, minus one, before and after.</p>
+    <p>The real and relative results rest on different assumptions. Real pay levels are upper bounds because labor receives the whole gain; in the report&rsquo;s extreme scenario, where capital receives a growing share, the cognitive wage ends 11.5% below its no-AI path. A capital share that lowered all pay in the same proportion would leave the relative results here unchanged. The relative results depend on the demand elasticity instead: at 1.6 the degree premium rises slightly. Robots move relative pay the other way, toward workers with degrees.</p>
+
+    <h2>AI and robots together: the effects add, and the difference between cognitive and other occupations narrows</h2>
+
+    <p>The robot run automates 40% of the time on tasks that Anthropic&rsquo;s ratings find a robot could do in an existing workplace. That is 3.5% of all work time: 5.7% outside the cognitive occupations and 1.8% inside. Alone, it raises output 2.4%, and 7.2% of workers end with lower real pay, because the overall gain is small and wages in their occupations fall relative to the rest.</p>
+
+    <figure>
+      <a href="img/time-removed-by-group.svg"><img src="img/time-removed-by-group.svg" alt="Stacked bar chart of work time removed by major occupation group. AI removes the most in computer, office, legal and business occupations; robots remove the most in transportation, farming, building and grounds, and sales."></a>
+      <figcaption>Share of work time removed by major occupation group: the substantial AI scenario, and robots at the same 40% diffusion share.</figcaption>
+    </figure>
+
+    <p>With the substantial AI scenario in the same run, 11.1% of work time is removed and output rises 13.0%, against 12.8% from adding the two separate runs. Occupation wage changes in the joint run correlate 0.985 with the sum of the separate runs. The wage difference between cognitive and other occupations falls from 2.4 points to 1.4.</p>
+
+    <figure>
+      <a href="img/ai-plus-robots.svg"><img src="img/ai-plus-robots.svg" alt="Scatter plot of occupation wage changes: the joint AI and robot run against the sum of the two separate runs. Points lie along the line of equality."></a>
+      <figcaption>Each dot is an occupation, sized by employment. Horizontal: the real wage change from the AI run and the robot run, added. Vertical: the change when both are in one run. One occupation lies below the range shown.</figcaption>
+    </figure>
+
+    <h2>The results depend on the demand elasticity and on who receives the gain</h2>
+
+    <ul class="plain">
+      <li><strong>Demand.</strong> The difference between exposed and other occupations depends on how much more of an industry&rsquo;s output is bought when its price falls. The runs use 0.66, estimated on 1997&ndash;2014. The same method on 2015&ndash;2024 gives 1.60. At that value the pay and employment gaps between more and less exposed occupations are zero, and wages rise 10.3% in cognitive occupations and 9.8% in others.</li>
+      <li><strong>Who receives the gain.</strong> AI is free and there is no capital, so labor receives all of the added output. Pay levels are upper bounds.</li>
+      <li><strong>No unemployment.</strong> Every labor market clears. Displacement appears as lower pay or a change of occupation.</li>
+      <li><strong>A 2015 workforce.</strong> Employment and wages are from May 2015, and job requirements from O*NET 20.1.</li>
+      <li><strong>Entry.</strong> Licenses and related experience limit entry. A worker moves only when another open occupation pays at least 5.5% more. New entrants follow relative wages with an elasticity of 2.</li>
+      <li><strong>Requirement drops.</strong> A requirement is dropped when every task that carries it is removed: 24 of 25,149 in the substantial scenario. Many rest on a single task, and one produces the only falling wage. This is the least reliable part of the results.</li>
+      <li><strong>Adoption.</strong> Observed exposure measures the use of one assistant. Diffusion and the automated share are scenario settings, applied to every occupation alike.</li>
+    </ul>
+
+    <h2>The inputs are public, and better data would replace specific assumptions</h2>
+
+    <p>This is independent work built on public data. The adoption pattern and the robot index come from two public Anthropic files. Paid or proprietary data would replace other inputs:</p>
+    <ul class="plain">
+      <li>current career histories from r&eacute;sum&eacute; or payroll panels, in place of transitions observed in r&eacute;sum&eacute;s from 2002 to 2015;</li>
+      <li>AI use by task over time, split into automation and assistance, in place of one diffusion share and one automated share per scenario;</li>
+      <li>job postings, for requirements that O*NET updates slowly;</li>
+      <li>prices and quantities for services, for the demand elasticity.</li>
+    </ul>
+    <p>The code, the simulated workforce and the scenario outputs are available on request through the <a href="/contact.html">contact page</a>.</p>
+
+    <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a>: Anthropic&rsquo;s Claude wrote and ran the simulation code to my direction, drafted and revised the prose, contributed framings in dialogue, and built the charts and the page. What each of those words means is at <a href="/ai/">aporia.institute/ai</a>.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ul class="sources">
+      <li>Scenario settings and the two-group results: Anton Korinek, Charles I. Jones, Szymon Sacher, Tess Cotter and Peter McCrory, &ldquo;Economic Scenarios for Transformative AI,&rdquo; The Anthropic Institute Working Paper 2026-02, September 2026. <a href="https://assets.claude.com/cf58f84d46a4a76bf5a5b039ac695fba6b80041c.pdf">PDF</a>.</li>
+      <li>Observed exposure and robot exposure: <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">Anthropic Economic Index</a> (CC-BY). Observed exposure is the measure of Maxim Massenkoff and Peter McCrory (March 2026); robot exposure is from &ldquo;What work can robots do?&rdquo;</li>
+      <li>Task labels: Tyna Eloundou, Sam Manning, Pamela Mishkin and Daniel Rock, &ldquo;GPTs are GPTs: Labor market impact potential of LLMs,&rdquo; <em>Science</em> 384 (2024). <a href="https://doi.org/10.1126/science.adj0998">doi</a>.</li>
+      <li>Alternative task index on the scenarios page: Schaal (2025), <a href="https://arxiv.org/abs/2510.13369">arXiv:2510.13369</a>.</li>
+      <li>Hours saved: Alexander Bick, Adam Blandin and David Deming, Real-Time Population Survey, published by the Federal Reserve Bank of St. Louis as series <a href="https://fred.stlouisfed.org/series/RPSGENAITSALL">RPSGENAITSALL</a>.</li>
+      <li>Workforce: American Community Survey 2015&ndash;19; Occupational Employment and Wage Statistics, May 2015; O*NET 20.1; Bureau of Labor Statistics occupational separations; occupation-to-occupation transitions from Gregor Schubert, Anna Stansbury and Bledi Taska, &ldquo;Monopsony and Outside Options&rdquo; (2020).</li>
+      <li>New entrants&rsquo; response to wages: Chang-Tai Hsieh, Erik Hurst, Charles I. Jones and Peter J. Klenow, &ldquo;The Allocation of Talent and U.S. Economic Growth,&rdquo; <em>Econometrica</em> 87 (2019).</li>
+      <li>Demand elasticities: estimated from the BEA&ndash;BLS production account.</li>
+    </ul>
+  </article>
+  <footer><a href="/">aporia.institute &mdash; Eric Silver</a></footer>
+</div>
+</body>
+</html>
