@@ -256,3 +256,12 @@ details[open] .when-closed { display: none; }
 }
 @media (min-width: 40.01rem) { .letter em { white-space: nowrap; } }
 @media (prefers-reduced-motion: reduce) { .btn, a, summary, .more { transition: none; } }
+
+/* The plate above the ledger: a generated picture of the building the ledger counts as zero */
+.ledger__plate { margin: calc(-1 * var(--space-lg)) calc(-1 * var(--space-xl)) var(--space-lg); }
+.ledger__plate img { display: block; width: 100%; height: auto; }
+.ledger__plate figcaption { padding: var(--space-xs) var(--space-xl) 0; color: var(--color-muted); font: 400 var(--text-xs)/1.4 var(--font-outlier); letter-spacing: 0; }
+@media (max-width: 40rem) {
+  .ledger__plate { margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) var(--space-md); }
+  .ledger__plate figcaption { padding-inline: var(--space-md); }
+}

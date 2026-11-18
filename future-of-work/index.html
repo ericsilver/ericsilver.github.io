@@ -40,6 +40,25 @@
   .colophon { color:var(--muted); font-size:.88rem; border-top:1px solid var(--rule); padding-top:1rem; margin-top:2.5rem; }
   .sources { font-size:.88rem; color:var(--muted); line-height:1.55; }
   .sources li { margin:.45rem 0; }
+  .start { margin:1.6rem 0 2.4rem; }
+  .start h2 { margin-top:0; }
+  .cards { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin:1.2rem 0 .9rem; }
+  @media (max-width:560px) { .cards { grid-template-columns:1fr; } }
+  .card { border:1px solid #e1e0d9; border-radius:8px; padding:.8rem .95rem; background:#fff; font-size:.88rem; line-height:1.45; }
+  .card h3 { font-size:.88rem; font-weight:650; margin:0 0 .45rem; }
+  .card ul { list-style:none; margin:0; padding:0; }
+  .card li { margin:.55rem 0; }
+  .card li a { font-weight:600; display:block; }
+  .card li span, .card .hint { color:var(--muted); font-size:.82rem; }
+  .card .hint { margin:.55rem 0 0; }
+  .xrow { display:flex; gap:.4rem; }
+  .xrow input { flex:1; min-width:0; font:inherit; font-size:.86rem; padding:.34rem .5rem; border:1px solid #c3c2b7; border-radius:6px; background:#fff; color:var(--ink); }
+  .xrow button { font:inherit; font-size:.86rem; font-weight:600; padding:.34rem .8rem; border:1px solid #c3c2b7; border-radius:6px; background:#fff; color:var(--ink); cursor:pointer; }
+  .xrow button:hover { border-color:var(--link); color:var(--link); }
+  .contrib table { font-size:.78rem; margin-top:.3rem; }
+  .contrib th, .contrib td { text-align:left; vertical-align:top; padding:.4rem .5rem .4rem 0; }
+  .contrib td:first-child { white-space:normal; font-weight:600; }
+  .contrib p { margin:.2rem 0 .5rem; }
   footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
 </style>
 </head>
@@ -53,6 +72,44 @@
     <p class="pages"><b>Summary</b> &middot; <a href="/future-of-work/scenarios/">Scenarios</a> &middot; <a href="/workforce-explorer/">Workforce explorer</a></p>
 
     <p>In a scenario where AI takes 7.7% of work time by 2030, output is 10% higher than without AI, real pay rises 9.7% in cognitive occupations and 12.1% in all others, and 0.3% of workers change occupation. The scenario is the &ldquo;substantial change&rdquo; case of the Anthropic Institute&rsquo;s <a href="https://www.anthropic.com/institute/econ-scenarios">Economic Scenarios for Transformative AI</a>, run through a model with 551 occupations and a simulated workforce that stands for 136 million workers. The numbers on this page are scenarios, not forecasts.</p>
+
+    <section class="start">
+      <h2 id="why">Why this work matters</h2>
+      <p>Most published estimates of AI&rsquo;s effect on work give either a score for how exposed each occupation is, or a model of the whole economy with one or two kinds of worker. People decide in between: which degree to earn, which occupation to stay in or leave, which workers a policy should reach. This simulation solves for wages, prices and employment in 551 occupations with individual simulated workers, so one scenario can be read for the economy, for an occupation, or for workers who share schooling or work history. It reports relative pay as well as real pay, which separates a scenario where pay falls from one where pay rises and a degree is worth less. Its inputs are public and can be swapped, so exposure indexes can be compared, and AI and robots combined, on the same workforce.</p>
+      <div class="cards">
+        <div class="card">
+          <h3>Go to a scenario</h3>
+          <ul>
+            <li><a href="/future-of-work/scenarios/?index=aei&amp;level=subst&amp;robots=r0&amp;scope=economy">The Anthropic Institute&rsquo;s substantial scenario</a><span>AI takes 7.7% of work time, under the settings of their report.</span></li>
+            <li><a href="/future-of-work/scenarios/?index=aei&amp;level=subst&amp;robots=r40&amp;scope=economy">The same scenario with robots</a><span>Robots also take 40% of the task time they could do in existing workplaces: 11.1% of work time in all.</span></li>
+            <li><a href="/future-of-work/scenarios/?index=aei&amp;level=extreme&amp;robots=r0&amp;scope=economy">More intense use of AI</a><span>Their extreme settings: 26.6% of work time.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Look up a job or schooling</h3>
+          <form id="xgo" class="xrow" action="/workforce-explorer/">
+            <input id="xq" list="xlist" placeholder="Search occupations and schooling" autocomplete="off" aria-label="Occupation or schooling">
+            <datalist id="xlist"></datalist>
+            <button type="submit">Go</button>
+          </form>
+          <p class="hint">Opens the workforce explorer: who holds a job and where they could move, or what people with that schooling do and could do. Each entry links on to its scenario results.</p>
+        </div>
+      </div>
+      <div class="card contrib">
+        <h3>What this adds to other explorers</h3>
+        <p>Other public tools show which work AI could do, or what happens to the economy as a whole. This one solves for wages and employment in 551 occupations with individual simulated workers, so a scenario can be read for one occupation or one type of worker.</p>
+        <table>
+          <thead><tr><th>Explorer</th><th>What it shows</th><th>Added here</th><th>Not here</th></tr></thead>
+          <tbody>
+            <tr><td><a href="https://www.anthropic.com/institute/econ-scenarios">Anthropic Institute, Scenario Explorer</a></td><td>Growth, wages, the labor share and unemployment to 2030 for two groups of occupations</td><td>551 occupations; workers by schooling, degree field and career stage; robots alongside AI</td><td>Capital, the labor share, unemployment</td></tr>
+            <tr><td><a href="https://iceberg.mit.edu">MIT, Iceberg Index</a></td><td>The wage value of the skills AI can perform, for 151 million simulated workers across states</td><td>What follows exposure: wages, prices and employment adjust until labor markets clear</td><td>Geography; skills in finer detail</td></tr>
+            <tr><td><a href="https://epoch.ai/gate">Epoch AI, GATE playground</a></td><td>Growth of the whole economy as investment in computing automates tasks</td><td>Who is affected within the economy</td><td>Investment in computing and its feedback to automation</td></tr>
+          </tbody>
+        </table>
+        <p class="hint">Anthropic&rsquo;s <a href="https://www.anthropic.com/economic-index">Economic Index</a> measures where AI is used; it is an input here.</p>
+      </div>
+    </section>
+
 
     <h2>The model follows simulated workers, so effects can be read for a career stage, a degree or an occupation</h2>
 
@@ -212,5 +269,32 @@
   </article>
   <footer><a href="/">aporia.institute &mdash; Eric Silver</a></footer>
 </div>
+
+<script>
+(function () {
+  var form = document.getElementById("xgo"), q = document.getElementById("xq"), list = document.getElementById("xlist"), items = [];
+  function norm(t) { return t.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); }
+  fetch("/future-of-work/data/meta.json").then(function (r) { return r.json(); }).then(function (m) {
+    m.cohorts.forEach(function (c) {
+      if (c.family === "school" || c.family === "field") items.push({ label: c.label, url: "/workforce-explorer/?cohort=" + encodeURIComponent(c.id) });
+    });
+    m.occupations.forEach(function (o) { items.push({ label: o.title, url: "/workforce-explorer/?soc=" + encodeURIComponent(o.soc) }); });
+    var frag = document.createDocumentFragment();
+    items.forEach(function (it) { var o = document.createElement("option"); o.value = it.label; frag.appendChild(o); });
+    list.appendChild(frag);
+    q.placeholder = "Search " + m.occupations.length + " occupations and schooling";
+  }).catch(function () {});
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var t = norm(q.value), hit = null;
+    if (t) {
+      hit = items.find(function (it) { return norm(it.label) === t; }) ||
+            items.find(function (it) { return norm(it.label).indexOf(t) === 0; }) ||
+            items.find(function (it) { return norm(it.label).indexOf(t) >= 0; });
+    }
+    location.href = hit ? hit.url : "/workforce-explorer/";
+  });
+})();
+</script>
 </body>
 </html>
