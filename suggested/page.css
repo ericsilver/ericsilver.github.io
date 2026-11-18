@@ -29,7 +29,7 @@ a:active { color: var(--color-accent-2); }
 /* The floating strip */
 .strip { position: sticky; top: var(--space-sm); z-index: var(--z-sticky-nav); display: flex; align-items: center; gap: var(--space-xl); width: fit-content; max-width: calc(100% - 2 * var(--space-md)); min-height: 56px; margin: var(--space-sm) auto calc(-1 * (56px + var(--space-sm))); padding-inline: var(--space-lg); background: var(--color-sheet); border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); }
 .wordmark { display: inline-flex; align-items: center; gap: var(--space-xs); color: var(--color-ink); font: 600 var(--text-md)/1 var(--font-display); letter-spacing: var(--tracking-display); text-decoration: none; white-space: nowrap; }
-.wordmark svg { width: 25px; height: 20.5px; flex-shrink: 0; }
+.wordmark svg { width: 25px; height: 25.9px; margin-block: -2.7px; flex-shrink: 0; }
 .strip__links { display: flex; gap: var(--space-md); margin: 0; padding: 0; list-style: none; }
 .strip__links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-ink-2); font: 500 var(--text-sm)/1 var(--font-body); text-decoration-line: none; white-space: nowrap; }
 .strip__links a:hover { color: var(--color-ink); text-decoration-line: underline; }
@@ -204,7 +204,7 @@ details[open] .when-closed { display: none; }
 .close__side p { margin-top: var(--space-xs); font-size: var(--text-body); }
 #resume { margin-top: var(--space-xl); }
 .signoff { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-md); margin-top: var(--space-3xl); padding-top: var(--space-lg); border-top: var(--rule-hair) solid var(--color-rule-2); }
-.signoff__mark { width: 39px; height: 32px; flex-shrink: 0; color: var(--color-sheet); }
+.signoff__mark { width: 39px; height: 40.4px; margin-block: -4.2px; flex-shrink: 0; color: var(--color-sheet); }
 .signoff__name { color: var(--color-sheet); font: 600 var(--text-title)/1 var(--font-display); letter-spacing: var(--tracking-display); }
 .signoff__legal { margin-left: auto; color: var(--color-paper-2); font-size: var(--text-sm); }
 
