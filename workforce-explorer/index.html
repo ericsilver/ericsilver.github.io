@@ -5,86 +5,102 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Synthetic workforce explorer · draft</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/page.css">
+<link rel="stylesheet" href="/future-of-work/app.css">
 <style>
+  /* Layout and the parts only this page has. Colors, type and the shared surfaces (cards, tiles, controls, tables)
+     come from /css/page.css and /future-of-work/app.css, which also sets --ink, --bg, --acc and the rest.
+     --edu and --exp mark where a skill came from: the same two hues as before, --exp one step darker and --edu a
+     little bluer and more saturated so both read against the sheet (3:1 or better; checked with the dataviz validator). */
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root { --ink:#0b0b0b; --mute:#52514e; --line:#e1e0d9; --line2:#c3c2b7; --bg:#fff; --panel:#f7f7f4;
-          --abil:#6b5bd2; --edu:#1f7a8c; --exp:#c97b2a; --good:#006300; --bad:#d03b3b; --acc:#0b57d0; }
-  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--ink); background: var(--bg);
-         font-size: 14px; line-height: 1.45; }
-  a { color: var(--acc); }
-  #top { position: sticky; top: 0; z-index: 5; display:flex; gap: 18px; align-items: baseline; flex-wrap: wrap; padding: 6px 22px;
-         background: var(--bg); border-bottom: 1px solid var(--line); font-size: 13px; }
-  #top a { text-decoration: none; }
-  #top .site { display:flex; gap: 6px; color: var(--mute); flex-wrap: wrap; }
-  #top .site b { color: var(--ink); font-weight: 600; }
-  header { padding: 14px 22px 10px; border-bottom: 1px solid var(--line); display:flex; align-items:baseline; gap:18px; flex-wrap:wrap; }
-  header h1 { font-size: 19px; font-weight: 650; letter-spacing: -0.01em; }
-  header h1 span { font-size: 12px; font-weight: 500; color: var(--mute); }
-  header .sub { color: var(--mute); font-size: 13px; max-width: 980px; }
-  nav#nav { display:flex; gap:2px; padding: 0 22px; border-bottom: 1px solid var(--line); background: var(--panel); flex-wrap: wrap; }
-  nav#nav button { background:none; border:0; border-bottom: 2px solid transparent; padding: 9px 12px; font: inherit; font-weight:600;
-               color: var(--mute); cursor:pointer; }
-  nav#nav button.on { color: var(--ink); border-bottom-color: var(--acc); }
-  main { display:grid; grid-template-columns: 320px 1fr; gap: 18px; padding: 16px 22px 40px; max-width: 1500px; }
-  aside { position: sticky; top: 44px; align-self: start; max-height: calc(100vh - 54px); overflow: auto; }
-  .card { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 12px; background:#fff; }
-  .card h3 { font-size: 13px; font-weight: 650; margin-bottom: 6px; }
-  .card h2 { font-size: 15px; font-weight: 650; margin-bottom: 8px; }
+  :root { --abil:#6b5bd2; --edu:#0584a5; --exp:#be711c; --good:#006300; --bad:#d03b3b; }
+  nav#nav { display:flex; gap: var(--space-md); flex-wrap: wrap; max-width: var(--container); margin-inline: auto; padding: 0 var(--gutter); }
+  nav#nav button { background:none; border:0; border-bottom: var(--rule-bar) solid transparent; padding: 9px 0; font: 500 var(--text-sm)/1.2 var(--font-display);
+               color: var(--mute); cursor:pointer; transition: color var(--dur-micro) var(--ease-out); }
+  nav#nav button:hover { color: var(--ink); }
+  nav#nav button.on { color: var(--ink); font-weight: 600; border-bottom-color: var(--acc); }
+  main { display:grid; grid-template-columns: 320px minmax(0, 1fr); gap: var(--space-lg); max-width: var(--container); margin-inline: auto;
+         padding: var(--space-md) var(--gutter) var(--space-xl); border-top: var(--rule-hair) solid var(--color-rule-2); }
+  aside { position: sticky; top: var(--nav-clear); align-self: start; max-height: calc(100vh - var(--nav-clear) - var(--space-sm)); overflow: auto; }
+  #content { min-width: 0; }
+  .card { overflow-x: auto; }
+  .card h3 { margin-bottom: 6px; }
   .card p { margin: 6px 0; }
-  .meta { color: var(--mute); font-size: 12.5px; }
-  .kv { display:grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 13px; }
-  .kv b { font-weight: 600; color: var(--mute); }
-  button.btn { font: inherit; font-size: 13px; padding: 5px 10px; border: 1px solid var(--line2); border-radius: 6px;
-               background: #fff; cursor: pointer; color: var(--ink); }
-  button.btn.on { background: #f0f4fd; border-color: var(--acc); box-shadow: inset 0 0 0 1px var(--acc); }
-  button.btn:disabled { opacity:.45; cursor:default; }
+  .kv { display:grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: var(--text-sm); }
+  .kv b { font-weight: 500; color: var(--mute); }
   .row { display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin: 6px 0; }
-  select, input[type=text] { font: inherit; font-size: 13px; padding: 4px 6px; border:1px solid var(--line2); border-radius: 5px; max-width: 100%; }
-  select { width: 100%; }
-  input[type=text] { width: 100%; }
-  label.l { display:block; font-size: 12px; color: var(--mute); margin: 8px 0 2px; font-weight: 600; }
-  table { border-collapse: collapse; width: 100%; font-size: 12.5px; }
-  th { text-align:left; font-weight: 600; color: var(--mute); border-bottom: 1.5px solid var(--line2); padding: 4px 8px 4px 0; white-space:nowrap; }
-  td { border-bottom: 1px solid var(--line); padding: 3px 8px 3px 0; vertical-align: top; }
-  td.num, th.num { text-align:right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  select, input[type=text] { max-width: 100%; width: 100%; }
+  label.l { display:block; margin: 8px 0 2px; color: var(--ink); font: 600 var(--text-xs)/1.3 var(--font-display); }
+  th { white-space:nowrap; }
   td.barcell { width: 130px; }
-  .lnk { color: var(--acc); cursor: pointer; text-decoration: none; background: none; border: 0; font: inherit; text-align: left; padding: 0; }
-  .lnk:hover { text-decoration: underline; }
-  .bar { display:inline-block; height: 9px; background: var(--acc); vertical-align: middle; border-radius: 0 3px 3px 0; min-width: 1px; }
-  .bar.b2 { background: var(--line2); }
+  .bar { display:inline-block; height: 9px; background: var(--color-ink-2); vertical-align: middle; min-width: 1px; }
+  .bar.b2 { background: var(--ctx); }
   .bar.edu { background: var(--edu); } .bar.exp { background: var(--exp); }
-  .tiles { display:flex; gap: 8px; margin: 0 0 12px; flex-wrap: wrap; }
-  .tile { flex:1; min-width: 132px; border:1px solid var(--line); border-radius: 8px; padding: 8px 10px; background:#fff; }
-  .tile .v { font-size: 18px; font-weight: 650; font-variant-numeric: tabular-nums; } .tile .l { font-size: 11.5px; color: var(--mute); }
-  .tile .s { font-size: 11.5px; color: var(--mute); }
-  .note { background: var(--panel); border-left: 3px solid var(--line2); padding: 8px 12px; font-size: 12.5px; color: var(--mute); margin: 8px 0 12px; }
-  .grid2 { display:grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 12px; align-items: start; }
+  .tiles { display:flex; gap: var(--space-xs); margin: 0 0 var(--space-sm); flex-wrap: wrap; }
+  .tile { flex:1; min-width: 124px; }
+  .app .tile .v { font-size: 1.125rem; }
+  .note { margin-block: var(--space-xs) var(--space-sm); }
+  .grid2 { display:grid; grid-template-columns: repeat(auto-fit, minmax(min(380px, 100%), 1fr)); gap: var(--space-sm); align-items: start; }
   .grid2 .card { margin-bottom: 0; }
-  .list { max-height: 46vh; overflow: auto; border: 1px solid var(--line); border-radius: 6px; margin-top: 6px; }
-  .list button { display:block; width:100%; text-align:left; background:#fff; border:0; border-bottom: 1px solid var(--line); padding: 4px 8px;
-                 font: inherit; font-size: 12.5px; cursor: pointer; color: var(--ink); }
-  .list button.on { background: #f0f4fd; box-shadow: inset 3px 0 0 var(--acc); }
-  .list button span { color: var(--mute); float: right; margin-left: 8px; font-variant-numeric: tabular-nums; }
-  .skills { display:grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 3px 26px; font-size: 12.5px; }
-  .skills .g { grid-column: 1 / -1; font-weight: 650; margin-top: 12px; font-size: 12.5px; color: var(--mute); letter-spacing: .02em; text-transform: uppercase; }
-  .sk { display:grid; grid-template-columns: 1fr 224px 26px; gap: 8px; align-items:center; }
+  .list { max-height: 46vh; overflow: auto; margin-top: 6px; background: var(--color-tile); border: var(--rule-hair) solid var(--color-rule-2); }
+  .list button { display:block; width:100%; text-align:left; background: transparent; border:0; border-bottom: var(--rule-hair) solid var(--line); padding: 5px 8px;
+                 font: inherit; font-size: var(--text-sm); cursor: pointer; color: var(--ink); }
+  .list button:hover { background: var(--panel); }
+  .list button.on { background: var(--accbg); box-shadow: inset 3px 0 0 var(--acc); }
+  .list button span { color: var(--mute); float: right; margin-left: 8px; font: 400 0.75rem/1.6 var(--font-outlier); font-variant-numeric: tabular-nums; }
+  .skills { display:grid; grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr)); gap: 3px 26px; font-size: var(--text-sm); }
+  .skills .g { grid-column: 1 / -1; margin-top: 12px; color: var(--mute); font: 600 var(--text-xs)/1.3 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+  .sk { display:grid; grid-template-columns: minmax(0, 1fr) 224px 26px; gap: 8px; align-items:center; }
   .sk .nm { overflow:hidden; text-overflow: ellipsis; white-space:nowrap; }
-  .legend { display:flex; gap: 14px; flex-wrap:wrap; font-size: 12px; color: var(--mute); margin: 4px 0 10px; }
-  .dot { display:inline-block; width: 10px; height: 10px; border-radius: 3px; vertical-align: baseline; margin-right: 3px; }
-  svg text { font-family: inherit; font-size: 11px; fill: var(--mute); }
-  footer { padding: 14px 22px 30px; border-top: 1px solid var(--line); color: var(--mute); font-size: 12.5px; display:flex; gap: 18px; flex-wrap: wrap; }
-  footer a { color: var(--mute); }
-  @media (max-width: 860px) { main { grid-template-columns: 1fr; } aside { position: static; max-height: none; } }
+  .legend { display:flex; gap: 4px 14px; flex-wrap:wrap; width: auto; margin: 4px 0 10px; color: var(--mute); font-size: var(--text-xs); }
+  .dot { display:inline-block; width: 10px; height: 10px; vertical-align: baseline; margin-right: 3px; }
+  main svg text { font-family: var(--font-display); font-weight: 500; font-size: 11px; fill: var(--mute); }
+  .app-foot p + p { margin-top: var(--space-xs); }
+  @media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } aside { position: static; max-height: none; } }
+  @media (max-width: 560px) { .sk { grid-template-columns: 224px 26px; } .sk .nm { grid-column: 1 / -1; white-space: normal; } }
 </style>
 </head>
-<body>
-<div id="top">
-  <a href="/">&larr; aporia</a>
-  <span class="site"><a href="/future-of-work/">Summary</a> &middot; <a href="/future-of-work/scenarios/">Scenarios</a> &middot; <b>Workforce explorer</b></span>
-</div>
-<header>
+<body class="app">
+<a class="skip" href="#content">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="/" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="app-head">
   <h1>Synthetic workforce explorer <span>&middot; draft</span></h1>
-  <span class="sub">The simulated workers behind the future-of-work scenarios: 136 million workers built from public data, each with schooling, a job history, and the skills those jobs taught. Choose an experience or a job to see who shares it, what they hold, and what else they could do.</span>
+  <p class="sub">The simulated workers behind the future-of-work scenarios: 136 million workers built from public data, each with schooling, a job history, and the skills those jobs taught. Choose an experience or a job to see who shares it, what they hold, and what else they could do.</p>
+  <nav class="pages fow-pages" aria-label="Future of work pages">
+    <a href="/future-of-work/">Summary</a>
+    <a href="/future-of-work/scenarios/">Scenarios</a>
+    <a href="/workforce-explorer/" aria-current="page">Workforce explorer</a>
+  </nav>
 </header>
 <nav id="nav">
   <button data-tab="exp" class="on">Worker types</button>
@@ -96,12 +112,23 @@
   <aside id="side"></aside>
   <section id="content"></section>
 </main>
-<footer>
-  <span>aporia.institute &mdash; Eric Silver</span>
-  <span><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a></span>
-  <span>Sources: O*NET 20.1; OEWS May 2015; ACS 2015&ndash;19 (IPUMS); BLS occupational separations and entry requirements; Schubert, Stansbury and Taska (2020) for moves between occupations.</span>
-  <span><a href="/future-of-work/#acknowledgments">Acknowledgments</a></span>
+<section class="app-foot" aria-label="Sources">
+  <p class="src">Sources: O*NET 20.1; OEWS May 2015; ACS 2015&ndash;19 (IPUMS); BLS occupational separations and entry requirements; Schubert, Stansbury and Taska (2020) for moves between occupations.</p>
+  <p class="src"><a href="/future-of-work/#acknowledgments">Acknowledgments</a></p>
+  <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a></p>
+</section>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="/ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
 </footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 <script src="data.js"></script>
 <script src="app.js"></script>
 </body>

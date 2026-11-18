@@ -135,3 +135,5 @@ details.ai li + li { margin-top: var(--space-2xs); }
 .status.err { color: var(--color-error); }
 @media (max-width: 60rem) { .sheet--solo { grid-column: 1 / -1; } }
 @media (max-width: 40rem) { .sheet > section { margin-inline: calc(-1 * var(--space-xs)); padding-inline: var(--space-xs); } }
+
+.sheet > .colophon { max-width: 46em; }

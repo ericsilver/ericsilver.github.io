@@ -5,20 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Automation scenarios · draft</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/css/page.css">
+<link rel="stylesheet" href="/future-of-work/app.css">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<div class="topbar">
-  <a class="back" href="/">&larr; aporia</a>
-  <nav class="pages" aria-label="Future of work pages">
+<body class="app">
+<a class="skip" href="#content">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="/" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="app-head">
+  <h1>Automation scenarios <span class="draft">· draft</span></h1>
+  <p class="sub">Choose an exposure index, how much of today's work it removes, and whether robots are added. Every panel then shows the same scenario for the whole economy, for one occupation, or for one type of worker. These are scenarios, not forecasts.</p>
+  <nav class="pages fow-pages" aria-label="Future of work pages">
     <a href="/future-of-work/">Summary</a>
     <a href="/future-of-work/scenarios/" aria-current="page">Scenarios</a>
     <a href="/workforce-explorer/">Workforce explorer</a>
   </nav>
-</div>
-<header>
-  <h1>Automation scenarios <span class="draft">· draft</span></h1>
-  <p class="sub">Choose an exposure index, how much of today's work it removes, and whether robots are added. Every panel then shows the same scenario for the whole economy, for one occupation, or for one type of worker. These are scenarios, not forecasts.</p>
 </header>
 <main>
   <aside id="side" aria-label="Scenario controls">
@@ -72,12 +103,23 @@
     </ul>
   </div>
 </section>
-<footer>
+<section class="app-foot" aria-label="Sources">
   <p class="src">Observed exposure and robot exposure: Anthropic Economic Index (CC-BY). Task labels: Eloundou et al. (2024). Task scores: Schaal (2025). Scenario dials: Korinek, Jones, Sacher, Cotter and McCrory (2026). Occupations and requirements: O*NET; employment and pay: BLS Occupational Employment and Wage Statistics.</p>
   <p class="src"><a href="/future-of-work/#acknowledgments">Acknowledgments</a> are on the summary page.</p>
   <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a></p>
-  <p>aporia.institute — Eric Silver</p>
+</section>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="/ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
 </footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 <div id="tip" role="tooltip"></div>
 <script src="app.js"></script>
 </body>

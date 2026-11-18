@@ -1,0 +1,71 @@
+/* The two future-of-work apps (scenarios, workforce explorer) in the site's look.
+   Loaded after /css/page.css and before each app's own rules. The apps keep their own token names;
+   this file points them at the site's tokens, so the charts their scripts draw follow without edits.
+   Light only, as the site is.
+
+   Data colors: the three scenario series are the same hues as before, re-stepped for the sheet
+   (#e5eaef): blue kept, orange and aqua one step darker so each clears 3:1 against it.
+   Checked with the dataviz validator, all pairs, light mode, that surface: all checks pass. */
+:root {
+  --ink: var(--color-ink); --mute: var(--color-muted);
+  --line: var(--color-rule); --line2: var(--color-rule-2);
+  --bg: var(--color-sheet);            /* the surface cards, charts and controls sit on */
+  --panel: var(--color-paper);         /* hovered rows and quiet fills on that surface */
+  --track: var(--color-tile);          /* the empty part of a bar or meter */
+  --grid: var(--color-paper-2);        /* chart gridlines */
+  --acc: var(--color-accent); --accbg: color-mix(in oklab, var(--color-accent) 9%, transparent);
+  --s-ai: #2a78d6; --s-rob: #d95926; --s-aug: #039566;
+  --ctx: #989fa6; --ctx2: #646d75; --band: var(--color-paper); --sel: var(--color-ink);
+}
+
+body.app { background: var(--color-paper); color: var(--color-ink); font: 400 0.9375rem/1.45 var(--font-body); }
+.app h1, .app h2, .app h3 { max-width: none; line-height: 1.2; text-wrap: wrap; }
+.app h2 { font-size: 1.0625rem; }
+.app h3 { font-size: var(--text-xs); letter-spacing: 0; }
+.app p:not([class]) { max-width: 75ch; }
+
+/* The head: title, what the tool does, and the three pages */
+.app-head { max-width: var(--container); margin-inline: auto; padding: calc(56px + var(--space-sm) + var(--space-lg)) var(--gutter) var(--space-md); }
+.app-head h1 { color: var(--color-ink); font-size: clamp(1.5625rem, 1.3vw + 1.2rem, 2.441rem); letter-spacing: -0.03em; line-height: 1.05; }
+.app-head h1 span { color: var(--color-muted); font: 500 var(--text-sm)/1 var(--font-body); letter-spacing: 0; white-space: nowrap; }
+.app-head .sub { display: block; max-width: 72ch; margin-top: var(--space-xs); color: var(--color-ink-2); font-size: var(--text-md); line-height: 1.45; }
+.fow-pages { display: flex; flex-wrap: wrap; gap: 0 var(--space-md); margin-top: var(--space-sm); font-size: var(--text-sm); font-weight: 500; }
+.fow-pages a { display: inline-block; padding-block: var(--space-2xs); }
+.fow-pages a[aria-current="page"] { color: var(--color-ink); font-family: var(--font-display); font-weight: 600; text-decoration: none; }
+
+/* Surfaces: square sheets on the slate, a bar of ink across the top of each */
+.app .card { margin-bottom: var(--space-sm); padding: var(--space-sm) var(--space-md) var(--space-md); background: var(--color-sheet); border: 0; border-top: var(--rule-bar) solid var(--color-ink); border-radius: 0; }
+.app .card h2 { margin-bottom: var(--space-xs); color: var(--color-ink); font-size: 1.0625rem; }
+.app .card h3 { color: var(--color-ink); font-size: var(--text-xs); font-weight: 600; }
+.app .tile { display: block; width: auto; height: auto; padding: var(--space-xs) var(--space-sm) var(--space-sm); background: var(--color-sheet); border: 0; border-top: var(--rule-hair) solid var(--color-rule-2); border-radius: 0; outline: 0; }
+.app .tile .v { color: var(--color-ink); font: 500 1.25rem/1.25 var(--font-outlier); font-variant-numeric: tabular-nums; letter-spacing: -0.04em; }
+.app .tile .l, .app .tile .c, .app .tile .s { color: var(--color-muted); font-size: var(--text-xs); line-height: 1.35; }
+.app .meta { color: var(--color-muted); font-size: var(--text-xs); font-weight: 400; }
+.app .key { display: inline; width: auto; height: auto; margin: 0; border-radius: 0; vertical-align: baseline; }
+.app .note { margin: 0 0 var(--space-sm); padding: var(--space-3xs) 0 var(--space-3xs) var(--space-sm); background: transparent; border-left: var(--rule-bar) solid var(--color-rule-2); color: var(--color-ink-2); font-size: var(--text-sm); line-height: 1.45; }
+
+/* Controls: the site's button, at a tool's size */
+.app .opts button, .app .steps button, .app button.btn { display: inline-block; min-height: 34px; padding: 6px 10px; background: transparent; border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); color: var(--color-ink); font: 500 var(--text-xs)/1.25 var(--font-display); white-space: normal; cursor: pointer; transition: background-color var(--dur-short) var(--ease-out); }
+.app .opts button:hover, .app .steps button:hover, .app button.btn:hover { background: var(--color-paper); }
+.app .opts button[aria-checked="true"], .app .steps button[aria-checked="true"], .app button.btn.on { background: var(--color-ink); border-color: var(--color-ink); box-shadow: none; color: var(--color-sheet); }
+.app .opts button small { color: inherit; opacity: 0.8; font: 400 var(--text-xs)/1.3 var(--font-body); }
+.app button:disabled { opacity: 0.45; cursor: default; }
+.app button:focus-visible, .app input:focus-visible, .app select:focus-visible, .app [tabindex]:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.app select, .app input[type=text] { min-height: 34px; padding: 4px 8px; background: var(--color-tile); border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); color: var(--color-ink); font: 400 var(--text-sm)/1.3 var(--font-body); }
+.app .lnk, .app .linkish { padding: 0; background: none; border: 0; color: var(--color-ink); font: inherit; text-align: left; text-decoration: underline; text-decoration-color: var(--color-accent); text-decoration-thickness: 1px; text-underline-offset: 0.15em; cursor: pointer; }
+.app .lnk:hover, .app .linkish:hover { text-decoration-thickness: 2px; }
+.app .lnk:active, .app .linkish:active { color: var(--color-accent-2); }
+
+/* Tables: a bar under the head, hairlines between rows, figures in the mono */
+.app table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); line-height: 1.35; }
+.app th { padding: 4px 8px 4px 0; border-bottom: var(--rule-bar) solid var(--color-rule-2); color: var(--color-ink-2); font: 500 0.75rem/1.3 var(--font-display); text-align: left; }
+.app td { padding: 4px 8px 4px 0; border-bottom: var(--rule-hair) solid var(--color-rule); vertical-align: top; }
+.app td.num, .app th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.app td.num { font-family: var(--font-outlier); font-size: 0.75rem; line-height: 1.6; }
+
+/* What follows the tool: sources on the slate, then the site's signoff */
+.app-foot { max-width: var(--container); margin-inline: auto; padding: var(--space-lg) var(--gutter) var(--space-2xl); color: var(--color-muted); font-size: var(--text-sm); line-height: 1.45; }
+.app-foot p, .app-foot span { max-width: 80ch; }
+.app-foot .colophon { margin-top: var(--space-xs) !important; padding-top: 0; border-top: 0; }
+.app .close { padding-block: var(--space-xl); }
+.app .close .signoff { margin-top: 0; padding-top: 0; border-top: 0; }

@@ -265,17 +265,17 @@ function viewLife(el) {
   svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("width", "100%"); svg.setAttribute("role", "img");
   svg.setAttribute("aria-label", "Occupations held and their pay over 50 years of experience");
   const add = (tag, at, txt) => { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const k in at) e.setAttribute(k, at[k]); if (txt != null) e.textContent = txt; svg.append(e); return e; };
-  for (const v of [0, 0.5, 1]) { const w = wmax / 1.08 * v; add("line", { x1: L, x2: W - Rm, y1: Y(w), y2: Y(w), stroke: "#e1e0d9", "stroke-width": 1 }); add("text", { x: L - 6, y: Y(w) + 4, "text-anchor": "end" }, "$" + Math.round(w / 1000) + "k"); }
+  for (const v of [0, 0.5, 1]) { const w = wmax / 1.08 * v; add("line", { x1: L, x2: W - Rm, y1: Y(w), y2: Y(w), style: "stroke:var(--grid)", "stroke-width": 1 }); add("text", { x: L - 6, y: Y(w) + 4, "text-anchor": "end" }, "$" + Math.round(w / 1000) + "k"); }
   for (let x = 0; x <= 50; x += 10) add("text", { x: X(x), y: H - 4, "text-anchor": x === 50 ? "end" : "middle" }, x + (x === 50 ? " years of experience" : ""));
   let path = "";
   sp.forEach((s_, i) => {
     const x0 = s_[1], x1 = i + 1 < sp.length ? sp[i + 1][1] : 50, col = PALETTE[i % PALETTE.length], y = Y(wages[i]);
     path += (i ? " L" : "M") + X(x0) + " " + y + " L" + X(x1) + " " + y;
-    const r = add("rect", { x: X(x0) + 1, y: H - B + 8, width: Math.max(1, X(x1) - X(x0) - 2), height: 12, rx: 3, fill: col });
+    const r = add("rect", { x: X(x0) + 1, y: H - B + 8, width: Math.max(1, X(x1) - X(x0) - 2), height: 12, rx: 0, fill: col });
     const t = document.createElementNS("http://www.w3.org/2000/svg", "title"); t.textContent = D.jobtitle[s_[0]] + ", years " + x0 + " to " + x1 + ", " + fmt$(wages[i]); r.append(t);
   });
-  add("path", { d: path, fill: "none", stroke: "#0b0b0b", "stroke-width": 2, "stroke-linejoin": "round" });
-  sx.forEach((x, i) => add("path", { d: "M" + X(x) + " " + (H - B + 4) + " l-4 -7 l8 0 z", fill: i === S.snap ? "#0b0b0b" : "#c3c2b7" }));
+  add("path", { d: path, fill: "none", style: "stroke:var(--ink)", "stroke-width": 2, "stroke-linejoin": "round" });
+  sx.forEach((x, i) => add("path", { d: "M" + X(x) + " " + (H - B + 4) + " l-4 -7 l8 0 z", style: "fill:" + (i === S.snap ? "var(--ink)" : "var(--ctx)") }));
   const span = i => (i + 1 < sp.length ? sp[i + 1][1] : 50) - sp[i][1];
   el.append(h("div", { class: "card" }, h("h2", null, RUNGS[rg].label),
     h("div", { class: "meta" }, "Over the career this person learned the requirements of " + nUp + " better-paid job" + (nUp === 1 ? "" : "s") + " and " + nDn + " lower-paid job" + (nDn === 1 ? "" : "s") +
@@ -304,9 +304,9 @@ function viewLife(el) {
     sk.append(h("div", { class: "g" }, lbl));
     for (const r of rr) sk.append(h("div", { class: "sk", title: COMPS[r.k].name + ": holds " + r.hv.toFixed(1) + ", job requires " + r.rq.toFixed(1) },
       h("span", { class: "nm" }, COMPS[r.k].name),
-      h("span", { style: "position:relative;display:block;height:10px;background:#f1f0ea;border-radius:2px" },
-        h("span", { style: "position:absolute;left:0;top:0;height:10px;border-radius:2px 0 0 2px;background:var(--edu);width:" + px(r.cr) + "px" }),
-        h("span", { style: "position:absolute;top:0;height:10px;border-radius:0 2px 2px 0;background:var(--exp);left:" + (px(r.cr) + (r.cr > 0 ? 2 : 0)) + "px;width:" + Math.max(0, px(r.hv) - px(r.cr) - (r.cr > 0 ? 2 : 0)) + "px" }),
+      h("span", { style: "position:relative;display:block;height:10px;background:var(--track);box-shadow:inset 0 0 0 1px var(--line)" },
+        h("span", { style: "position:absolute;left:0;top:0;height:10px;background:var(--edu);width:" + px(r.cr) + "px" }),
+        h("span", { style: "position:absolute;top:0;height:10px;background:var(--exp);left:" + (px(r.cr) + (r.cr > 0 ? 2 : 0)) + "px;width:" + Math.max(0, px(r.hv) - px(r.cr) - (r.cr > 0 ? 2 : 0)) + "px" }),
         r.rq > 0 ? h("span", { style: "position:absolute;top:-3px;height:16px;width:2px;background:var(--ink);left:" + (px(r.rq) - 1) + "px" }) : null),
       h("span", { class: "meta" }, r.hv.toFixed(1))));
   }

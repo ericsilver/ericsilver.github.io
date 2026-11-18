@@ -11,67 +11,53 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<style>
-  :root { --ink:#1a1a1a; --muted:#666; --rule:#e5e5e5; --link:#1f5c8b; --bg:#fdfdfc; }
-  body { margin:0; background:var(--bg); color:var(--ink);
-    font:18px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
-  .wrap { max-width:38rem; margin:0 auto; padding:3.5rem 1.25rem 5rem; }
-  a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-  .back { font-size:.9rem; color:var(--muted); position:sticky; top:0; z-index:2; background:var(--bg); margin:0 -1.25rem; padding:.7rem 1.25rem .5rem; }
-  h1 { font-size:1.7rem; line-height:1.25; letter-spacing:-.01em; margin:1.5rem 0 .25rem; }
-  h2 { font-size:1.15rem; line-height:1.4; letter-spacing:-.005em; margin:2.4rem 0 .4rem; }
-  .date { color:var(--muted); font-size:.95rem; margin:0 0 .4rem; }
-  .pages { color:var(--muted); font-size:.92rem; margin:0 0 2rem; }
-  .pages b { color:var(--ink); font-weight:600; }
-  p { margin:1.1rem 0; }
-  ul.plain { padding-left:1.2rem; } ul.plain li { margin:.55rem 0; }
-  figure { margin:2rem 0; }
-  figure img { display:block; width:100%; height:auto; border:1px solid var(--rule); border-radius:6px; background:#fff; }
-  figcaption { color:var(--muted); font-size:.85rem; margin-top:.5rem; line-height:1.5; }
-  .tablewrap { overflow-x:auto; margin:1.4rem 0 .4rem; }
-  table { border-collapse:collapse; width:100%; font-size:.82rem; line-height:1.35; font-variant-numeric:tabular-nums; }
-  table.wide { font-size:.78rem; } table.wide th, table.wide td { padding:.4rem .3rem; } table.wide td:first-child { white-space:normal; }
-  caption { caption-side:top; text-align:left; font-weight:600; font-size:.9rem; padding-bottom:.4rem; }
-  th, td { padding:.4rem .5rem; border-bottom:1px solid var(--rule); text-align:right; vertical-align:bottom; }
-  th { font-weight:600; color:var(--muted); }
-  th:first-child, td:first-child { text-align:left; padding-left:0; }
-  td:first-child { white-space:nowrap; }
-  .tnote { color:var(--muted); font-size:.85rem; line-height:1.5; margin:.5rem 0 1.4rem; }
-  .colophon { color:var(--muted); font-size:.88rem; border-top:1px solid var(--rule); padding-top:1rem; margin-top:2.5rem; }
-  .sources { font-size:.88rem; color:var(--muted); line-height:1.55; }
-  .sources li { margin:.45rem 0; }
-  .start { margin:1.6rem 0 2.4rem; }
-  .start h2 { margin-top:0; }
-  .cards { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin:1.2rem 0 .9rem; }
-  @media (max-width:560px) { .cards { grid-template-columns:1fr; } }
-  .card { border:1px solid #e1e0d9; border-radius:8px; padding:.8rem .95rem; background:#fff; font-size:.88rem; line-height:1.45; }
-  .card h3 { font-size:.88rem; font-weight:650; margin:0 0 .45rem; }
-  .card ul { list-style:none; margin:0; padding:0; }
-  .card li { margin:.55rem 0; }
-  .card li a { font-weight:600; display:block; }
-  .card li span, .card .hint { color:var(--muted); font-size:.82rem; }
-  .card .hint { margin:.55rem 0 0; }
-  .xrow { display:flex; gap:.4rem; }
-  .xrow input { flex:1; min-width:0; font:inherit; font-size:.86rem; padding:.34rem .5rem; border:1px solid #c3c2b7; border-radius:6px; background:#fff; color:var(--ink); }
-  .xrow button { font:inherit; font-size:.86rem; font-weight:600; padding:.34rem .8rem; border:1px solid #c3c2b7; border-radius:6px; background:#fff; color:var(--ink); cursor:pointer; }
-  .xrow button:hover { border-color:var(--link); color:var(--link); }
-  .contrib table { font-size:.78rem; margin-top:.3rem; }
-  .contrib th, .contrib td { text-align:left; vertical-align:top; padding:.4rem .5rem .4rem 0; }
-  .contrib td:first-child { white-space:normal; font-weight:600; }
-  .contrib p { margin:.2rem 0 .5rem; }
-  .ack { font-size:.95rem; border-top:1px solid var(--rule); padding-top:1rem; margin-top:2.5rem; }
-  .ack + .colophon { margin-top:1rem; }
-  footer { margin-top:3rem; color:var(--muted); font-size:.85rem; }
-</style>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/css/essay.css">
+<link rel="stylesheet" href="/future-of-work/fow.css">
 </head>
-<body>
-<div class="wrap">
-  <p class="back"><a href="/">&larr; aporia</a></p>
-  <article>
+<body class="fow">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="/" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
     <h1>An occupation-level simulation of AI, robots and the labor market</h1>
-    <!-- DRAFT MARKER 2 of 2: the "draft" label. -->
-    <p class="date">Eric Silver &middot; November 18, 2026 &middot; draft</p>
-    <p class="pages"><b>Summary</b> &middot; <a href="/future-of-work/scenarios/">Scenarios</a> &middot; <a href="/workforce-explorer/">Workforce explorer</a></p>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <aside class="essay-side">
+      <!-- DRAFT MARKER 2 of 2: the "draft" label. -->
+      <p class="essay-meta"><span>Eric Silver</span><span>November 18, 2026</span><span>draft</span></p>
+      <ul class="links fow-pages" aria-label="Future of work pages"><li><a href="/future-of-work/" aria-current="page">Summary</a></li><li><a href="/future-of-work/scenarios/">Scenarios</a></li><li><a href="/workforce-explorer/">Workforce explorer</a></li><li><a href="#sources">Sources</a></li></ul>
+    </aside>
+    <article class="sheet">
 
     <p>In a scenario where AI takes 7.7% of work time by 2030, output is 10% higher than without AI, real pay rises 9.7% in cognitive occupations and 12.1% in all others, and 0.3% of workers change occupation. The scenario is the &ldquo;substantial change&rdquo; case of the Anthropic Institute&rsquo;s <a href="https://www.anthropic.com/institute/econ-scenarios">Economic Scenarios for Transformative AI</a>, run through a model with 551 occupations and a simulated workforce that stands for 136 million workers. The numbers on this page are scenarios, not forecasts.</p>
 
@@ -92,7 +78,7 @@
           <form id="xgo" class="xrow" action="/workforce-explorer/">
             <input id="xq" list="xlist" placeholder="Search occupations and schooling" autocomplete="off" aria-label="Occupation or schooling">
             <datalist id="xlist"></datalist>
-            <button type="submit">Go</button>
+            <button type="submit" class="btn">Go</button>
           </form>
           <p class="hint">Opens the workforce explorer: who holds a job and where they could move, or what people with that schooling do and could do. Each entry links on to its scenario results.</p>
         </div>
@@ -100,6 +86,7 @@
       <div class="card contrib">
         <h3>What this adds to other explorers</h3>
         <p>Other public tools show which work AI could do, or what happens to the economy as a whole. This one solves for wages and employment in 551 occupations with individual simulated workers, so a scenario can be read for one occupation or one type of worker.</p>
+        <div class="tablewrap">
         <table>
           <thead><tr><th>Explorer</th><th>What it shows</th><th>Added here</th><th>Not here</th></tr></thead>
           <tbody>
@@ -108,6 +95,7 @@
             <tr><td><a href="https://epoch.ai/gate">Epoch AI, GATE playground</a></td><td>Growth of the whole economy as investment in computing automates tasks</td><td>Who is affected within the economy</td><td>Investment in computing and its feedback to automation</td></tr>
           </tbody>
         </table>
+        </div>
         <p class="hint">Anthropic&rsquo;s <a href="https://www.anthropic.com/economic-index">Economic Index</a> measures where AI is used; it is an input here.</p>
       </div>
     </section>
@@ -201,6 +189,7 @@
 
     <h2 id="relative-pay">Real pay rises for nearly every worker while the pay premium for a degree shrinks</h2>
     <p>The model gives each worker&rsquo;s real pay and their place among all workers, and the two move differently. In the substantial scenario in 2030, real pay falls for 0.3% of workers, while 12.5% fall at least one percentile point in the pay distribution. Workers with a bachelor&rsquo;s or graduate degree earn 65.5% more than workers with high school only before the scenario and 63.9% more after. For a bachelor&rsquo;s degree in computer science the premium falls from 102% to 97%. In the extreme scenario no worker&rsquo;s real pay falls, a third of workers lose at least one percentile point, and the degree premium falls to 59.3%.</p>
+    <div class="tablewrap">
     <table class="wide">
       <caption>Real pay and relative pay by scenario</caption>
       <thead><tr><th>Scenario</th><th>Real pay falls</th><th>Place in the pay distribution falls 1+ points</th><th>Falls 5+ points</th><th>Degree premium over high school only</th><th>Computer science bachelor&rsquo;s premium</th><th>90th to 10th percentile pay ratio</th></tr></thead>
@@ -213,6 +202,7 @@
         <tr><td>Substantial, demand elasticity 1.6</td><td>0.3%</td><td>6.2%</td><td>0.3%</td><td>65.6% to 66.4%</td><td>102% to 105%</td><td>4.04 to 4.06</td></tr>
       </tbody>
     </table>
+    </div>
     <p class="tnote">Shares are of workers. The measured-use row is today&rsquo;s workforce; the others are workers still in the workforce in 2030. The degree premium is the mean pay of workers with a bachelor&rsquo;s or graduate degree over the mean pay of workers with high school only, minus one, before and after.</p>
     <p>The real and relative results rest on different assumptions. Real pay levels are upper bounds because labor receives the whole gain; in the report&rsquo;s extreme scenario, where capital receives a growing share, the cognitive wage ends 11.5% below its no-AI path. A capital share that lowered all pay in the same proportion would leave the relative results here unchanged. The relative results depend on the demand elasticity instead: at 1.6 the degree premium rises slightly. Robots move relative pay the other way, toward workers with degrees.</p>
 
@@ -270,8 +260,20 @@
       <li>Demand elasticities: estimated from the BEA&ndash;BLS production account.</li>
     </ul>
   </article>
-  <footer><a href="/">aporia.institute &mdash; Eric Silver</a></footer>
-</div>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="/ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 
 <script>
 (function () {
