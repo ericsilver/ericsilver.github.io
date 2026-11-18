@@ -1,0 +1,46 @@
+series,label,plotted,fifth,fifth_label,registrations,passed_pct,binomial_se_pct
+early,"All classes, registered 2002-07",1,1,Most lagging fifth,166343,49.05,0.12
+early,"All classes, registered 2002-07",1,2,Second fifth,166343,48.43,0.12
+early,"All classes, registered 2002-07",1,3,Middle fifth,166371,49.04,0.12
+early,"All classes, registered 2002-07",1,4,Fourth fifth,166350,49.06,0.12
+early,"All classes, registered 2002-07",1,5,Most leading fifth,166343,48.36,0.12
+late,"All classes, registered 2008-18",1,1,Most lagging fifth,454543,48.30,0.07
+late,"All classes, registered 2008-18",1,2,Second fifth,454577,48.17,0.07
+late,"All classes, registered 2008-18",1,3,Middle fifth,454552,47.60,0.07
+late,"All classes, registered 2008-18",1,4,Fourth fifth,454558,46.96,0.07
+late,"All classes, registered 2008-18",1,5,Most leading fifth,454554,45.43,0.07
+tech,"Technology services (class 42), 2002-18",1,1,Most lagging fifth,25481,47.74,0.31
+tech,"Technology services (class 42), 2002-18",1,2,Second fifth,25482,45.03,0.31
+tech,"Technology services (class 42), 2002-18",1,3,Middle fifth,25482,43.03,0.31
+tech,"Technology services (class 42), 2002-18",1,4,Fourth fifth,25478,42.25,0.31
+tech,"Technology services (class 42), 2002-18",1,5,Most leading fifth,25484,39.24,0.31
+beer,"Beer and soft drinks (class 32), 2002-18",1,1,Most lagging fifth,7543,40.14,0.56
+beer,"Beer and soft drinks (class 32), 2002-18",1,2,Second fifth,7547,44.97,0.57
+beer,"Beer and soft drinks (class 32), 2002-18",1,3,Middle fifth,7546,48.86,0.58
+beer,"Beer and soft drinks (class 32), 2002-18",1,4,Fourth fifth,7544,49.79,0.58
+beer,"Beer and soft drinks (class 32), 2002-18",1,5,Most leading fifth,7544,50.82,0.58
+all,"All classes, registered 2002-18",0,1,Most lagging fifth,620886,48.50,0.06
+all,"All classes, registered 2002-18",0,2,Second fifth,620920,48.24,0.06
+all,"All classes, registered 2002-18",0,3,Middle fifth,620923,47.98,0.06
+all,"All classes, registered 2002-18",0,4,Fourth fifth,620908,47.52,0.06
+all,"All classes, registered 2002-18",0,5,Most leading fifth,620897,46.22,0.06
+p0812,"All classes, registered 2008-12",0,1,Most lagging fifth,180376,48.76,0.12
+p0812,"All classes, registered 2008-12",0,2,Second fifth,180424,48.79,0.12
+p0812,"All classes, registered 2008-12",0,3,Middle fifth,180389,48.61,0.12
+p0812,"All classes, registered 2008-12",0,4,Fourth fifth,180400,48.19,0.12
+p0812,"All classes, registered 2008-12",0,5,Most leading fifth,180385,46.38,0.12
+p1318,"All classes, registered 2013-18",0,1,Most lagging fifth,274167,48.00,0.10
+p1318,"All classes, registered 2013-18",0,2,Second fifth,274153,47.75,0.10
+p1318,"All classes, registered 2013-18",0,3,Middle fifth,274163,46.93,0.10
+p1318,"All classes, registered 2013-18",0,4,Fourth fifth,274158,46.15,0.10
+p1318,"All classes, registered 2013-18",0,5,Most leading fifth,274169,44.81,0.09
+tobacco,"Tobacco and vaping (class 34), 2002-18",0,1,Most lagging fifth,2795,54.92,0.94
+tobacco,"Tobacco and vaping (class 34), 2002-18",0,2,Second fifth,2798,51.47,0.94
+tobacco,"Tobacco and vaping (class 34), 2002-18",0,3,Middle fifth,2805,45.20,0.94
+tobacco,"Tobacco and vaping (class 34), 2002-18",0,4,Fourth fifth,2798,42.17,0.93
+tobacco,"Tobacco and vaping (class 34), 2002-18",0,5,Most leading fifth,2797,35.82,0.91
+construction,"Construction and repair (class 37), 2002-18",0,1,Most lagging fifth,9834,49.76,0.50
+construction,"Construction and repair (class 37), 2002-18",0,2,Second fifth,9836,50.54,0.50
+construction,"Construction and repair (class 37), 2002-18",0,3,Middle fifth,9839,50.94,0.50
+construction,"Construction and repair (class 37), 2002-18",0,4,Fourth fifth,9835,51.43,0.50
+construction,"Construction and repair (class 37), 2002-18",0,5,Most leading fifth,9834,52.15,0.50

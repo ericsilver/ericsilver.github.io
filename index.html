@@ -88,29 +88,176 @@
 
   <section class="plot band--ink" aria-labelledby="plot-head">
     <div class="container grid-12">
-      <figure class="plot__figure">
-        <a href="https://aporia.institute/tm-vocabulary/online-appendix/ipo-viewer/index.html">
-          <picture>
-            <source media="(max-width: 40rem)" srcset="./img/ipo-viewer-class-32-phone.webp" width="1080" height="1200">
-            <img src="./img/ipo-viewer-class-32.webp" width="1760" height="1480" loading="lazy" alt="Scatter plot of registrations in Nice class 32, beer and soft drinks, with lead on the horizontal axis and atypicality on the vertical axis. A dense core of orange and blue dots sits just below the center line. Blue dots scatter above it, with few red dots.">
-          </picture>
-        </a>
+      <figure class="plot__figure leadlag">
+        <ul class="leadlag__key">
+          <li><svg class="ll-swatch" viewBox="0 0 30 10" aria-hidden="true"><line class="ll-line ll-line--early" x1="1" x2="29" y1="5" y2="5"/><circle class="ll-dot ll-dot--early" cx="15" cy="5" r="3.5"/></svg>All classes, 2002&ndash;07</li>
+          <li><svg class="ll-swatch" viewBox="0 0 30 10" aria-hidden="true"><line class="ll-line ll-line--late" x1="1" x2="29" y1="5" y2="5"/><circle class="ll-dot ll-dot--late" cx="15" cy="5" r="3.5"/></svg>All classes, 2008&ndash;18</li>
+          <li><svg class="ll-swatch" viewBox="0 0 30 10" aria-hidden="true"><line class="ll-line ll-line--tech" x1="1" x2="29" y1="5" y2="5"/><circle class="ll-dot ll-dot--tech" cx="15" cy="5" r="3.5"/></svg>Technology services</li>
+          <li><svg class="ll-swatch" viewBox="0 0 30 10" aria-hidden="true"><line class="ll-line ll-line--beer" x1="1" x2="29" y1="5" y2="5"/><circle class="ll-dot ll-dot--beer" cx="15" cy="5" r="3.5"/></svg>Beer and soft drinks</li>
+        </ul>
+          <svg class="leadlag__svg leadlag__svg--wide" viewBox="0 0 760 452" role="img" aria-labelledby="leadlag-title-w">
+          <title id="leadlag-title-w">Share of registrations that passed the five-year proof, from the most lagging fifth to the most leading fifth, for all classes registered 2002 to 2007, all classes registered 2008 to 2018, technology services and beer and soft drinks.</title>
+          <text class="ll-ytitle" x="0" y="14">Passed the five-year proof</text>
+          <line class="ll-grid" x1="56" x2="546.0" y1="332.6" y2="332.6"/>
+          <text class="ll-tick" x="48" y="336.6" text-anchor="end">40%</text>
+          <line class="ll-grid" x1="56" x2="546.0" y1="209.0" y2="209.0"/>
+          <text class="ll-tick" x="48" y="213.0" text-anchor="end">45%</text>
+          <line class="ll-grid" x1="56" x2="546.0" y1="85.4" y2="85.4"/>
+          <text class="ll-tick" x="48" y="89.4" text-anchor="end">50%</text>
+          <line class="ll-base" x1="56" x2="546.0" y1="382" y2="382"/>
+          <line class="ll-base" x1="82.0" x2="82.0" y1="382" y2="387"/>
+          <line class="ll-base" x1="196.0" x2="196.0" y1="382" y2="387"/>
+          <line class="ll-base" x1="310.0" x2="310.0" y1="382" y2="387"/>
+          <line class="ll-base" x1="424.0" x2="424.0" y1="382" y2="387"/>
+          <line class="ll-base" x1="538.0" x2="538.0" y1="382" y2="387"/>
+          <text class="ll-xlab" x="82.0" y="404" text-anchor="middle">Most lagging fifth</text>
+          <text class="ll-xlab" x="310.0" y="404" text-anchor="middle">Middle fifth</text>
+          <text class="ll-xlab" x="538.0" y="404" text-anchor="middle">Most leading fifth</text>
+          <text class="ll-xtitle" x="310.0" y="430" text-anchor="middle">Lead of the description, ranked within Nice class and registration year</text>
+          <polyline class="ll-line ll-line--early" points="82.0,108.8 196.0,124.2 310.0,109.1 424.0,108.6 538.0,125.9"/>
+          <polyline class="ll-line ll-line--late" points="82.0,127.4 196.0,130.7 310.0,144.8 424.0,160.6 538.0,198.3"/>
+          <polyline class="ll-line ll-line--tech" points="82.0,141.2 196.0,208.3 310.0,257.7 424.0,276.9 538.0,351.4"/>
+          <polyline class="ll-line ll-line--beer" points="82.0,329.0 196.0,209.7 310.0,113.6 424.0,90.7 538.0,65.1"/>
+          <circle class="ll-dot ll-dot--early" cx="82.0" cy="108.8" r="4.5"/>
+          <circle class="ll-hit" cx="82.0" cy="108.8" r="13"><title>All classes, registered 2002–07, most lagging fifth: 49.1% of 166,343 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="196.0" cy="124.2" r="4.5"/>
+          <circle class="ll-hit" cx="196.0" cy="124.2" r="13"><title>All classes, registered 2002–07, second fifth: 48.4% of 166,343 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="310.0" cy="109.1" r="4.5"/>
+          <circle class="ll-hit" cx="310.0" cy="109.1" r="13"><title>All classes, registered 2002–07, middle fifth: 49.0% of 166,371 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="424.0" cy="108.6" r="4.5"/>
+          <circle class="ll-hit" cx="424.0" cy="108.6" r="13"><title>All classes, registered 2002–07, fourth fifth: 49.1% of 166,350 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="538.0" cy="125.9" r="4.5"/>
+          <circle class="ll-hit" cx="538.0" cy="125.9" r="13"><title>All classes, registered 2002–07, most leading fifth: 48.4% of 166,343 registrations passed</title></circle>
+          <text class="ll-name" x="552.0" y="123.9">All classes, 2002–07</text>
+          <text class="ll-val" x="552.0" y="139.9">48.4%</text>
+          <circle class="ll-dot ll-dot--late" cx="82.0" cy="127.4" r="4.5"/>
+          <circle class="ll-hit" cx="82.0" cy="127.4" r="13"><title>All classes, registered 2008–18, most lagging fifth: 48.3% of 454,543 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="196.0" cy="130.7" r="4.5"/>
+          <circle class="ll-hit" cx="196.0" cy="130.7" r="13"><title>All classes, registered 2008–18, second fifth: 48.2% of 454,577 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="310.0" cy="144.8" r="4.5"/>
+          <circle class="ll-hit" cx="310.0" cy="144.8" r="13"><title>All classes, registered 2008–18, middle fifth: 47.6% of 454,552 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="424.0" cy="160.6" r="4.5"/>
+          <circle class="ll-hit" cx="424.0" cy="160.6" r="13"><title>All classes, registered 2008–18, fourth fifth: 47.0% of 454,558 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="538.0" cy="198.3" r="4.5"/>
+          <circle class="ll-hit" cx="538.0" cy="198.3" r="13"><title>All classes, registered 2008–18, most leading fifth: 45.4% of 454,554 registrations passed</title></circle>
+          <text class="ll-name" x="552.0" y="196.3">All classes, 2008–18</text>
+          <text class="ll-val" x="552.0" y="212.3">45.4%</text>
+          <circle class="ll-dot ll-dot--tech" cx="82.0" cy="141.2" r="4.5"/>
+          <circle class="ll-hit" cx="82.0" cy="141.2" r="13"><title>Technology services (class 42), 2002–18, most lagging fifth: 47.7% of 25,481 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="196.0" cy="208.3" r="4.5"/>
+          <circle class="ll-hit" cx="196.0" cy="208.3" r="13"><title>Technology services (class 42), 2002–18, second fifth: 45.0% of 25,482 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="310.0" cy="257.7" r="4.5"/>
+          <circle class="ll-hit" cx="310.0" cy="257.7" r="13"><title>Technology services (class 42), 2002–18, middle fifth: 43.0% of 25,482 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="424.0" cy="276.9" r="4.5"/>
+          <circle class="ll-hit" cx="424.0" cy="276.9" r="13"><title>Technology services (class 42), 2002–18, fourth fifth: 42.3% of 25,478 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="538.0" cy="351.4" r="4.5"/>
+          <circle class="ll-hit" cx="538.0" cy="351.4" r="13"><title>Technology services (class 42), 2002–18, most leading fifth: 39.2% of 25,484 registrations passed</title></circle>
+          <text class="ll-name" x="552.0" y="349.4">Technology services</text>
+          <text class="ll-val" x="552.0" y="365.4">39.2%</text>
+          <circle class="ll-dot ll-dot--beer" cx="82.0" cy="329.0" r="4.5"/>
+          <circle class="ll-hit" cx="82.0" cy="329.0" r="13"><title>Beer and soft drinks (class 32), 2002–18, most lagging fifth: 40.1% of 7,543 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="196.0" cy="209.7" r="4.5"/>
+          <circle class="ll-hit" cx="196.0" cy="209.7" r="13"><title>Beer and soft drinks (class 32), 2002–18, second fifth: 45.0% of 7,547 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="310.0" cy="113.6" r="4.5"/>
+          <circle class="ll-hit" cx="310.0" cy="113.6" r="13"><title>Beer and soft drinks (class 32), 2002–18, middle fifth: 48.9% of 7,546 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="424.0" cy="90.7" r="4.5"/>
+          <circle class="ll-hit" cx="424.0" cy="90.7" r="13"><title>Beer and soft drinks (class 32), 2002–18, fourth fifth: 49.8% of 7,544 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="538.0" cy="65.1" r="4.5"/>
+          <circle class="ll-hit" cx="538.0" cy="65.1" r="13"><title>Beer and soft drinks (class 32), 2002–18, most leading fifth: 50.8% of 7,544 registrations passed</title></circle>
+          <text class="ll-name" x="552.0" y="63.1">Beer and soft drinks</text>
+          <text class="ll-val" x="552.0" y="79.1">50.8%</text>
+          <text class="ll-val" x="82.0" y="349.0" text-anchor="middle">40.1%</text>
+          </svg>
+          <svg class="leadlag__svg leadlag__svg--narrow" viewBox="0 0 360 404" role="img" aria-labelledby="leadlag-title-n">
+          <title id="leadlag-title-n">Share of registrations that passed the five-year proof, from the most lagging fifth to the most leading fifth, for all classes registered 2002 to 2007, all classes registered 2008 to 2018, technology services and beer and soft drinks.</title>
+          <text class="ll-ytitle" x="0" y="13">Passed the five-year proof</text>
+          <line class="ll-grid" x1="40" x2="292.0" y1="294.6" y2="294.6"/>
+          <text class="ll-tick" x="32" y="298.6" text-anchor="end">40%</text>
+          <line class="ll-grid" x1="40" x2="292.0" y1="186.0" y2="186.0"/>
+          <text class="ll-tick" x="32" y="190.0" text-anchor="end">45%</text>
+          <line class="ll-grid" x1="40" x2="292.0" y1="77.4" y2="77.4"/>
+          <text class="ll-tick" x="32" y="81.4" text-anchor="end">50%</text>
+          <line class="ll-base" x1="40" x2="292.0" y1="338" y2="338"/>
+          <line class="ll-base" x1="56.0" x2="56.0" y1="338" y2="343"/>
+          <line class="ll-base" x1="113.0" x2="113.0" y1="338" y2="343"/>
+          <line class="ll-base" x1="170.0" x2="170.0" y1="338" y2="343"/>
+          <line class="ll-base" x1="227.0" x2="227.0" y1="338" y2="343"/>
+          <line class="ll-base" x1="284.0" x2="284.0" y1="338" y2="343"/>
+          <text class="ll-xlab" x="44.0" y="359" text-anchor="start">Most lagging</text>
+          <text class="ll-xlab" x="296.0" y="359" text-anchor="end">Most leading</text>
+          <text class="ll-xtitle" x="170.0" y="380" text-anchor="middle">Fifths of lead, ranked within</text>
+          <text class="ll-xtitle" x="170.0" y="395" text-anchor="middle">Nice class and registration year</text>
+          <polyline class="ll-line ll-line--early" points="56.0,98.0 113.0,111.5 170.0,98.2 227.0,97.8 284.0,113.0"/>
+          <polyline class="ll-line ll-line--late" points="56.0,114.3 113.0,117.2 170.0,129.6 227.0,143.5 284.0,176.6"/>
+          <polyline class="ll-line ll-line--tech" points="56.0,126.5 113.0,185.4 170.0,228.8 227.0,245.7 284.0,311.2"/>
+          <polyline class="ll-line ll-line--beer" points="56.0,291.5 113.0,186.6 170.0,102.2 227.0,82.0 284.0,59.6"/>
+          <circle class="ll-dot ll-dot--early" cx="56.0" cy="98.0" r="4"/>
+          <circle class="ll-hit" cx="56.0" cy="98.0" r="13"><title>All classes, registered 2002–07, most lagging fifth: 49.1% of 166,343 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="113.0" cy="111.5" r="4"/>
+          <circle class="ll-hit" cx="113.0" cy="111.5" r="13"><title>All classes, registered 2002–07, second fifth: 48.4% of 166,343 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="170.0" cy="98.2" r="4"/>
+          <circle class="ll-hit" cx="170.0" cy="98.2" r="13"><title>All classes, registered 2002–07, middle fifth: 49.0% of 166,371 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="227.0" cy="97.8" r="4"/>
+          <circle class="ll-hit" cx="227.0" cy="97.8" r="13"><title>All classes, registered 2002–07, fourth fifth: 49.1% of 166,350 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--early" cx="284.0" cy="113.0" r="4"/>
+          <circle class="ll-hit" cx="284.0" cy="113.0" r="13"><title>All classes, registered 2002–07, most leading fifth: 48.4% of 166,343 registrations passed</title></circle>
+          <text class="ll-val" x="294.0" y="117.0">48.4%</text>
+          <circle class="ll-dot ll-dot--late" cx="56.0" cy="114.3" r="4"/>
+          <circle class="ll-hit" cx="56.0" cy="114.3" r="13"><title>All classes, registered 2008–18, most lagging fifth: 48.3% of 454,543 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="113.0" cy="117.2" r="4"/>
+          <circle class="ll-hit" cx="113.0" cy="117.2" r="13"><title>All classes, registered 2008–18, second fifth: 48.2% of 454,577 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="170.0" cy="129.6" r="4"/>
+          <circle class="ll-hit" cx="170.0" cy="129.6" r="13"><title>All classes, registered 2008–18, middle fifth: 47.6% of 454,552 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="227.0" cy="143.5" r="4"/>
+          <circle class="ll-hit" cx="227.0" cy="143.5" r="13"><title>All classes, registered 2008–18, fourth fifth: 47.0% of 454,558 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--late" cx="284.0" cy="176.6" r="4"/>
+          <circle class="ll-hit" cx="284.0" cy="176.6" r="13"><title>All classes, registered 2008–18, most leading fifth: 45.4% of 454,554 registrations passed</title></circle>
+          <text class="ll-val" x="294.0" y="180.6">45.4%</text>
+          <circle class="ll-dot ll-dot--tech" cx="56.0" cy="126.5" r="4"/>
+          <circle class="ll-hit" cx="56.0" cy="126.5" r="13"><title>Technology services (class 42), 2002–18, most lagging fifth: 47.7% of 25,481 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="113.0" cy="185.4" r="4"/>
+          <circle class="ll-hit" cx="113.0" cy="185.4" r="13"><title>Technology services (class 42), 2002–18, second fifth: 45.0% of 25,482 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="170.0" cy="228.8" r="4"/>
+          <circle class="ll-hit" cx="170.0" cy="228.8" r="13"><title>Technology services (class 42), 2002–18, middle fifth: 43.0% of 25,482 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="227.0" cy="245.7" r="4"/>
+          <circle class="ll-hit" cx="227.0" cy="245.7" r="13"><title>Technology services (class 42), 2002–18, fourth fifth: 42.3% of 25,478 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--tech" cx="284.0" cy="311.2" r="4"/>
+          <circle class="ll-hit" cx="284.0" cy="311.2" r="13"><title>Technology services (class 42), 2002–18, most leading fifth: 39.2% of 25,484 registrations passed</title></circle>
+          <text class="ll-val" x="294.0" y="315.2">39.2%</text>
+          <circle class="ll-dot ll-dot--beer" cx="56.0" cy="291.5" r="4"/>
+          <circle class="ll-hit" cx="56.0" cy="291.5" r="13"><title>Beer and soft drinks (class 32), 2002–18, most lagging fifth: 40.1% of 7,543 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="113.0" cy="186.6" r="4"/>
+          <circle class="ll-hit" cx="113.0" cy="186.6" r="13"><title>Beer and soft drinks (class 32), 2002–18, second fifth: 45.0% of 7,547 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="170.0" cy="102.2" r="4"/>
+          <circle class="ll-hit" cx="170.0" cy="102.2" r="13"><title>Beer and soft drinks (class 32), 2002–18, middle fifth: 48.9% of 7,546 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="227.0" cy="82.0" r="4"/>
+          <circle class="ll-hit" cx="227.0" cy="82.0" r="13"><title>Beer and soft drinks (class 32), 2002–18, fourth fifth: 49.8% of 7,544 registrations passed</title></circle>
+          <circle class="ll-dot ll-dot--beer" cx="284.0" cy="59.6" r="4"/>
+          <circle class="ll-hit" cx="284.0" cy="59.6" r="13"><title>Beer and soft drinks (class 32), 2002–18, most leading fifth: 50.8% of 7,544 registrations passed</title></circle>
+          <text class="ll-val" x="294.0" y="63.6">50.8%</text>
+          <text class="ll-val" x="56.0" y="311.5" text-anchor="middle">40.1%</text>
+          </svg>
+        <figcaption>3,104,534 US trademark registrations, 2002 to 2018. Shares are raw, with no controls beyond the ranking within class and year.</figcaption>
       </figure>
       <div class="plot__text">
-        <h2 id="plot-head">Each dot is one trademark registration</h2>
-        <p>Placed by the lead and atypicality of its goods and services description, standardized within the class and registration year. Further right is more leading. Further up is more atypical.</p>
-        <table class="legend">
-          <caption>Nice class 32, beer and soft drinks, 1996 to 2018. Grey and blue dots are a random sample capped at 22,000 per class; orange and red dots are complete.</caption>
+        <h2 id="plot-head">Since 2008, being first has usually cost</h2>
+        <p>Each line follows registrations from the fifth whose goods-and-services wording ran furthest behind its industry&rsquo;s filings to the fifth whose wording ran furthest ahead, and gives the share that passed the sworn five-year proof that the goods were still being sold. Among 2002&ndash;&#8288;07 registrations the two ends passed at nearly the same rate; among 2008&ndash;&#8288;18 registrations the most leading fifth passed 2.9 points less often than the most lagging, and in technology services 8.5 points less often. In beer and soft drinks the pattern is the opposite: the most lagging fifth passed least often (40.1%) and the most leading fifth most often (50.8%).</p>
+        <table class="legend legend--ends">
+          <caption>Percent that passed the five-year proof, and the difference in points. Years are registration years; the two industry rows cover 2002 to 2018.</caption>
+          <thead>
+            <tr><td></td><th scope="col">Most lagging fifth</th><th scope="col">Most leading fifth</th><th scope="col">Difference</th></tr>
+          </thead>
           <tbody>
-            <tr><th scope="row"><span class="key key--cancelled"></span>Cancelled at the five-year proof</th><td class="num">11,937</td></tr>
-            <tr><th scope="row"><span class="key key--passed"></span>Passed the five-year proof</th><td class="num">10,063</td></tr>
-            <tr><th scope="row"><span class="key key--sec"></span>Owner in SEC reporting</th><td class="num">1,941</td></tr>
-            <tr><th scope="row"><span class="key key--ipo"></span>Owner with IPO marker</th><td class="num">112</td></tr>
+            <tr><th scope="row">All classes, 2002&ndash;&#8288;07</th><td class="num">49.1</td><td class="num">48.4</td><td class="num">&minus;0.7</td></tr>
+            <tr><th scope="row">All classes, 2008&ndash;&#8288;18</th><td class="num">48.3</td><td class="num">45.4</td><td class="num">&minus;2.9</td></tr>
+            <tr><th scope="row">Technology services (class 42)</th><td class="num">47.7</td><td class="num">39.2</td><td class="num">&minus;8.5</td></tr>
+            <tr><th scope="row">Beer and soft drinks (class 32)</th><td class="num">40.1</td><td class="num">50.8</td><td class="num">+10.7</td></tr>
           </tbody>
         </table>
         <ul class="links">
           <li><a href="https://aporia.institute/tm-vocabulary/online-appendix/ipo-viewer/index.html">IPO viewer</a></li>
           <li><a href="https://aporia.institute/tm-vocabulary/online-appendix/themes/">trademark explorer</a></li>
+          <li><a href="./img/lead-lag-data.csv">data for this figure</a></li>
         </ul>
       </div>
     </div>

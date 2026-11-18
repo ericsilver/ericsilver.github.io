@@ -8,6 +8,7 @@
 /* Hallmark · reworded the h1 "Eric Silver" to "An institute in name only." at the owner's direction: the title has to show the name is a known pretense · the name moves to the byline */
 /* Hallmark · owner's request · the hero lists two papers and two essays and sets Résumé and LinkedIn by the name, since visitors arrive from the résumé · the two read buttons go: the list, the ledger and the nav reach the same sections · the nav's Résumé opens the PDF rather than scrolling to the footer */
 /* Hallmark · owner's request · the hero list is renamed Selected writing and gains the health book, with its Amazon rating and, inline after the stars, a small Buy on Amazon pill in Amazon's own orange (the --amazon tokens, as on the book's site); the title goes to the book's row below, the pill to Amazon · the Books row shows the same rating */
+/* Hallmark · owner's request · the ink band's figure is now the lead-lag chart: the share of registrations that passed the five-year proof, from the most lagging fifth to the most leading, drawn as inline SVG in the page's inks by img/lead-lag-build.py · it replaces the class 32 scatter, which showed no relationship */
 @import url("./fonts.css");
 @import url("./tokens.css");
 @import url("./base.css");
@@ -271,4 +272,40 @@ details[open] .when-closed { display: none; }
 @media (max-width: 40rem) {
   .ledger__plate { margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) var(--space-md); }
   .ledger__plate figcaption { padding-inline: var(--space-md); }
+}
+
+/* The lead-lag figure: pass rate at the five-year proof, from the most lagging fifth to the most leading. Built by img/lead-lag-build.py. */
+:root { --color-leadlag-beer: var(--color-accent); --color-leadlag-tech: #2b6cb0; }
+.leadlag { align-self: center; color: var(--color-ink); }
+.leadlag__key { display: flex; flex-wrap: wrap; gap: var(--space-2xs) var(--space-md); margin: 0 0 var(--space-sm); padding: 0; list-style: none; color: var(--color-ink); font: 500 var(--text-sm)/1.3 var(--font-display); }
+.leadlag__key li { display: inline-flex; align-items: center; gap: var(--space-xs); white-space: nowrap; }
+.ll-swatch { width: 30px; height: 10px; flex: none; overflow: visible; }
+.leadlag__svg { display: block; width: 100%; height: auto; overflow: visible; }
+.leadlag__svg--narrow { display: none; }
+.leadlag figcaption { margin-top: var(--space-sm); color: var(--color-ink-2); font: 400 var(--text-xs)/1.45 var(--font-outlier); }
+.ll-grid { stroke: var(--color-rule); stroke-width: 1; }
+.ll-base { stroke: var(--color-rule-2); stroke-width: 1; }
+.ll-tick, .ll-xlab, .ll-xtitle, .ll-ytitle, .ll-name { font-family: var(--font-display); }
+.ll-tick { fill: var(--color-ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
+.ll-xlab { fill: var(--color-ink); font-size: 13px; font-weight: 500; }
+.ll-xtitle { fill: var(--color-muted); font-size: 12px; }
+.ll-ytitle { fill: var(--color-ink); font-size: 13px; font-weight: 600; }
+.ll-name { fill: var(--color-ink); font-size: 13px; font-weight: 600; }
+.ll-val { fill: var(--color-ink-2); font-family: var(--font-outlier); font-size: 12.5px; }
+.ll-line { fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.ll-line--early { stroke: var(--color-ink); stroke-dasharray: 5 5; }
+.ll-line--late { stroke: var(--color-ink); stroke-width: 2.5; }
+.ll-line--tech { stroke: var(--color-leadlag-tech); }
+.ll-line--beer { stroke: var(--color-leadlag-beer); }
+.ll-dot { stroke: var(--color-sheet); stroke-width: 2; }
+.ll-dot--early { fill: var(--color-sheet); stroke: var(--color-ink); }
+.ll-dot--late { fill: var(--color-ink); }
+.ll-dot--tech { fill: var(--color-leadlag-tech); }
+.ll-dot--beer { fill: var(--color-leadlag-beer); }
+.ll-hit { fill: transparent; stroke: none; }
+.legend--ends thead th { padding: 0 0 var(--space-xs) var(--space-sm); color: var(--color-paper-2); font-weight: 400; line-height: 1.25; text-align: right; vertical-align: bottom; }
+.legend--ends .num { padding-left: var(--space-sm); white-space: nowrap; }
+@media (max-width: 40rem) {
+  .leadlag__svg--wide { display: none; }
+  .leadlag__svg--narrow { display: block; }
 }
