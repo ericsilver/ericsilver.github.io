@@ -80,6 +80,11 @@ input::placeholder { color: var(--color-muted); opacity: 1; }
 .seg button { background: var(--color-tile); color: var(--color-ink-2); }
 .seg button + button { border-left-color: var(--color-rule-2); }
 .seg button[aria-pressed="true"] { background: var(--color-ink); color: var(--color-sheet); }
+/* Hallmark · owner's request · the theme explorer exists for a 500- and a 1,000-theme model, each with pages of its own, so its switch is made of links · the links take the look of the fifty-theme page's switch: the tile, a hairline between, the model on show in ink */
+.seg a { background: var(--color-tile); color: var(--color-ink-2); text-decoration-line: none; }
+.seg a + a { border-left-color: var(--color-rule-2); }
+.seg a[href]:hover { background: var(--color-sheet); color: var(--color-ink); }
+.seg a[aria-current] { background: var(--color-ink); color: var(--color-sheet); }
 summary { color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-sm); font-weight: 500; text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 0.15em; }
 .help { border-color: var(--color-rule-2); border-radius: var(--radius-pill); color: var(--color-ink-2); font-family: var(--font-display); }
 .help .tip, .tip, #tip { background: var(--color-tile); border: var(--rule-hair) solid var(--color-ink); border-radius: 0; box-shadow: none; color: var(--color-ink-2); font-family: var(--font-body); }
