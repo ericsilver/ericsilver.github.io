@@ -32,7 +32,7 @@ const rungsOf = lvl => RUNGS.map((r, i) => i).filter(i => RUNGS[i].level === LV[
 const majName = code => (MAJ.find(m => m.code === code) || {}).name || code;
 
 /* ---------------- state and routing ---------------- */
-const S = { tab: "exp", mode: "school", lvl: -1, rung: -1, hist: 0, stage: 0, openSort: "share", occ: 0, q: "", maj: "", life: 0, lifeLvl: -1, snap: 0 };
+const S = { tab: "exp", mode: "school", lvl: -1, rung: -1, hist: 0, stage: 0, openSort: "share", occ: 0, q: "", maj: "", life: 0, lifeLvl: -1, snap: 0, preset: "aei_subst_r0" };
 S.occ = OCC.reduce((b, o, i) => o.emp > OCC[b].emp ? i : b, 0);
 
 function applyCohort(id) {
@@ -54,13 +54,17 @@ function readUrl() {
   if (p.get("tab") && ["exp", "job", "life", "about"].includes(p.get("tab"))) S.tab = p.get("tab");
   if (p.get("life")) { const i = +p.get("life"); if (i >= 0 && i < D.careers.length) { S.life = i; S.tab = "life"; } }
 }
+/* The scenarios page keeps a field cohort when it holds at least 0.1% of workers, counted before rounding. */
+const rungShare = r => RUNGS[r].w / M.workers;
 function cohortId() {
   const st = STAGE_ID[S.stage];
   if (S.mode === "hist") return "history:" + MAJ[S.hist].code;
-  if (S.rung >= 0 && RUNGS[S.rung].id.includes(":")) return RUNGS[S.rung].share >= 0.001 ? "field:" + RUNGS[S.rung].id : "school:" + RUNGS[S.rung].level;
+  if (S.rung >= 0 && RUNGS[S.rung].id.includes(":")) return rungShare(S.rung) >= 0.001 ? "field:" + RUNGS[S.rung].id : "school:" + RUNGS[S.rung].level;
   if (S.lvl >= 0) return st ? "school_stage:" + LV[S.lvl].id + "|" + st : "school:" + LV[S.lvl].id;
   return st ? "stage:" + st : null;
 }
+/* True when the scenarios page has a cohort for exactly the worker type shown. */
+const cohortExact = () => !(S.mode === "school" && S.rung >= 0 && S.stage) && !(S.mode === "hist" && S.stage) && !(S.mode === "school" && S.rung >= 0 && rungShare(S.rung) < 0.001);
 function writeUrl() {
   const p = new URLSearchParams();
   p.set("tab", S.tab);
@@ -109,6 +113,62 @@ function openTable(c, sortKey, onSort) {
       : h("div", { class: "meta" }, "No other occupation is open to at least 5% of this group."));
 }
 
+/* ---------------- exposure indexes and simulated pay ----------------
+   Read at run time from the scenarios page's data on the same site: meta.json holds the four exposure indexes of every occupation
+   and worker type, and one file per scenario holds the simulated result. Both are cached; when a fetch fails the box says so in one line. */
+const FOW = "/future-of-work/data/";
+const PRESETS = [
+  { id: "aei_subst_r0", level: "subst", robots: "r0", label: "Substantial AI", title: "Observed AI use, moving toward what is feasible: substantial level (2030 dials of Korinek et al.), no robots" },
+  { id: "aei_subst_r40", level: "subst", robots: "r40", label: "Substantial AI with robots", title: "Observed AI use at the substantial level, and robots do 40% of the task time they could" },
+  { id: "aei_extreme_r0", level: "extreme", robots: "r0", label: "Extreme AI", title: "Observed AI use, moving toward what is feasible: extreme level (2030 dials of Korinek et al.), no robots" }];
+const IXK = [["obs", "AI: Anthropic observed exposure (2026)"], ["elo", "AI: Eloundou et al. (2024)"], ["schaal", "AI: Schaal (2025)"], ["robot", "Robots: Anthropic robot exposure (2026)"]];
+const fowCache = new Map();
+function fowGet(f) {
+  if (!fowCache.has(f)) fowCache.set(f, fetch(FOW + f).then(r => { if (!r.ok) throw new Error(f + " " + r.status); return r.json(); }));
+  return fowCache.get(f);
+}
+const fin = x => x != null && Number.isFinite(x);
+const chg = x => !fin(x) ? "–" : Math.abs(x) < 5e-4 ? "0.0%" : (x > 0 ? "+" : "−") + pct(Math.abs(x));
+const shr = x => fin(x) && x < 1 && x >= 0.995 ? "over 99%" : fin(x) && x > 0 && x < 5e-4 ? "under 0.1%" : pct(x);
+/* kind "occ" with key a SOC code, or "coh" with key a cohort id of the scenarios page; sub: an optional line under the title */
+function prospectBox(kind, key, sub) {
+  const occ = kind === "occ", box = h("div", { class: "card prospects" });
+  const title = () => [h("h2", null, "Exposure indexes and simulated pay"), sub ? h("div", { class: "meta" }, sub) : null].filter(Boolean);
+  let seq = 0;
+  const fill = () => {
+    const my = ++seq, pre = PRESETS.find(p => p.id === S.preset) || PRESETS[0];
+    const body = h("div", null, h("div", { class: "meta" }, "Loading scenario results…"));
+    box.replaceChildren(...title(),
+      h("div", { class: "row", role: "group", "aria-label": "Scenario" }, PRESETS.map(p => h("button", { class: "btn" + (p === pre ? " on" : ""), "aria-pressed": p === pre ? "true" : "false", title: p.title, "data-preset": p.id,
+        onclick: () => { S.preset = p.id; fill(); const b = box.querySelector('[data-preset="' + p.id + '"]'); if (b) b.focus(); } }, p.label))),
+      body);
+    fowGet("meta.json").then(m => {
+      const s = (m.scenarios || []).find(x => x.id === pre.id);
+      return fowGet(s ? s.file : "s/" + pre.id + ".json").then(d => [m, d]);
+    }).then(([m, d]) => {
+      if (my !== seq) return;
+      const k = occ ? m.occupations.findIndex(o => o.soc === key) : (m.cohorts || []).findIndex(c => c.id === key);
+      if (k < 0) { box.remove(); return; }
+      const rec = occ ? m.occupations[k] : m.cohorts[k], at = occ && fin(rec.i) ? rec.i : k;
+      const x = rec.x || {}, notes = m.index_notes || {}, t = occ ? d.occ : d.coh, v = f => (t && t[f] ? t[f][at] : null);
+      const R = v("removed"), mean = v("pay_mean"), p10 = v("pay_p10"), p90 = v("pay_p90"), l50 = v("lower50"), l0 = v("lower0"), ex = v("exposed");
+      const href = SCEN + "?index=aei&level=" + pre.level + "&robots=" + pre.robots + (occ ? "&scope=occ&soc=" + encodeURIComponent(key) : "&scope=cohort&cohort=" + encodeURIComponent(key));
+      body.replaceChildren(...[
+        h("h3", null, occ ? "Exposure indexes: share of the occupation's task time" : "Exposure indexes: share of task time, averaged over the occupations they hold"),
+        h("div", { class: "tiles" }, IXK.map(([f, lbl]) => { const e = tile(fin(x[f]) ? pct(x[f]) : "–", lbl); if (notes[f]) e.title = notes[f]; return e; })),
+        h("h3", null, "This scenario in the simulation"),
+        h("div", { class: "tiles" },
+          tile(pct(R), occ ? "of its work time removed" : "of work time removed in their occupations"),
+          tile(chg(fin(R) ? -R : null), occ ? "pay change if exposure is read as loss" : "mean pay change if exposure is read as loss", !occ && fin(ex) ? pct(ex) + " work in occupations that lose work time" : null),
+          tile(chg(mean), occ ? "simulated real pay change of people who start here, mean" : "simulated real pay change, mean", fin(p10) && fin(p90) ? "10th to 90th percentile " + chg(p10) + " to " + chg(p90) : null)),
+        fin(l50) && fin(l0) ? h("p", null, "If half of the added output went to the owners of AI and robots instead of to workers, " + shr(l50) + " of these workers would end with lower real pay than today; if none of it reached workers, " + shr(l0) + ".") : null,
+        h("p", null, h("a", { href }, (occ ? "See this occupation" : "See this worker type") + " in this scenario →"))].filter(Boolean));
+    }).catch(() => { if (my === seq) box.replaceChildren(...title(), h("div", { class: "meta" }, "Scenario results could not be loaded.")); });
+  };
+  fill();
+  return box;
+}
+
 /* ---------------- worker types ---------------- */
 function sideExp(s) {
   const lvlSel = h("select", { onchange: e => go({ lvl: +e.target.value, rung: -1 }) },
@@ -133,7 +193,7 @@ function sideExp(s) {
     h("label", { class: "l" }, "Career stage (years of experience)"),
     h("div", { class: "row" }, STAGE_SHORT.map((t, i) => h("button", { class: "btn" + (S.stage === i ? " on" : ""), onclick: () => go({ stage: i }), title: STAGE_LBL[i] }, t)))));
   const c = curCell(), id = cohortId();
-  const exact = !(S.mode === "school" && S.rung >= 0 && S.stage) && !(S.mode === "hist" && S.stage) && !(S.mode === "school" && S.rung >= 0 && RUNGS[S.rung].share < 0.001);
+  const exact = cohortExact();
   s.append(h("div", { class: "card" }, h("h3", null, typeLabel()),
     c ? h("div", { class: "kv" }, h("b", null, "Workers"), h("span", null, fmtW(c.w) + " (" + pct(c.w / M.workers) + " of all)"),
       h("b", null, "Records"), h("span", null, c.n.toLocaleString("en-US") + " simulated career records")) : h("div", { class: "meta" }, "Fewer than " + M.min_rec + " simulated records."),
@@ -149,6 +209,7 @@ function viewExp(el) {
     tile(c.x.toFixed(1), "years of experience, mean"), tile(num(c.k_e), "other occupations open, median", num(c.k_q) + " counting all they qualify for"),
     tile(pct(c.better), "have a better-paid occupation open"), tile(pct(c.only_lower), "have only lower-paid ones open"), tile(pct(c.none), "have no other occupation open")));
   el.append(optionsBlock(c, who));
+  if (cohortExact()) el.append(prospectBox("coh", cohortId() || "all"));
   const mx = Math.max(...c.held.map(r => r[1]), 0.01);
   const g = h("div", { class: "grid2" });
   g.append(h("div", { class: "card" }, h("h2", null, "Occupations they hold"),
@@ -196,6 +257,7 @@ function viewJob(el) {
     tile(pct(ba, 0), "hold a bachelor's or more", "ACS: " + pct(baA, 0)),
     tile(pct(c.trained, 0), "trained for it", pct(1 - c.trained, 0) + " entered on qualifying alone"),
     tile(num(c.k_e), "other occupations open to its workers, median", pct(c.better) + " have a better-paid one open")));
+  el.append(prospectBox("occ", o.soc));
   const g = h("div", { class: "grid2" });
   // who holds it
   const L5 = ["Less than high school", "High school", "Associate degree", "Bachelor's degree", "Graduate degree"];
@@ -289,6 +351,8 @@ function viewLife(el) {
   const x = sx[S.snap];
   let job = sp[0][0];
   for (const s_ of sp) if (s_[1] <= x) job = s_[0];
+  const occNow = OCC[D.jobocc[job]];
+  el.append(prospectBox("occ", occNow.soc, "Occupation held in year " + x + ": " + occNow.title));
   const base = (S.life * 3 + S.snap) * NC, rows = [];
   let nHeld = 0, nReq = 0;
   for (let k = 0; k < NC; k++) {

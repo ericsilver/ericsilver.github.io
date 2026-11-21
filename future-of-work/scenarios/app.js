@@ -76,6 +76,7 @@
   }
   const tickPct = (t, step) => { const d = Math.abs(100 * step - Math.round(100 * step)) > 1e-6 ? 1 : 0; return (t < -1e-12 ? MINUS : "") + Math.abs(100 * t).toFixed(d) + "%"; };
   const trunc = (t, n) => (t.length > n ? t.slice(0, n - 1).trimEnd() + "…" : t);
+  const shr = (x) => (ok(x) && x < 1 && x > 0.9995 ? ">99.9%" : pct(x));      // a share of workers short of all never shows as 100%
 
   // ------------------------------------------------------------------ tooltip
   const tip = $("#tip");
@@ -331,8 +332,12 @@
     const pts = META.occupations.map((o) => ({ o, x: d.occ.removed[o.i], y: d.occ.wage[o.i] })).filter((p) => ok(p.x) && ok(p.y));
     if (!pts.length) return h("p", { class: "meta", text: "No occupations to plot." });
     const emax = Math.max(...pts.map((p) => p.o.emp));
-    const y = yAxis(f, Math.min(0, ...pts.map((p) => p.y)), Math.max(0.001, ...pts.map((p) => p.y)));
-    const x = xAxis(f, 0, Math.max(0.02, ...pts.map((p) => p.x)) * 1.03, "Share of the occupation's work time removed");
+    const xhi = Math.max(0.02, ...pts.map((p) => p.x)) * 1.03;          // the y-axis reaches -xhi, so the line y = -x shows across the whole x range
+    const y = yAxis(f, Math.min(-xhi, ...pts.map((p) => p.y)), Math.max(0.001, ...pts.map((p) => p.y)));
+    const x = xAxis(f, 0, xhi, "Share of the occupation's work time removed");
+    const lx0 = x(0), ly0 = y(0), lx1 = x(xhi), ly1 = y(-xhi);
+    put(f.svg, [sv("line", { x1: f.x0, x2: f.x1, y1: ly0, y2: ly0, style: "stroke:var(--line2);stroke-width:1.25" }),
+      sv("line", { x1: lx0, y1: ly0, x2: lx1, y2: ly1, style: "stroke:var(--acc);stroke-width:1.5;stroke-dasharray:6 4" })]);
     for (const p of pts) { p.cx = x(p.x); p.cy = y(p.y); p.r = 1.6 + 8 * Math.sqrt(p.o.emp / emax); }
     pts.sort((a, b) => b.r - a.r);
     const g = sv("g");
@@ -341,14 +346,18 @@
         : "fill:none;stroke:var(--ctx2);stroke-opacity:.85;stroke-width:1.1" }));
     }
     f.svg.appendChild(g);
+    const full = "exposure read as loss: pay falls by the time removed", len = Math.hypot(lx1 - lx0, ly1 - ly0);
+    const ang = Math.atan2(ly1 - ly0, lx1 - lx0) * 180 / Math.PI, ax = lx0 + 0.97 * (lx1 - lx0), ay = ly0 + 0.97 * (ly1 - ly0);
+    f.svg.appendChild(sv("text", { class: "lab", x: ax, y: ay - 6, "text-anchor": "end", transform: "rotate(" + ang.toFixed(2) + " " + ax.toFixed(1) + " " + ay.toFixed(1) + ")",
+      style: "fill:var(--acc);paint-order:stroke;stroke:var(--bg);stroke-width:3px" }, len > 6 * full.length + 40 ? full : "exposure read as loss"));
     const ring = sv("circle", { r: 0, style: "fill:none;stroke:var(--sel);stroke-width:1.5;display:none" });
     f.svg.appendChild(ring);
     const sel = pts.find((p) => p.o.i === selI);
     if (sel) {
-      const left = sel.cx > (f.x0 + f.x1) / 2;
+      const left = sel.cx > (f.x0 + f.x1) / 2, room = left ? sel.cx - sel.r - 5 - f.x0 : f.W - sel.cx - sel.r - 9;   // the label stays clear of the y-axis labels and inside the chart
       put(f.svg, [sv("circle", { cx: sel.cx, cy: sel.cy, r: sel.r + 1.5, style: "fill:var(--sel);stroke:var(--bg);stroke-width:2" }),
         sv("text", { class: "lab", x: sel.cx + (left ? -1 : 1) * (sel.r + 7), y: sel.cy + 4, "text-anchor": left ? "end" : "start",
-          style: "font-weight:650;paint-order:stroke;stroke:var(--bg);stroke-width:3px" }, trunc(sel.o.title, 38))]);
+          style: "font-weight:650;paint-order:stroke;stroke:var(--bg);stroke-width:3px" }, trunc(sel.o.title, Math.max(10, Math.min(38, Math.floor(room / 6)))))]);
     }
     const hit = sv("rect", { x: f.x0 - 10, y: f.y1 - 10, width: f.x1 - f.x0 + 20, height: f.y0 - f.y1 + 20, fill: "transparent", style: onPick ? "cursor:pointer" : "" });
     let near = null;
@@ -371,6 +380,8 @@
     h("span", null, sv("svg", { viewBox: "0 0 26 10" }, sv("circle", { cx: 13, cy: 5, r: 4.2, style: "fill:var(--ctx2);fill-opacity:.42" })), "cognitive occupations (management, professional, sales, office)"),
     h("span", null, sv("svg", { viewBox: "0 0 26 10" }, sv("circle", { cx: 13, cy: 5, r: 3.8, style: "fill:none;stroke:var(--ctx2);stroke-width:1.1" })), "all other occupations"),
     sel ? h("span", null, sv("svg", { viewBox: "0 0 26 10" }, sv("circle", { cx: 13, cy: 5, r: 4.2, style: "fill:var(--sel)" })), "the selected occupation") : null,
+    h("span", null, sv("svg", { viewBox: "0 0 26 10" }, sv("line", { x1: 1, x2: 25, y1: 5, y2: 5, style: "stroke:var(--line2);stroke-width:1.25" })), "no change in real wage"),
+    h("span", null, sv("svg", { viewBox: "0 0 26 10" }, sv("line", { x1: 1, x2: 25, y1: 5, y2: 5, style: "stroke:var(--acc);stroke-width:1.5;stroke-dasharray:6 4" })), "exposure read as loss: pay falls by the time removed"),
     h("span", null, "circle area follows employment"));
 
   /* Employment by the occupation's real wage change, split into the two groups. */
@@ -502,6 +513,101 @@
       worse: pick("worse"), moved: pick("moved"), removed: pick("removed"), approx: true, fam };
   }
 
+  /* ------------------------------------------------------------------ exposure indexes against the simulated result
+     An exposure index gives the share of task time AI or robots could do. Read as loss, pay falls by the share of the work time
+     removed. These pieces set that reading beside the simulated pay, for the economy, one occupation or one worker type. */
+  const IXK = [["obs", "AI", "Anthropic observed exposure (2026)"], ["elo", "AI", "Eloundou et al. (2024)"], ["schaal", "AI", "Schaal (2025)"], ["robot", "Robots", "Anthropic robot exposure (2026)"]];
+  const para = (t) => (t ? h("p", { class: "vs-text", text: t }) : null);
+  function empShare(k, test) {            // share of workers (occupations weighted by employment) whose index k passes the test
+    let a = 0, b = 0;
+    for (const o of META.occupations) {
+      const v = o.x ? o.x[k] : null;
+      if (!ok(v) || !ok(o.emp)) continue;
+      b += o.emp; if (test(v)) a += o.emp;
+    }
+    return b > 0 ? a / b : null;
+  }
+  function rankText(k, v) {
+    if (!ok(v)) return null;
+    if (v < 5e-5) { const z = empShare(k, (q) => q < 5e-5); return ok(z) ? "zero for " + pct(z, 0) + " of workers" : null; }
+    const b = empShare(k, (q) => q < v - 1e-9);
+    if (!ok(b)) return null;
+    return "higher than for " + (b < 0.01 ? "under 1%" : Math.floor(100 * b + 1e-9) + "%") + " of workers";
+  }
+  function indexTiles(x, cohort) {
+    const notes = META.index_notes || {};
+    return [h("h3", { text: cohort ? "Exposure indexes: share of task time, averaged over the occupations they hold" : "Exposure indexes: share of the occupation's task time" }),
+      h("div", { class: "tiles ix" }, IXK.map(([k, kind, name]) => {
+        const v = x[k], rank = rankText(k, v);
+        return h("div", { class: "tile", title: notes[k] || null },
+          h("div", { class: "v", text: pct(v) }),
+          h("div", { class: "ixbar" }, ok(v) ? h("span", { style: "width:" + (100 * Math.min(1, Math.max(0, v))).toFixed(1) + "%;background:var(" + (kind === "Robots" ? "--s-rob" : "--s-ai") + ")" }) : null),
+          h("div", { class: "l", text: kind + ": " + name }),
+          rank ? h("div", { class: "c", text: rank }) : null);
+      })),
+      IXK.some(([k]) => notes[k]) ? details("What each index measures", h("ul", { class: "ixnotes" }, IXK.map(([k]) => (notes[k] ? h("li", { text: notes[k] }) : null)))) : null];
+  }
+  function passText(l50, l0, who) {
+    if (!ok(l50) || !ok(l0)) return null;
+    return "The model passes all of the added output to workers, as pay and as lower prices. If half of it went to the owners of AI and robots instead, " + shr(l50) + " of " + who +
+      " would end with lower real pay than today; if none of it reached workers, " + shr(l0) + ".";
+  }
+  /* Every worker's pay scaled by (1 + lambda Y)/(1 + Y) when workers receive a share lambda of the added output Y: a group's mean
+     real pay change p stays at or above zero while lambda >= ((1 + Y)/(1 + p) - 1)/Y. */
+  function breakEven(p, Y) {
+    if (!ok(p) || !ok(Y) || Y <= 0) return null;
+    if (p < 0) return "Their average real pay falls even with all of the added output going to workers.";
+    const lam = ((1 + Y) / (1 + p) - 1) / Y;
+    if (lam <= 0) return "Their average gain holds even if none of the added output reaches workers.";
+    return "Their average gain holds as long as workers receive at least " + Math.ceil(100 * lam - 1e-9) + "% of the added output.";
+  }
+  /* One occupation or one worker type. o: {cohort, x, removed, exposed, mean, p10, p50, p90, worse, moved, lower50, lower0, all} */
+  function prospects(o) {
+    const e = econ(scen(st.index, st.level, st.robots)), all = o.all || {}, R = o.removed, loss = ok(R) ? -R : null;
+    const gap = ok(o.mean) && ok(e.pay_mean) ? o.mean - e.pay_mean : null;
+    const lossText = o.cohort
+      ? (ok(o.exposed) ? pct(o.exposed) + " of them work in occupations that lose work time; read" : "Read") + " as loss, their pay falls by " + pct(R) + " on average."
+      : "Pay falls by the share of this occupation's work time removed in this scenario. " + (ok(R) && R > 0
+        ? "Under that reading, everyone in an occupation that loses any work time ends worse off."
+        : "This occupation loses none, so under that reading its pay does not change.");
+    const li = (v, t) => h("li", null, h("b", { text: v }), " " + t);
+    const gapItem = !ok(gap) ? null : Math.abs(gap) < 5e-4 ? li("0.0", "percentage points from the mean for all workers (" + chg(e.pay_mean) + ")")
+      : li((100 * Math.abs(gap)).toFixed(1), "percentage points " + (gap > 0 ? "above" : "below") + " the mean for all workers (" + chg(e.pay_mean) + ")");
+    const pass = passText(o.lower50, o.lower0, "these workers"), even = breakEven(o.mean, e.output);
+    return panel("Exposure indexes and simulated pay",
+      "An exposure index gives the share of task time that AI or robots could do. Read as loss, pay falls by the share of work time removed. In the simulation, the work that remains becomes more productive and goods get cheaper, so most workers end with higher real pay; workers in more exposed occupations gain less than others.",
+      o.x ? indexTiles(o.x, o.cohort) : null,
+      h("div", { class: "vs" },
+        h("div", { class: "vs-loss" }, h("h3", { text: "Exposure read as loss" }),
+          h("div", { class: "big", text: chg(loss) }),
+          h("div", { class: "meta", text: o.cohort ? "mean pay change" : "pay change of everyone who works here" }),
+          para(lossText)),
+        h("div", null, h("h3", { text: "This scenario in the simulation" }),
+          h("div", { class: "big", text: chg(o.mean) }),
+          h("div", { class: "meta", text: (o.cohort ? "mean real pay change" : "mean real pay change of the people who start here") +
+            (ok(o.p10) && ok(o.p90) ? "; 10th to 90th percentile " + chg(o.p10) + " to " + chg(o.p90) : "") }),
+          h("ul", { class: "vs-list" }, gapItem, li(pct(o.worse), "end with lower real pay"), li(pct(o.moved), "change occupation")))),
+      h("h3", { text: "Pay change, read as loss and simulated" }), rangeLegend(),
+      h("div", { class: "widenames" }, rangeRows([
+        { name: "Exposure read as loss", bar: loss, val: chg(loss), color: "var(--acc)" },
+        { name: o.cohort ? "Simulation: this worker type" : "Simulation: people who start here", p10: o.p10, p50: o.p50, p90: o.p90, mean: o.mean, val: chg(o.mean), sel: true },
+        { name: "Simulation: all workers", p10: all.p10, p50: all.p50, p90: all.p90, mean: all.mean, val: chg(all.mean) }])),
+      pass || even ? h("h3", { text: "Where the gain goes" }) : null, para(pass), para(even));
+  }
+  /* The whole economy: every worker's exposure read as loss beside the simulated result. */
+  function prospectsEconomy(e) {
+    const fig = (v, l) => h("div", null, h("div", { class: "big", text: v }), h("div", { class: "meta", text: l }));
+    return panel("Exposure read as loss, and simulated pay", null,
+      h("div", { class: "vs" },
+        h("div", { class: "vs-loss" }, h("h3", { text: "Exposure read as loss" }),
+          para("Each worker's pay falls by the share of their occupation's work time removed."),
+          h("div", { class: "vs-figs" }, fig(pct(e.exposed), "of workers lose pay"), fig(chg(e.naive_mean), "mean pay change"))),
+        h("div", null, h("h3", { text: "This scenario in the simulation" }),
+          para("Wages, prices and occupations adjust until every occupation's labor market clears."),
+          h("div", { class: "vs-figs" }, fig(pct(e.worse), "of workers end with lower real pay"), fig(chg(e.pay_mean), "mean real pay change")))),
+      para(passText(e.lower50, e.lower0, "workers")));
+  }
+
   function occTable(d) {                  // built when opened: all occupations, largest wage gain first
     const box = h("div", { class: "tw scroll" });
     const det = details("Table: all occupations", box);
@@ -547,6 +653,7 @@
         tile(pct(e.worse), "of workers end with lower real pay"),
         tile(pct(e.moved), "of workers change occupation"),
         ok(e.req_dropped) ? tile(String(e.req_dropped), "job requirements dropped", "a requirement goes when every task that carries it is removed") : null),
+      ok(e.naive_mean) || ok(e.exposed) ? prospectsEconomy(e) : null,
       h("div", { class: "grid2" },
         panel("Cognitive occupations and all others", "The two groups of Korinek et al. (2026): management, professional, sales and office occupations, and everything else.",
           h("h3", { text: "Share of work time removed" }),
@@ -599,8 +706,10 @@
         tile(chg(c.pay_mean[i]), "real pay of people who start here, mean", "10th to 90th percentile " + chg(c.pay_p10[i]) + " to " + chg(c.pay_p90[i])),
         tile(pct(c.worse[i]), "of them end with lower real pay"),
         tile(pct(c.leave[i]), "of them leave for another occupation")),
+      prospects({ x: o.x, removed: c.removed[i], mean: c.pay_mean[i], p10: c.pay_p10[i], p90: c.pay_p90[i], worse: c.worse[i], moved: c.leave[i],
+        lower50: c.lower50 ? c.lower50[i] : null, lower0: c.lower0 ? c.lower0[i] : null, all: allWorkers(d) || {} }),
       h("div", { class: "grid2" },
-        panel("Where this occupation sits among all occupations", ok(above) ? pct(above, 0) + " of workers are in occupations whose real wage rises more than this one's in this scenario." : null,
+        panel("Where this occupation sits among all occupations", ok(above) ? pct(above, above > 0.99 || above < 0.01 ? 1 : 0) + " of workers are in occupations whose real wage rises more than this one's in this scenario." : null,
           scatterLegend(true), chart((W) => scatter(d, i, (x) => set({ soc: x.soc }), W))),
         h("div", { class: "stack" },
           panel("Real pay of the people who start in this occupation", "They hold whichever occupation open to them pays best at the new wages, so some end elsewhere.",
@@ -644,6 +753,8 @@
         tile(chg(c.pay_p10[p]) + " to " + chg(c.pay_p90[p]), "real pay, 10th to 90th percentile", ok(all.p10) ? "all workers " + chg(all.p10) + " to " + chg(all.p90) : null, true),
         tile(pct(c.worse[p]), "end with lower real pay", cmp(c.worse[p], all.worse, pct)),
         tile(pct(c.moved[p]), "change occupation", cmp(c.moved[p], all.moved, pct))),
+      prospects({ cohort: true, x: co.x, removed: c.removed[p], exposed: c.exposed ? c.exposed[p] : null, mean: c.pay_mean[p], p10: c.pay_p10[p], p50: c.pay_p50[p], p90: c.pay_p90[p],
+        worse: c.worse[p], moved: c.moved[p], lower50: c.lower50 ? c.lower50[p] : null, lower0: c.lower0 ? c.lower0[p] : null, all }),
       h("div", { class: "grid2" },
         h("div", { class: "stack" },
           panel("Real pay change: this worker type and all workers", null, rangeLegend(),
