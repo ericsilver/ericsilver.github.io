@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where Do the People Go? An open model of AI, robots and work, by Eric Silver</title>
+<meta name="description" content="An open, forkable simulation of what AI and robots do to the pay and occupations of a synthetic U.S. workforce, with working papers, outcome metrics and a call for contributors.">
+<!-- DRAFT MARKER 1 of 2: this noindex line keeps the page out of search while in development. -->
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="/css/essay.css">
+<link rel="stylesheet" href="/future-of-work/fow.css">
+</head>
+<body class="fow">
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="strip" aria-label="Sections">
+  <a class="wordmark" href="/" aria-label="aporia.institute, the home page">
+    <svg viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+    aporia.institute
+  </a>
+  <ul class="strip__links">
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <details class="strip__menu">
+    <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
+    <ul>
+    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#essays">Essays</a></li>
+    <li><a href="/#books">Books</a></li>
+    <li><a href="/#portfolio">Portfolio</a></li>
+    <li><a href="/resume.pdf">R&eacute;sum&eacute;</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </details>
+</nav>
+
+<header class="essay-head">
+  <div class="container">
+    <h1>Where Do the People Go? An open model of AI, robots and work</h1>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container essay-body">
+    <aside class="essay-side">
+      <!-- DRAFT MARKER 2 of 2: the draft span below. Remove it when the page is surfaced. -->
+      <p class="essay-meta"><span>Eric Silver</span><span>November 22, 2026</span><span>draft</span></p>
+      <ul class="links">
+        <li><a href="https://github.com/ericsilver/fow">Code on GitHub</a></li>
+        <li><a href="#papers">Working papers</a></li>
+        <li><a href="#elasticity">Elasticities: help wanted</a></li>
+        <li><a href="#modules">Modules to build</a></li>
+        <li><a href="#metrics">Outcome metrics</a></li>
+        <li><a href="/future-of-work/">Summary of results</a></li>
+        <li><a href="/future-of-work/scenarios/">Scenarios</a></li>
+        <li><a href="/workforce-explorer/">Workforce explorer</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </aside>
+    <article class="sheet">
+    <p class="lede">I built an open-source simulation of what AI and robots would do to each U.S. worker&rsquo;s pay. So far, when AI&rsquo;s added output reaches workers, almost no one ends with lower real pay, but many fall in relative standing. Anomie, a state in which the rules tying effort to reward stop holding, can arise even when incomes rise. The model cannot yet measure standing, expectations or the path through work. I am asking for help improving its modules, adding new ones and testing them against outcomes.</p>
+
+    <h2 id="model">The model follows a synthetic U.S. workforce from automation to a new labor-market equilibrium</h2>
+    <p>The simulation starts from a synthetic workforce of 591,529 records, each a worker at one point in a career, weighted to U.S. employment by occupation. Each record carries schooling, experience and a skill profile, and can enter only the occupations whose O*NET requirements, related experience and licenses it holds. Automation indexes say which task time leaves each of 551 occupations: Eloundou and coauthors&rsquo; ratings of what language models can do, Anthropic&rsquo;s observed use of Claude at work, and ratings by Claude of which physical tasks robots and driverless vehicles could do by 2031, 2036 and 2046. Demand for each occupation&rsquo;s work comes from two elasticities, one among occupations within 205 industry groups and one across industries. Workers take the best-paid occupation open to them, retirements and new entrants re-sort the workforce over time, and the model solves for the wages at which supply equals demand in every occupation.</p>
+
+    <h2 id="outcomes">Exposure predicts relative loss, not absolute loss, while the added output reaches workers</h2>
+    <p>The table raises automation in steps until every task an index marks as feasible is done by machine, and applies each step to today&rsquo;s workforce before anyone retires or joins. Nearly every worker gains in real terms; many lose ground to others.</p>
+    <div class="tablewrap">
+    <table class="wide">
+      <caption>Today&rsquo;s workers at the top of each automation ladder</caption>
+      <thead><tr><th></th><th>AI</th><th>Robots and driverless vehicles</th><th>All three</th></tr></thead>
+      <tbody>
+        <tr><td>Share of all work time removed</td><td>45.8%</td><td>34.5%</td><td>76.3%</td></tr>
+        <tr><td>Output</td><td>+149%</td><td>+42%</td><td>+377%</td></tr>
+        <tr><td>Lower real pay, highest share at any step</td><td>0.29%</td><td>19.3%</td><td>0.31%</td></tr>
+        <tr><td>Lower real pay at the top</td><td>0%</td><td>5.8%</td><td>0%</td></tr>
+        <tr><td>Real pay 5% or more lower at the top</td><td>0%</td><td>2.0%</td><td>0%</td></tr>
+        <tr><td>Place in the pay distribution falls 5 or more points</td><td>28.9%</td><td>10.9%</td><td>20.8%</td></tr>
+        <tr><td>90/10 pay ratio (3.97 today)</td><td>2.93</td><td>5.66</td><td>3.90</td></tr>
+        <tr><td>College pay premium (66.5% today)</td><td>48.0%</td><td>89.3%</td><td>75.3%</td></tr>
+        <tr><td>Changed occupation</td><td>3.65%</td><td>4.37%</td><td>9.24%</td></tr>
+        <tr><td>Lower real pay if 15% of the added output reaches workers</td><td>9.2%</td><td>45.6%</td><td>1.2%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tnote">Year 0: today&rsquo;s workforce, before retirements and new entrants. AI removes the tasks in Eloundou et al.&rsquo;s exposure ratings; robots and driverless vehicles remove the tasks Claude rates feasible by 2046; all three applies AI first and robots to the tasks left. All added output is paid to workers except in the last row, where workers receive 15% of it, the share implied by the substantial scenario of Korinek et al. (2026). Sources: <a href="papers/exposure-is-not-loss.pdf">Exposure Is Not Loss</a>, Tables 7 and 8; the last row from <code>exit_floors_pe.py</code> in the repository.</p>
+    <figure>
+      <a class="figure-open" href="img/fig4_ladder.png"><img src="img/fig4_ladder.png" alt="Four panels against the share of all work time removed: share of workers with lower real pay, the same share if half the added output reaches workers, share whose place in the pay distribution falls 5 or more points, and share who change occupation, for AI, robots and driverless vehicles, and all three." width="1152" height="928"></a>
+      <figcaption>Shares of today&rsquo;s workers with lower real pay (dashed: 5% or more lower), with lower real pay if half the added output reaches workers, whose place in the pay distribution falls 5 or more points, and who change occupation, each against the share of all work time removed. Source: Exposure Is Not Loss, Figure 4.</figcaption>
+    </figure>
+    <p>Read as a forecast of loss, an exposure score would have the most exposed workers losing pay. In the simulation, with AI at full exposure, the pay of the most exposed quarter of workers rises 112% while falling 15% against the average.</p>
+
+    <h2 id="absolute">Absolute losses need little of the gain to reach workers, a narrow shock, or few occupations to move to</h2>
+    <p>When all added output is paid to workers, a worker&rsquo;s real pay falls only if their pay falls behind the average by more than the average rises. Three conditions produce absolute losses in the model. First, little of the gain reaches workers: owners keep it, or the machines cost nearly as much as the labor they replace, which Acemoglu and Restrepo (2019) call so-so automation. In either case prices fall little while the work still leaves the job. Second, the shock is narrow: robots alone hit a few low-wage occupations hard and raise output by 42%, against 149% for AI. At the top of the robot ladder, 2.0% of workers lose 5% or more of their real pay; 85% of them have no college degree, most are groundskeepers, packaging machine operators or forklift operators, and they can enter 2.0 other occupations on average, against 12.0 for all workers. Third, automation removes every task that carries a job&rsquo;s requirement, the requirement drops, and entrants flood in: industrial truck operators lose 36%.</p>
+    <p>If workers left the labor force once their real pay fell 5% or more, 2.0% would leave at the top of the robot ladder and none under AI. With 15% of the gain reaching workers and a 10% threshold, 31% would leave under robots alone. These counts are first order: they do not let the departures raise the pay of those who stay.</p>
+
+    <h2 id="why">Rising pay with falling standing is a reason for concern</h2>
+    <p>Standing and expectations can matter apart from income. Anomie is a state in which the shared rules linking effort to reward stop holding. Durkheim (1897) found suicide rising in sudden prosperity and in financial crises, when people no longer knew which claims were legitimate. Merton (1938) traced deviance to a gap between cultural goals and the legitimate means of reaching them. Manufacturing job losses have been linked to less marriage and more premature mortality among young men (Autor, Dorn and Hanson 2019) and to more opioid overdose deaths (Venkataramani et al. 2020), and lower subjective social status to support for right populist parties (Gidron and Hall 2017).</p>
+    <p>The model measures pay and occupation but not yet social standing, broken expectations, or whether a worker keeps a known path from training into an occupation and upward. I am asking for help improving its modules; adding modules for labor force participation, capital ownership and job formation; and testing it against employment, mortality, marriage and self-reported status.</p>
+
+    <h2 id="papers">Working papers</h2>
+    <ul>
+      <li><a href="papers/exposure-is-not-loss.pdf"><b>Exposure Is Not Loss: A Worker-Level Simulation of AI and Robot Automation</b></a> (November 2026, 23 pages). Patterns of automation and their outcomes: AI exposure predicts which workers fall behind others, not who loses real pay, while robots without AI lower real pay for 0.9% to 19% of workers, mostly those without a college degree. Section 2 sets out the synthetic workforce and the elasticities.</li>
+      <li><a href="papers/task-clusters-in-onet.pdf"><b>Task Clusters in O*NET, 2005&ndash;2024: What Grew, What Shrank, and Where AI Exposure Points</b></a> (October 2026, 9 pages). Patterns of task change across two decades of O*NET task statements, and where the exposure labels point.</li>
+      <li><b>Elasticities.</b> Working paper in preparation. The estimates in use, 0.8 among occupations within industries and 0.66 across industries from the BEA&ndash;BLS production account for 1997&ndash;2014, are in Section 2 of Exposure Is Not Loss and, with the stylized facts they must match, in <a href="https://github.com/ericsilver/fow/blob/main/docs/ELASTICITY.md">ELASTICITY.md</a>.</li>
+      <li><b>The synthetic workforce and skill dispersion.</b> Working paper in preparation. The current build, its rules for who can enter which occupation and its known weak points are in Section 2 of Exposure Is Not Loss and in the repository&rsquo;s <a href="https://github.com/ericsilver/fow/blob/main/docs/MODULES.md">MODULES.md</a>.</li>
+    </ul>
+
+    <h2 id="code">The code is open to forks and pull requests</h2>
+    <p>The repository at <a href="https://github.com/ericsilver/fow">github.com/ericsilver/fow</a> holds the synthetic workforce generator, the automation shocks, the demand system, occupational choice and the equilibrium solver, turnover, and the measures behind every number on this page. A new module starts as an issue that states what it changes, where it plugs in and which outcome metric would show that it helps; it arrives as a pull request that reports those metrics before and after. <a href="https://github.com/ericsilver/fow/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> gives the interfaces and the tests a change must pass.</p>
+
+    <h2 id="elasticity">The elasticities decide who falls behind, and their estimates are the weakest part of the model</h2>
+    <p>Automation lowers the price of an occupation&rsquo;s work; the elasticities decide how much of that gain its workers keep. At early adoption the occupation at the 75th percentile of exposure ends with pay 7.6% below the occupation at the 25th when the across-industry elasticity is 0.66, the estimate for 1997&ndash;2014, and 0.5% below it at 1.6, the same method&rsquo;s estimate for 2015&ndash;2024. Leaving computers out of the 1997&ndash;2014 data moves the estimate to 1.52, about three standard errors. Against fifteen stylized facts the model reproduces five, partly reproduces three, fails five and has not been tested on two. The five it fails:</p>
+    <div class="tablewrap contrib">
+    <table>
+      <thead><tr><th>Fact</th><th>What the model does</th></tr></thead>
+      <tbody>
+        <tr><td>Rising income, not only falling prices, drives spending toward services (Comin, Lashkari and Mestieri 2021)</td><td>Demand responds only to prices.</td></tr>
+        <tr><td>Employment in an automating industry rises before it falls: cotton textiles, steel, autos (Bessen 2019)</td><td>Constant elasticities below one cannot produce the rise.</td></tr>
+        <tr><td>Within a decade, employment in exposed occupations falls more than their pay (Kogan et al. 2023)</td><td>In year 0 nearly all of the adjustment falls on pay.</td></tr>
+        <tr><td>Displaced workers earn less for years (Jacobson, LaLonde and Sullivan 1993; Davis and von Wachter 2011)</td><td>A worker who changes occupation earns its wage at once.</td></tr>
+        <tr><td>Labor receives part of output, and its share has fallen (Karabarbounis and Neiman 2014)</td><td>Labor receives all output.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><a href="https://github.com/ericsilver/fow/blob/main/docs/ELASTICITY.md">ELASTICITY.md</a> lists the fifteen facts and seven open problems, each with a test of progress: an across-industry elasticity that holds in both periods; income effects, added only if a 2005&ndash;2024 backcast needs them; an elasticity that falls as a market matures, without a cap on market size; a switching cost estimated from occupational transitions in place of the fixed 5.5% preference for one&rsquo;s own occupation; occupation-level demand that passes a split-half test; a price for AI and robot services; and a backcast of a past technology.</p>
+
+    <h2 id="modules">Modules the model needs but does not contain</h2>
+    <p>Each of these would change a reported result. <a href="https://github.com/ericsilver/fow/blob/main/docs/MODULES_PROPOSED.md">MODULES_PROPOSED.md</a> gives for each the interface, the literature to start from, the simplest version worth building and the metrics that would show it helps.</p>
+    <ul>
+      <li><b>Capital ownership.</b> The model pays all added output to workers, so every real pay gain it reports is an upper bound.</li>
+      <li><b>Job formation and new work.</b> Tasks are removed and never added, so the most exposed occupations can only fall relative to others.</li>
+      <li><b>Labor force participation.</b> Every worker stays at work whatever the pay.</li>
+      <li><b>Public demand.</b> Police, teachers and other public occupations are priced like consumer goods, so their pay and headcount follow productivity instead of budgets.</li>
+      <li><b>Geography.</b> One national market per occupation, so local concentrations of exposure cannot produce local losses.</li>
+      <li><b>Also welcome:</b> demand that shifts with income, skill formation and retraining, and earnings lost at displacement.</li>
+    </ul>
+
+    <h2 id="metrics">Nineteen outcome metrics let each change to the model be tested against public data</h2>
+    <p>Each metric was chosen because model variants predict different values for it. Eight can be tested now, by backcast or against data from 2022 on; eleven need a forecast committed to the repository, with its date, scenario and model version, before the data arrive. Observed series move for every reason at once, so each score is a contrast: across occupations, or against a trend registered with the forecast. <a href="https://github.com/ericsilver/fow/blob/main/docs/OUTCOME_METRICS.md">OUTCOME_METRICS.md</a> gives the definitions, current model values and scoring rules.</p>
+    <div class="tablewrap contrib">
+    <table>
+      <thead><tr><th>Metric</th><th>Public series</th><th>Tested</th></tr></thead>
+      <tbody>
+        <tr><td>M01 Employment change by occupation against exposure</td><td>BLS Occupational Employment and Wage Statistics</td><td>Now</td></tr>
+        <tr><td>M02 Wage change by occupation against exposure</td><td>Same</td><td>Now</td></tr>
+        <tr><td>M03 Employment response relative to wage response</td><td>From M01 and M02</td><td>Now</td></tr>
+        <tr><td>M04 Industry output and prices against productivity</td><td>BEA GDP by industry; BEA&ndash;BLS production account</td><td>Now</td></tr>
+        <tr><td>M05 Service occupations&rsquo; share of employment</td><td>Occupational Employment and Wage Statistics by major group</td><td>Now and forecast</td></tr>
+        <tr><td>M06 Workers leaving exposed occupations</td><td>Current Population Survey; BLS occupational separations</td><td>Now</td></tr>
+        <tr><td>M07 Young workers entering exposed occupations</td><td>Current Population Survey microdata</td><td>Now</td></tr>
+        <tr><td>M08 Job loss and earnings after displacement</td><td>CPS Displaced Worker Supplement</td><td>Now</td></tr>
+        <tr><td>M09 Work time saved by generative AI</td><td>Real-Time Population Survey (FRED RPSGENAITSALL)</td><td>Forecast</td></tr>
+        <tr><td>M10 Which occupations use AI</td><td>Anthropic Economic Index</td><td>Forecast</td></tr>
+        <tr><td>M11 Robot adoption</td><td>IFR World Robotics; Census robotics spending</td><td>Forecast</td></tr>
+        <tr><td>M12 Continuing workers with lower real pay</td><td>PSID, SIPP, matched CPS</td><td>Forecast</td></tr>
+        <tr><td>M13 Workers falling 5 or more points in the pay distribution</td><td>PSID, SIPP; occupational wage ranks</td><td>Forecast</td></tr>
+        <tr><td>M14 90/10 pay ratio</td><td>CPS usual weekly earnings deciles</td><td>Forecast</td></tr>
+        <tr><td>M15 College pay premium</td><td>CPS usual weekly earnings by education</td><td>Forecast</td></tr>
+        <tr><td>M16 Participation by education and age</td><td>CPS labor force participation series</td><td>Forecast</td></tr>
+        <tr><td>M17 Labor share of output</td><td>BLS labor share; BEA compensation share of income</td><td>Forecast</td></tr>
+        <tr><td>M18 Output per hour</td><td>BLS nonfarm business output per hour</td><td>Forecast</td></tr>
+        <tr><td>M19 Public employment and pay</td><td>BLS government employment; Census public employment survey</td><td>Forecast</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h2 id="tools">The scenario tools show the same model by scenario, occupation and worker</h2>
+    <p>The <a href="/future-of-work/">summary of results</a> runs the model under the Anthropic Institute&rsquo;s economic scenarios. The <a href="/future-of-work/scenarios/">scenarios page</a> shows the effects of each scenario for the economy, one occupation or one type of worker, and the <a href="/workforce-explorer/">workforce explorer</a> shows the synthetic workforce itself.</p>
+
+    <p class="ack" id="acknowledgments"><b>Acknowledgments.</b> This simulation continues work I began at Carnegie Mellon with Seth Goldstein and Mark Kamlet. Mark&rsquo;s contribution was invaluable in arriving at a utility function that lets jobs be introduced and removed over time. Seth&rsquo;s insight into, and familiarity with, O*NET&rsquo;s rated requirements made those ratings interpretable and added structure to the simulated job market. Neither has reviewed these pages; the results and any errors are mine.</p>
+    <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a>: the synthetic workforce generator and the model are my own work, built with heavy use of AI. Anthropic&rsquo;s Claude wrote and ran the code to my direction, rated which physical tasks robots and driverless vehicles could do, drafted and revised the prose, contributed framings in dialogue, and built the page. What each of those words means is at <a href="/ai/">aporia.institute/ai</a>.</p>
+
+    <h2 id="sources">Sources</h2>
+    <ul class="sources">
+      <li>Acemoglu, Daron, and Pascual Restrepo. 2019. &ldquo;Automation and New Tasks: How Technology Displaces and Reinstates Labor.&rdquo; <i>Journal of Economic Perspectives</i> 33 (2): 3&ndash;30. <a href="https://doi.org/10.1257/jep.33.2.3">doi:10.1257/jep.33.2.3</a></li>
+      <li>Anthropic. 2026. Anthropic Economic Index data: observed exposure and robot exposure. <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">huggingface.co/datasets/Anthropic/EconomicIndex</a></li>
+      <li>Autor, David, David Dorn, and Gordon Hanson. 2019. &ldquo;When Work Disappears: Manufacturing Decline and the Falling Marriage Market Value of Young Men.&rdquo; <i>American Economic Review: Insights</i> 1 (2): 161&ndash;178. <a href="https://doi.org/10.1257/aeri.20180010">doi:10.1257/aeri.20180010</a></li>
+      <li>Bessen, James. 2019. &ldquo;Automation and Jobs: When Technology Boosts Employment.&rdquo; <i>Economic Policy</i> 34 (100): 589&ndash;626. <a href="https://doi.org/10.1093/epolic/eiaa001">doi:10.1093/epolic/eiaa001</a></li>
+      <li>Comin, Diego, Danial Lashkari, and Mart&iacute; Mestieri. 2021. &ldquo;Structural Change With Long-Run Income and Price Effects.&rdquo; <i>Econometrica</i> 89 (1): 311&ndash;374. <a href="https://doi.org/10.3982/ECTA16317">doi:10.3982/ECTA16317</a></li>
+      <li>Davis, Steven J., and Till von Wachter. 2011. &ldquo;Recessions and the Costs of Job Loss.&rdquo; <i>Brookings Papers on Economic Activity</i> 2011 (2): 1&ndash;72. <a href="https://doi.org/10.1353/eca.2011.0016">doi:10.1353/eca.2011.0016</a></li>
+      <li>Durkheim, &Eacute;mile. 1897. <i>Le suicide: &eacute;tude de sociologie</i>. Paris: F&eacute;lix Alcan. Book II, chapter 5.</li>
+      <li>Eloundou, Tyna, Sam Manning, Pamela Mishkin, and Daniel Rock. 2024. &ldquo;GPTs Are GPTs: Labor Market Impact Potential of LLMs.&rdquo; <i>Science</i> 384 (6702): 1306&ndash;1308. <a href="https://doi.org/10.1126/science.adj0998">doi:10.1126/science.adj0998</a></li>
+      <li>Gidron, Noam, and Peter A. Hall. 2017. &ldquo;The Politics of Social Status: Economic and Cultural Roots of the Populist Right.&rdquo; <i>British Journal of Sociology</i> 68 (S1): S57&ndash;S84. <a href="https://doi.org/10.1111/1468-4446.12319">doi:10.1111/1468-4446.12319</a></li>
+      <li>Jacobson, Louis S., Robert J. LaLonde, and Daniel G. Sullivan. 1993. &ldquo;Earnings Losses of Displaced Workers.&rdquo; <i>American Economic Review</i> 83 (4): 685&ndash;709.</li>
+      <li>Karabarbounis, Loukas, and Brent Neiman. 2014. &ldquo;The Global Decline of the Labor Share.&rdquo; <i>Quarterly Journal of Economics</i> 129 (1): 61&ndash;103. <a href="https://doi.org/10.1093/qje/qjt032">doi:10.1093/qje/qjt032</a></li>
+      <li>Kogan, Leonid, Dimitris Papanikolaou, Lawrence D. W. Schmidt, and Bryan Seegmiller. 2023. &ldquo;Technology and Labor Displacement: Evidence from Linking Patents with Worker-Level Data.&rdquo; NBER Working Paper 31846. <a href="https://doi.org/10.3386/w31846">doi:10.3386/w31846</a></li>
+      <li>Korinek, Anton, Charles I. Jones, Szymon Sacher, Tess Cotter, and Peter McCrory. 2026. &ldquo;Economic Scenarios for Transformative AI.&rdquo; The Anthropic Institute Working Paper 2026-02.</li>
+      <li>Merton, Robert K. 1938. &ldquo;Social Structure and Anomie.&rdquo; <i>American Sociological Review</i> 3 (5): 672&ndash;682. <a href="https://doi.org/10.2307/2084686">doi:10.2307/2084686</a></li>
+      <li>Venkataramani, Atheendar S., Elizabeth F. Bair, Rourke L. O&rsquo;Brien, and Alexander C. Tsai. 2020. &ldquo;Association Between Automotive Assembly Plant Closures and Opioid Overdose Mortality in the United States.&rdquo; <i>JAMA Internal Medicine</i> 180 (2): 254&ndash;262. <a href="https://doi.org/10.1001/jamainternmed.2019.5686">doi:10.1001/jamainternmed.2019.5686</a></li>
+    </ul>
+    </article>
+  </div>
+</main>
+
+<footer class="close band--ink">
+  <div class="container grid-12">
+    <div class="signoff">
+      <svg class="signoff__mark" viewBox="0 -2.5 28 29" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><svg width="21" height="23" viewBox="0 0 21 23"><path d="M1.6 24 10.5 4 19.4 24"/><path d="M5.2 16h4M11.8 16h4"/><g opacity=".24"><path d="M10.5 13.7V24" stroke-width="2.2"/><circle cx="10.5" cy="11.1" r="1.2" fill="currentColor" stroke="none"/></g></svg><path d="M25.5 -1.5v27"/></svg>
+      <p class="signoff__name">Eric Silver</p>
+      <p class="signoff__legal">&copy; <span id="y">2026</span> Eric Silver, aporia.institute. <a href="/ai/index.html">AI assisted</a></p>
+    </div>
+  </div>
+</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
+</body>
+</html>
