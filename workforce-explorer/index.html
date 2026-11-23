@@ -75,7 +75,7 @@
     aporia.institute
   </a>
   <ul class="strip__links">
-    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#papers" aria-current="true">Papers</a></li>
     <li><a href="/#essays">Essays</a></li>
     <li><a href="/#books">Books</a></li>
     <li><a href="/#portfolio">Portfolio</a></li>
@@ -85,7 +85,7 @@
   <details class="strip__menu">
     <summary><span class="when-closed">Menu</span><span class="when-open">Close</span></summary>
     <ul>
-    <li><a href="/#papers">Papers</a></li>
+    <li><a href="/#papers" aria-current="true">Papers</a></li>
     <li><a href="/#essays">Essays</a></li>
     <li><a href="/#books">Books</a></li>
     <li><a href="/#portfolio">Portfolio</a></li>
@@ -96,13 +96,14 @@
 </nav>
 
 <header class="app-head">
-  <h1>Synthetic workforce explorer</h1>
-  <p class="sub">The simulated workers behind the future-of-work scenarios: 136 million workers built from public data, each with schooling, a job history, and the skills those jobs taught. Choose an experience or a job to see who shares it, what they hold, and what else they could do.</p>
-  <nav class="pages fow-pages" aria-label="Future of work pages">
-    <a href="/future-of-work/">Summary</a>
+  <nav class="subnav" aria-label="Future of work pages">
+    <span class="subnav__label">Future of work</span>
+    <a href="/future-of-work/">Overview</a>
     <a href="/future-of-work/scenarios/">Scenarios</a>
     <a href="/workforce-explorer/" aria-current="page">Workforce explorer</a>
   </nav>
+  <h1>Synthetic workforce explorer</h1>
+  <p class="sub">The simulated workers behind the future-of-work scenarios: 136 million workers built from public data, each with schooling, a job history, and the skills those jobs taught. Choose an experience or a job to see who shares it, what they hold, and what else they could do.</p>
 </header>
 <nav id="nav">
   <button data-tab="exp" class="on">Worker types</button>

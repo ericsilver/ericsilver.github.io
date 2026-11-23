@@ -59,3 +59,11 @@
   .cards { grid-template-columns: minmax(0, 1fr); }
   .fow .card { padding: var(--space-sm); }
 }
+
+/* A narrow side column: the byline and the page's own contents; the section's pages are in the row above the title */
+.fow .essay-side { grid-column: 1 / span 2; }
+.fow .sheet { grid-column: 3 / -1; }
+.fow .essay-side .links { font-size: var(--text-sm); }
+.fow .essay-side .links a { padding-block: var(--space-3xs); }
+@media (max-width: 90rem) { .fow .essay-side { grid-column: 1 / span 3; } .fow .sheet { grid-column: 4 / -1; } }
+@media (max-width: 60rem) { .fow .essay-side, .fow .sheet { grid-column: 1 / -1; } }

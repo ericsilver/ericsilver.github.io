@@ -320,3 +320,10 @@ details[open] .when-closed { display: none; }
   .leadlag__svg--wide { display: none; }
   .leadlag__svg--narrow { display: block; }
 }
+
+/* Section pages under one entry of the strip: the entry is marked, and the section's own pages sit in a row above the title */
+.strip__links a[aria-current], .strip__menu a[aria-current] { color: var(--color-ink); text-decoration-line: underline; text-decoration-thickness: 2px; text-underline-offset: 0.4em; }
+.subnav { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--space-md); margin: 0 0 var(--space-sm); font-size: var(--text-sm); font-weight: 500; }
+.subnav__label { padding-right: var(--space-md); border-right: var(--rule-hair) solid var(--color-rule-2); color: var(--color-muted); }
+.subnav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-ink-2); }
+.subnav a[aria-current="page"] { color: var(--color-ink); font-family: var(--font-display); font-weight: 600; text-decoration: none; }
