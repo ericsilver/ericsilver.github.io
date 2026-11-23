@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>An occupation-level simulation of AI, robots and the labor market &mdash; Eric Silver</title>
-<meta name="description" content="A simulated workforce of 136 million in 551 occupations, run under the scenario settings of the Anthropic Institute's economic scenarios, with effects by career stage, schooling and occupation.">
+<meta name="description" content="A simulated U.S. workforce of individual workers in 551 occupations, run under the Anthropic Institute&rsquo;s economic scenarios and automation ladders for AI, robots and driverless vehicles: effects on pay, occupation and standing by education and work history, with open code, working papers and outcome metrics.">
 <link rel="canonical" href="https://aporia.institute/future-of-work/">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -50,20 +50,21 @@
     <a href="/future-of-work/" aria-current="page">Overview</a>
     <a href="/future-of-work/scenarios/">Scenarios</a>
     <a href="/workforce-explorer/">Workforce explorer</a>
+    <a href="/future-of-work/#papers">Papers and code</a>
   </nav>
     <h1>An occupation-level simulation of AI, robots and the labor market</h1>
   </div>
 </header>
-
 <main id="main">
   <div class="container essay-body">
     <aside class="essay-side">
-      <p class="essay-meta"><span>Eric Silver</span><span>November 18, 2026</span><span>Working paper</span></p>
-      <ul class="links fow-toc" aria-label="On this page"><li><a href="#why">Why it matters</a></li><li><a href="#relative-pay">Relative pay</a></li><li><a href="#sources">Sources</a></li></ul>
+      <p class="essay-meta"><span>Eric Silver</span><span>November 23, 2026</span><span>Working paper</span></p>
+      <ul class="links fow-toc" aria-label="On this page"><li><a href="#why">Why it matters</a></li><li><a href="#model">Model</a></li><li><a href="#scenarios">2030 scenarios</a></li><li><a href="#relative-pay">Relative pay</a></li><li><a href="#ladders">Full automation</a></li><li><a href="#graduates">New graduates</a></li><li><a href="#drivers">Drivers</a></li><li><a href="#anomie">Anomie</a></li><li><a href="#papers">Papers and code</a></li><li><a href="#elasticity">Help wanted</a></li><li><a href="#sources">Sources</a></li></ul>
     </aside>
     <article class="sheet">
 
-    <p>In a scenario where AI takes 7.7% of work time by 2030, output is 10% higher than without AI, real pay rises 9.7% in cognitive occupations and 12.1% in all others, and 0.3% of workers change occupation. The scenario is the &ldquo;substantial change&rdquo; case of the Anthropic Institute&rsquo;s <a href="https://www.anthropic.com/institute/econ-scenarios">Economic Scenarios for Transformative AI</a>, run through a model with 551 occupations and a simulated workforce that stands for 136 million workers. The numbers on this page are scenarios, not forecasts.</p>
+    <p class="lede">This open simulation extends the Anthropic Institute&rsquo;s <a href="https://www.anthropic.com/institute/econ-scenarios">economic scenarios for transformative AI</a> from two groups of workers to individual workers, and adds robots and driverless vehicles. Every simulated worker carries an education and a work history, so the model can forecast, under each scenario, what automation means for a person from where they stand: which occupations stay open to them, what they earn and where they rank among other workers. Results can be read <a href="/future-of-work/scenarios/">by type of worker</a>, and the <a href="/workforce-explorer/">workforce explorer</a> shows the simulated workers themselves.</p>
+    <p>Simulating the automation of tasks by AI raises the social value of nearly every worker&rsquo;s labor: AI adds a great deal of output, and the tasks it performs are concentrated in knowledge work. In the simulation workers are paid the marginal value of their work, so nearly all are materially better off, even as many fall behind others and the occupations AI cannot do gain on those it can. The model&rsquo;s concern is relative standing. New workers who paid for a university education in the skills AI performs lose the most ground, and a degree that buys less standing than it promised can be felt as a betrayal. Robots and driverless vehicles act differently: they lower the standing of professional drivers and the pay of workers who share their labor pool. The code is open, and I am asking for help improving the model&rsquo;s modules, adding new ones and testing them against outcomes.</p>
 
     <section class="start">
       <h2 id="why">Why this work matters</h2>
@@ -105,18 +106,23 @@
       </div>
     </section>
 
+    <h2 id="model">The model follows individual workers where the Institute&rsquo;s scenarios follow two groups</h2>
 
-    <h2>The model follows simulated workers, so effects can be read for a career stage, a degree or an occupation</h2>
+    <p>The Anthropic Institute&rsquo;s scenario model (Korinek et al. 2026) divides workers into cognitive occupations and all others, pays one wage within each group and leaves out robots; among the open criticisms the Institute lists is that the model does not follow individual workers. The simulation here does.</p>
 
     <p>The workforce is 591,529 simulated careers, weighted to stand for 136 million workers in 551 occupations. A career starts at one of 304 combinations of schooling level and degree field from the American Community Survey, enters a first job typical of that schooling, and moves along the occupation-to-occupation transitions observed in r&eacute;sum&eacute; data. A worker&rsquo;s skills are the requirements of the jobs they have held, and a worker can enter an occupation when they hold all of its important O*NET requirements and meet its license and experience rules.</p>
 
     <p>Automation removes tasks from occupations and raises output per worker by the time saved. Wages, prices and workers&rsquo; occupations then adjust until all 551 labor markets clear. The solution is exact and takes a few minutes on a desktop computer, so each result below is one run that can be tabulated for any group of simulated workers.</p>
 
+    <p>Because each result belongs to a worker record, each can be read for one kind of worker. The <a href="/future-of-work/scenarios/">scenarios page</a> shows the effects of each scenario for workers grouped by schooling, career stage, field of degree or work history, and the <a href="/workforce-explorer/">workforce explorer</a> shows who shares an experience or a job, what they hold and what else they could do.</p>
+
     <h2>Automation indexes are inputs that can be swapped and combined</h2>
 
     <p>The model needs one thing from an automation index: which tasks lose time, in which occupations. The runs here take today&rsquo;s pattern from Anthropic&rsquo;s observed exposure (the share of an occupation&rsquo;s task time on tasks with significant work use of Claude), the ceiling from the task labels of Eloundou and coauthors, and physical tasks from Anthropic&rsquo;s robot exposure ratings. Two indexes are combined by removing the tasks that either one takes. The <a href="/future-of-work/scenarios/">scenarios page</a> also runs the Eloundou labels alone and Schaal&rsquo;s (2025) index.</p>
 
-    <h2>The scenarios use the five settings of Korinek, Jones, Sacher, Cotter and McCrory</h2>
+    <p>The automation ladders and the runs to 2046 below use ratings by Claude of which physical tasks robots and driverless vehicles could do by 2031, 2036 and 2046.</p>
+
+    <h2 id="scenarios">The scenarios use the five settings of Korinek, Jones, Sacher, Cotter and McCrory</h2>
 
     <p>Their report defines a scenario by the share of work AI can affect, the share of those task instances where it is used, the gain per instance, the share of use that automates rather than assists, and the number of new tasks created per task automated. Here each occupation&rsquo;s affected share starts at its observed exposure, 13% of work time on average, and moves toward its Eloundou exposure, 45% on average, until the economy-wide mean equals the scenario&rsquo;s value. Automated time removes whole tasks, net of the share replaced by new tasks, and a removed task can take a job requirement with it. Assisted time is saved on tasks that stay in the job.</p>
 
@@ -156,39 +162,39 @@
     <p>Employment moves less here because few workers have a better-paid occupation open to them and the model has no unemployment, so the adjustment falls on pay first. Compare an occupation at the 75th percentile of time removed (12.4%) with one at the 25th (0.7%). For today&rsquo;s workforce, pay is 3.5% lower and employment 0.3% lower in the more exposed occupation. By 2030, after 3.5 years of retirements and new entrants, the gaps are 2.6% and 1.0%. Once every job has been re-chosen they are 1.1% and 2.1%.</p>
 
     <figure>
-      <a href="img/gaps-by-horizon.svg"><img src="img/gaps-by-horizon.svg" alt="Line chart: the pay gap between more and less exposed occupations shrinks from 3.5% to 2.6% to 1.1% as the workforce turns over, while the employment gap grows from 0.3% to 1.0% to 2.1%."></a>
+      <a href="/future-of-work/img/gaps-by-horizon.svg"><img src="/future-of-work/img/gaps-by-horizon.svg" alt="Line chart: the pay gap between more and less exposed occupations shrinks from 3.5% to 2.6% to 1.1% as the workforce turns over, while the employment gap grows from 0.3% to 1.0% to 2.1%."></a>
       <figcaption>Difference between an occupation at the 75th percentile of time removed and one at the 25th, substantial scenario. Today&rsquo;s workforce: no one has been replaced. 2030: workers who left over 3.5 years are replaced by entrants who choose occupations at the new wages. Every job re-chosen: all workers have been replaced.</figcaption>
     </figure>
 
     <div class="tablewrap">
     <table class="wide">
       <caption>Results by scenario, 2030</caption>
-      <thead><tr><th>Scenario</th><th>Time removed</th><th>Output</th><th>Wage, cognitive</th><th>Wage, other</th><th>Median real pay</th><th>Lower real pay</th><th>Change occu&shy;pation</th></tr></thead>
+      <thead><tr><th>Scenario</th><th>Time removed</th><th>Output</th><th>Wage, cognitive</th><th>Wage, other</th><th>Median real pay</th><th>Materially worse off</th><th>Worse off if 15% of the gain reaches workers</th><th>Job loses half its tasks or more</th><th>Change occu&shy;pation</th><th>Gini of pay</th></tr></thead>
       <tbody>
-        <tr><td>Measured use, today</td><td>1.9%</td><td>+2.1%</td><td>+1.8%</td><td>+2.7%</td><td>+2.3%</td><td>1.9%</td><td>0.1%</td></tr>
-        <tr><td>Modest</td><td>1.0%</td><td>+1.1%</td><td>+1.1%</td><td>+1.4%</td><td>+1.4%</td><td>0.7%</td><td>0.0%</td></tr>
-        <tr><td>Substantial</td><td>7.7%</td><td>+10.1%</td><td>+9.7%</td><td>+12.1%</td><td>+10.7%</td><td>0.3%</td><td>0.3%</td></tr>
-        <tr><td>Extreme</td><td>26.6%</td><td>+48.1%</td><td>+46.0%</td><td>+58.3%</td><td>+53.6%</td><td>0.0%</td><td>0.8%</td></tr>
-        <tr><td>Robots only</td><td>3.5%</td><td>+2.4%</td><td>+2.4%</td><td>+1.3%</td><td>+2.6%</td><td>7.2%</td><td>0.2%</td></tr>
-        <tr><td>Substantial with robots</td><td>11.1%</td><td>+13.0%</td><td>+12.5%</td><td>+13.9%</td><td>+13.8%</td><td>0.3%</td><td>0.4%</td></tr>
+        <tr><td>Measured use, today</td><td>1.9%</td><td>+2.1%</td><td>+1.8%</td><td>+2.7%</td><td>+2.3%</td><td>1.9%</td><td>26.0%</td><td>0.0%</td><td>0.1%</td><td>0.305 to 0.304</td></tr>
+        <tr><td>Modest</td><td>1.0%</td><td>+1.1%</td><td>+1.1%</td><td>+1.4%</td><td>+1.4%</td><td>0.7%</td><td>18.6%</td><td>0.0%</td><td>0.0%</td><td>0.304 to 0.303</td></tr>
+        <tr><td>Substantial</td><td>7.7%</td><td>+10.1%</td><td>+9.7%</td><td>+12.1%</td><td>+10.7%</td><td>0.3%</td><td>9.6%</td><td>0.0%</td><td>0.3%</td><td>0.304 to 0.299</td></tr>
+        <tr><td>Extreme</td><td>26.6%</td><td>+48.1%</td><td>+46.0%</td><td>+58.3%</td><td>+53.6%</td><td>0.0%</td><td>3.5%</td><td>5.0%</td><td>0.8%</td><td>0.304 to 0.286</td></tr>
+        <tr><td>Robots only</td><td>3.5%</td><td>+2.4%</td><td>+2.4%</td><td>+1.3%</td><td>+2.6%</td><td>7.2%</td><td>41.2%</td><td>0.0%</td><td>0.2%</td><td>0.304 to 0.307</td></tr>
+        <tr><td>Substantial with robots</td><td>11.1%</td><td>+13.0%</td><td>+12.5%</td><td>+13.9%</td><td>+13.8%</td><td>0.3%</td><td>5.5%</td><td>0.0%</td><td>0.4%</td><td>0.304 to 0.303</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="tnote">Lower real pay and change occupation are shares of workers. The measured-use row is solved for today&rsquo;s workforce; the others are 2030. The report&rsquo;s modest and extreme scenarios put the cognitive wage at +0.4% and &minus;11.5% and the other wage at +1.1% and +33.6%. Here the difference between the two groups is 0.3 points in the modest scenario and 12 points in the extreme one.</p>
+    <p class="tnote">Shares are of workers. Materially worse off: lower real pay, with all added output paid to workers; the next column pays workers 15% of it, the share implied by the report&rsquo;s substantial scenario. A job loses half its tasks or more when automation removes at least half of the work time of the worker&rsquo;s occupation. The Gini index is of pay across workers, each paid their occupation&rsquo;s wage, so differences within an occupation are not counted and the level is below survey measures of earnings inequality. Source for the last five columns: <code>scripts/worker_groups.py</code> in the repository. The measured-use row is solved for today&rsquo;s workforce; the others are 2030. The report&rsquo;s modest and extreme scenarios put the cognitive wage at +0.4% and &minus;11.5% and the other wage at +1.1% and +33.6%. Here the difference between the two groups is 0.3 points in the modest scenario and 12 points in the extreme one.</p>
 
     <h2>Gains differ little by career stage and schooling, and more by occupation</h2>
 
     <p>In the substantial scenario, real pay in 2030 is 11.1% higher for early-career workers, 10.8% for mid-career and 10.6% for late-career. By schooling it runs from 11.3% for workers without a high school diploma to 9.9% for those with graduate degrees. Across the 28 bachelor&rsquo;s fields that each hold at least 0.2% of workers it runs from 8.3% (computer science) to 10.7%. Within each of these groups the range from the 10th to the 90th percentile is typically about four points, wider than any difference between groups, because a worker&rsquo;s occupation carries most of the effect.</p>
 
     <figure>
-      <a href="img/pay-by-worker-type.svg"><img src="img/pay-by-worker-type.svg" alt="Dot plot of real pay change by career stage, schooling and bachelor's field. Means lie between 8.3% and 11.3%; each group's 10th to 90th percentile range spans about four points."></a>
+      <a href="/future-of-work/img/pay-by-worker-type.svg"><img src="/future-of-work/img/pay-by-worker-type.svg" alt="Dot plot of real pay change by career stage, schooling and bachelor's field. Means lie between 8.3% and 11.3%; each group's 10th to 90th percentile range spans about four points."></a>
       <figcaption>Real pay change by 2030 in the substantial scenario, for workers still in the workforce: mean (dot) and 10th to 90th percentile (line). The bachelor&rsquo;s fields are the four lowest and four highest of the 28 that each hold at least 0.2% of workers.</figcaption>
     </figure>
 
     <p>Across occupations, weighted by employment, the real wage change is 8.2% at the 5th percentile, 11.0% at the median and 13.0% at the 95th. Cognitive occupations lose 11.4% of their work time and all others 2.5%. The 0.3% of workers who end with lower real pay all start in one occupation, where a dropped requirement opens entry and the wage falls.</p>
 
     <figure>
-      <a href="img/occupation-wage-distribution.svg"><img src="img/occupation-wage-distribution.svg" alt="Histogram of occupation real wage changes weighted by employment. Cognitive occupations cluster between 8% and 11%; other occupations between 11% and 13.5%."></a>
+      <a href="/future-of-work/img/occupation-wage-distribution.svg"><img src="/future-of-work/img/occupation-wage-distribution.svg" alt="Histogram of occupation real wage changes weighted by employment. Cognitive occupations cluster between 8% and 11%; other occupations between 11% and 13.5%."></a>
       <figcaption>Occupations by change in real wage, weighted by employment, substantial scenario, 2030. Cognitive occupations are the twelve major groups the report treats as exposed to AI.</figcaption>
     </figure>
 
@@ -216,21 +222,82 @@
     <p>The robot run automates 40% of the time on tasks that Anthropic&rsquo;s ratings find a robot could do in an existing workplace. That is 3.5% of all work time: 5.7% outside the cognitive occupations and 1.8% inside. Alone, it raises output 2.4%, and 7.2% of workers end with lower real pay, because the overall gain is small and wages in their occupations fall relative to the rest.</p>
 
     <figure>
-      <a href="img/time-removed-by-group.svg"><img src="img/time-removed-by-group.svg" alt="Stacked bar chart of work time removed by major occupation group. AI removes the most in computer, office, legal and business occupations; robots remove the most in transportation, farming, building and grounds, and sales."></a>
+      <a href="/future-of-work/img/time-removed-by-group.svg"><img src="/future-of-work/img/time-removed-by-group.svg" alt="Stacked bar chart of work time removed by major occupation group. AI removes the most in computer, office, legal and business occupations; robots remove the most in transportation, farming, building and grounds, and sales."></a>
       <figcaption>Share of work time removed by major occupation group: the substantial AI scenario, and robots at the same 40% diffusion share.</figcaption>
     </figure>
 
     <p>With the substantial AI scenario in the same run, 11.1% of work time is removed and output rises 13.0%, against 12.8% from adding the two separate runs. Occupation wage changes in the joint run correlate 0.985 with the sum of the separate runs. The wage difference between cognitive and other occupations falls from 2.4 points to 1.4.</p>
 
     <figure>
-      <a href="img/ai-plus-robots.svg"><img src="img/ai-plus-robots.svg" alt="Scatter plot of occupation wage changes: the joint AI and robot run against the sum of the two separate runs. Points lie along the line of equality."></a>
+      <a href="/future-of-work/img/ai-plus-robots.svg"><img src="/future-of-work/img/ai-plus-robots.svg" alt="Scatter plot of occupation wage changes: the joint AI and robot run against the sum of the two separate runs. Points lie along the line of equality."></a>
       <figcaption>Each dot is an occupation, sized by employment. Horizontal: the real wage change from the AI run and the robot run, added. Vertical: the change when both are in one run. One occupation lies below the range shown.</figcaption>
     </figure>
 
-    <h2>The results depend on the demand elasticity and on who receives the gain</h2>
+    <h2 id="ladders">At full exposure, AI raises nearly everyone&rsquo;s real pay and lowers knowledge workers&rsquo; standing, while the added output reaches workers</h2>
+    <p>The table raises automation in steps until every task an index marks as feasible is done by machine, and applies each step to today&rsquo;s workforce before anyone retires or joins. Nearly every worker gains in real terms; many lose ground to others.</p>
+    <div class="tablewrap">
+    <table class="wide">
+      <caption>Today&rsquo;s workers at the top of each automation ladder</caption>
+      <thead><tr><th></th><th>AI</th><th>Robots and driverless vehicles</th><th>All three</th></tr></thead>
+      <tbody>
+        <tr><td>Share of all work time removed</td><td>45.8%</td><td>34.5%</td><td>76.3%</td></tr>
+        <tr><td>Output</td><td>+149%</td><td>+42%</td><td>+377%</td></tr>
+        <tr><td>Materially worse off, highest share at any step</td><td>0.29%</td><td>19.3%</td><td>0.31%</td></tr>
+        <tr><td>Materially worse off at the top</td><td>0%</td><td>5.8%</td><td>0%</td></tr>
+        <tr><td>Real pay 5% or more lower at the top</td><td>0%</td><td>2.0%</td><td>0%</td></tr>
+        <tr><td>Job loses half its tasks or more</td><td>49.7%</td><td>32.7%</td><td>89.2%</td></tr>
+        <tr><td>Place in the pay distribution falls 5 or more points</td><td>28.9%</td><td>10.9%</td><td>20.8%</td></tr>
+        <tr><td>90/10 pay ratio (3.97 today)</td><td>2.93</td><td>5.66</td><td>3.90</td></tr>
+        <tr><td>Gini of pay (0.305 today)</td><td>0.250</td><td>0.371</td><td>0.329</td></tr>
+        <tr><td>College pay premium (66.5% today)</td><td>48.0%</td><td>89.3%</td><td>75.3%</td></tr>
+        <tr><td>Changed occupation</td><td>3.65%</td><td>4.37%</td><td>9.24%</td></tr>
+        <tr><td>Worse off if 15% of the added output reaches workers</td><td>9.2%</td><td>45.6%</td><td>1.2%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tnote">Year 0: today&rsquo;s workforce, before retirements and new entrants. AI removes the tasks in Eloundou et al.&rsquo;s exposure ratings; robots and driverless vehicles remove the tasks Claude rates feasible by 2046; all three applies AI first and robots to the tasks left. No job loses more than 95% of its work time. All added output is paid to workers except in the last row, where workers receive 15% of it, the share implied by the substantial scenario of Korinek et al. (2026). Sources: <a href="/future-of-work/papers/exposure-is-not-loss.pdf">Exposure Is Not Loss</a>, Tables 7 and 8; the last row from <code>exit_floors_pe.py</code> in the repository.</p>
+    <figure>
+      <a class="figure-open" href="/future-of-work/img/fig4_ladder.png"><img src="/future-of-work/img/fig4_ladder.png" alt="Four panels against the share of all work time removed: share of workers with lower real pay, the same share if half the added output reaches workers, share whose place in the pay distribution falls 5 or more points, and share who change occupation, for AI, robots and driverless vehicles, and all three." width="1152" height="928"></a>
+      <figcaption>Shares of today&rsquo;s workers with lower real pay (dashed: 5% or more lower), with lower real pay if half the added output reaches workers, whose place in the pay distribution falls 5 or more points, and who change occupation, each against the share of all work time removed. Source: Exposure Is Not Loss, Figure 4.</figcaption>
+    </figure>
+    <p>Read as a forecast of loss, an exposure score would have the most exposed workers losing pay. In the simulation, with AI at full exposure, the pay of the most exposed quarter of workers rises 112% while falling 15% against the average. Workers without a college degree make up 81% of those who rise 5 or more points in the pay distribution, most of them from transportation, production, construction, food service and building occupations.</p>
+    <p>Few workers change occupation even when most of their work is automated. At the top of the combined ladder, AI, robots and driverless vehicles take 95% of a taxi driver&rsquo;s work time; taxi employment falls 23% for today&rsquo;s workers and 18% once every job has been re-chosen, and the wage rises 343%. Two features of the model produce the result. Automated time costs nothing and the tasks left in a job carry its whole output, so each remaining driver handles twenty times the rides and is paid their value. And with demand elasticities near one, spending on an occupation&rsquo;s work changes little as its price falls, so its employment changes little. A change of occupation therefore understates how much work changes. The share of workers whose job loses half its tasks or more measures the change in the work itself: 89% at the top of the combined ladder and 5% in the extreme 2030 scenario. The same features keep the model from matching the fall in employment in exposed occupations that Kogan et al. (2023) find (see <a href="#elasticity">the elasticities</a>).</p>
+
+    <h2 id="graduates">New college graduates trained for the work AI performs lose the most ground</h2>
+    <p>A degree repays its cost through the pay premium it earns over a career. Under AI, the premium falls most for workers in their first eight years, the people who have most recently paid for school. Among early-career graduates at full AI exposure, 85% of those in office and administrative support, 83% in business and finance and 63% in computer and mathematical occupations fall 5 or more points in the pay distribution, against 5% in education and 2% among health care practitioners. Their real pay still rises: early-career graduates in computer and mathematical occupations, where AI removes 86% of work time, gain 96%, against 165% for the average worker.</p>
+    <div class="tablewrap">
+    <table class="wide">
+      <caption>College pay premium by career stage</caption>
+      <thead><tr><th></th><th>Today</th><th>AI, 22.9% of work time removed</th><th>AI, 45.8%</th><th>Robots and driverless vehicles, 34.5%</th><th>All three, 76.3%</th></tr></thead>
+      <tbody>
+        <tr><td>Early career (under 8 years)</td><td>91.5%</td><td>78.9%</td><td>59.0%</td><td>134.7%</td><td>96.9%</td></tr>
+        <tr><td>Mid career (8 to 22 years)</td><td>77.4%</td><td>68.7%</td><td>54.6%</td><td>106.0%</td><td>87.3%</td></tr>
+        <tr><td>Late career (over 22 years)</td><td>54.8%</td><td>49.9%</td><td>41.6%</td><td>71.0%</td><td>63.9%</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="tnote">Mean pay of today&rsquo;s workers with a bachelor&rsquo;s degree or more over that of high school graduates at the same career stage, at year 0, with all added output paid to workers. Source: <code>scripts/worker_groups.py</code> in the repository.</p>
+    <p>The premium falls only where AI outpaces robots. Robots and driverless vehicles raise it: with the Institute&rsquo;s substantial AI scenario and robots and driverless vehicles doing 40% of the work they could do by 2046, the early-career premium rises from 91.5% to 98.4%.</p>
+
+    <h2 id="drivers">Robots and driverless vehicles lower drivers&rsquo; standing and the pay of workers who share their labor pool</h2>
+    <p>At the top of the robot and driverless-vehicle ladder, the real pay of professional drivers (truck, bus, delivery and taxi drivers and industrial truck operators) rises 16.9%, half the 33.8% of other workers, and their place in the pay distribution falls 4.4 points on average. Industrial truck operators lose every task cell, so every entry requirement drops, entrants arrive and the wage falls 36%; 49% of them end with lower real pay and 90% change occupation. Drivers who leave driving take jobs open to workers without a degree: they are 55% of the net inflow to hand laborers and freight movers, whose wage falls 2.3% while the average worker&rsquo;s pay rises 33%. Of all workers with lower real pay, 91% have no college degree, and most began as laborers and freight movers, groundskeepers or cooks, occupations robots also reach. The 2.0% who lose 5% or more can enter 2.0 other occupations on average, against 12.0 for all workers.</p>
+    <p>The model understates driving. On its task cells, driverless vehicles could do 16% of heavy-truck drivers&rsquo; work time by 2046, against 67% on the task time shares in Anthropic&rsquo;s robot exposure data. With the substantial AI scenario and driverless vehicles at 40% of their 2046 reach, drivers&rsquo; pay rises 10.4%, against 10.9% for other workers. Correct driving shares would remove more of drivers&rsquo; work than the model does.</p>
+
+    <h2 id="absolute">Absolute losses need little of the gain to reach workers, a narrow shock, or few occupations to move to</h2>
+    <p>When all added output is paid to workers, a worker&rsquo;s real pay falls only if their pay falls behind the average by more than the average rises. Three conditions produce absolute losses in the model. First, little of the gain reaches workers: owners keep it, or the machines cost nearly as much as the labor they replace, which Acemoglu and Restrepo (2019) call so-so automation. In either case prices fall little while the work still leaves the job; if 15% of the added output reaches workers, 9.2% of workers have lower real pay at full AI exposure. Second, the shock is narrow: robots alone hit a few low-wage occupations hard and raise output by 42%, against 149% for AI. Third, automation removes every task that carries a job&rsquo;s requirement, the requirement drops and entrants flood in, as for industrial truck operators.</p>
+    <p>If workers left the labor force once their real pay fell 5% or more, 2.0% would leave at the top of the robot ladder and none under AI. With 15% of the gain reaching workers and a 10% threshold, 31% would leave under robots alone. These counts are first order: they do not let the departures raise the pay of those who stay.</p>
+
+    <h2 id="anomie">Rising pay with falling standing is a reason for concern</h2>
+    <p>Standing and expectations can matter apart from income. Anomie is a state in which the shared rules linking effort to reward stop holding. Durkheim (1897) found suicide rising in sudden prosperity and in financial crises, when people no longer knew which claims were legitimate. Merton (1938) traced deviance to a gap between cultural goals and the legitimate means of reaching them. For workers who paid for a degree to enter knowledge work, the degree is the legitimate means; at full AI exposure its early-career premium falls from 92% to 59% even as every graduate&rsquo;s real pay rises. Manufacturing job losses have been linked to less marriage and more premature mortality among young men (Autor, Dorn and Hanson 2019) and to more opioid overdose deaths (Venkataramani et al. 2020), and lower subjective social status to support for right populist parties (Gidron and Hall 2017).</p>
+    <p>The model measures pay and occupation but not yet social standing, broken expectations, or whether a worker keeps a known path from training into an occupation and upward. I am asking for help improving its modules; adding modules for labor force participation, capital ownership and job formation; and testing it against employment, mortality, marriage and self-reported status.</p>
+
+    <h2 id="assumptions">The results depend on a demand elasticity that automation itself changes, and on who receives the gain</h2>
+
+    <p>Early automation makes the workers who remain in a job more productive. While demand for their product is elastic, the falling price sells so much more of it that employment and pay in the job both rise. Once a job is wholly automated, its employment ends, and displaced workers earn less for years in the work they find next (Jacobson, LaLonde and Sullivan 1993; Davis and von Wachter 2011). Bessen (2019) traces the path between the two in three industries: employment rose for as long as demand grew faster than productivity, then fell. The elasticity of demand to productivity was 1.3 for cotton cloth in 1820 and 0.2 in 1950, 2.2 for steel in 1870 and &minus;1.2 in 1950, and 2.4 for automobiles in 1910 and 0.4 in 1951. A demand elasticity that falls as automation proceeds is a hallmark of automation.</p>
+    <p>The model holds its elasticities fixed. Among occupations within an industry it uses 0.8, within the published range of 0.70 to 0.90. Across industries it uses 0.66 (standard error 0.28), estimated from the BEA&ndash;BLS production account as the response of industries&rsquo; real output to their prices from 1997 to 2014, with each industry&rsquo;s own productivity change as the instrument. Both are below one, so every occupation behaves as a mature market does in Bessen&rsquo;s histories: its employment never rises with its own productivity, it falls slowly, and pay absorbs most of the change. Nor does the model reach the end of the path, where a job disappears: the automation ladders stop at 95% of any job&rsquo;s work time. The same method gives 1.60 for 2015&ndash;2024 and 1.52 for 1997&ndash;2014 without computers. An elasticity that falls as a market matures, without a cap on market size, is among the <a href="#elasticity">open problems</a>.</p>
 
     <ul class="plain">
-      <li><strong>Demand.</strong> The difference between exposed and other occupations depends on how much more of an industry&rsquo;s output is bought when its price falls. The runs use 0.66, estimated on 1997&ndash;2014. The same method on 2015&ndash;2024 gives 1.60. At that value the pay and employment gaps between more and less exposed occupations are zero, and wages rise 10.3% in cognitive occupations and 9.8% in others.</li>
+      <li><strong>Demand.</strong> At an across-industry elasticity of 1.60, the pay and employment gaps between more and less exposed occupations in the substantial scenario are zero, and wages rise 10.3% in cognitive occupations and 9.8% in others, against 9.7% and 12.1% at 0.66.</li>
       <li><strong>Who receives the gain.</strong> AI is free and there is no capital, so labor receives all of the added output. Pay levels are upper bounds.</li>
       <li><strong>No unemployment.</strong> Every labor market clears. Displacement appears as lower pay or a change of occupation.</li>
       <li><strong>A 2015 workforce.</strong> Employment and wages are from May 2015, and job requirements from O*NET 20.1.</li>
@@ -239,30 +306,104 @@
       <li><strong>Adoption.</strong> Observed exposure measures the use of one assistant. Diffusion and the automated share are scenario settings, applied to every occupation alike.</li>
     </ul>
 
-    <h2>The inputs are public, and better data would replace specific assumptions</h2>
+    <h2 id="papers">Working papers</h2>
+    <ul>
+      <li><a href="/future-of-work/papers/exposure-is-not-loss.pdf"><b>Exposure Is Not Loss: A Worker-Level Simulation of AI and Robot Automation</b></a> (November 2026, 23 pages). Patterns of automation and their outcomes: AI exposure predicts which workers fall behind others, not who loses real pay, while robots without AI lower real pay for 0.9% to 19% of workers, mostly those without a college degree. Section 2 sets out the synthetic workforce and the elasticities.</li>
+      <li><a href="/future-of-work/papers/task-clusters-in-onet.pdf"><b>Task Clusters in O*NET, 2005&ndash;2024: What Grew, What Shrank, and Where AI Exposure Points</b></a> (October 2026, 9 pages). Patterns of task change across two decades of O*NET task statements, and where the exposure labels point.</li>
+      <li><b>Elasticities.</b> Working paper in preparation. The estimates in use, 0.8 among occupations within industries and 0.66 across industries from the BEA&ndash;BLS production account for 1997&ndash;2014, are in Section 2 of Exposure Is Not Loss and, with the stylized facts they must match, in <a href="https://github.com/ericsilver/fow/blob/main/docs/ELASTICITY.md">ELASTICITY.md</a>.</li>
+      <li><b>The synthetic workforce and skill dispersion.</b> Working paper in preparation. The current build, its rules for who can enter which occupation and its known weak points are in Section 2 of Exposure Is Not Loss and in the repository&rsquo;s <a href="https://github.com/ericsilver/fow/blob/main/docs/MODULES.md">MODULES.md</a>.</li>
+    </ul>
 
-    <p>This is independent work built on public data. The adoption pattern and the robot index come from two public Anthropic files. Paid or proprietary data would replace other inputs:</p>
+    <h2 id="code">The code is open to forks and pull requests, and better data would replace specific assumptions</h2>
+    <p>The repository at <a href="https://github.com/ericsilver/fow">github.com/ericsilver/fow</a> holds the synthetic workforce generator, the automation shocks, the demand system, occupational choice and the equilibrium solver, turnover, and the measures behind every number on this page; the inputs and saved runs are attached to its first release. The adoption pattern and the robot index come from two public Anthropic files. A new module starts as an issue that states what it changes, where it plugs in and which outcome metric would show that it helps; it arrives as a pull request that reports those metrics before and after. <a href="https://github.com/ericsilver/fow/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> gives the interfaces and the tests a change must pass. Paid or proprietary data would replace other inputs:</p>
     <ul class="plain">
       <li>current career histories from r&eacute;sum&eacute; or payroll panels, in place of transitions observed in r&eacute;sum&eacute;s from 2002 to 2015;</li>
       <li>AI use by task over time, split into automation and assistance, in place of one diffusion share and one automated share per scenario;</li>
       <li>job postings, for requirements that O*NET updates slowly;</li>
       <li>prices and quantities for services, for the demand elasticity.</li>
     </ul>
-    <p>The code, the simulated workforce and the scenario outputs are available on request through the <a href="/contact.html">contact page</a>.</p>
+
+    <h2 id="elasticity">The elasticities decide who falls behind, and their estimates are the weakest part of the model</h2>
+    <p>Automation lowers the price of an occupation&rsquo;s work; the elasticities decide how much of that gain its workers keep. At early adoption the occupation at the 75th percentile of exposure ends with pay 7.6% below the occupation at the 25th when the across-industry elasticity is 0.66, the estimate for 1997&ndash;2014, and 0.5% below it at 1.6, the same method&rsquo;s estimate for 2015&ndash;2024. Leaving computers out of the 1997&ndash;2014 data moves the estimate to 1.52, about three standard errors. Against fifteen stylized facts the model reproduces five, partly reproduces three, fails five and has not been tested on two. The five it fails:</p>
+    <div class="tablewrap contrib">
+    <table>
+      <thead><tr><th>Fact</th><th>What the model does</th></tr></thead>
+      <tbody>
+        <tr><td>Rising income, not only falling prices, drives spending toward services (Comin, Lashkari and Mestieri 2021)</td><td>Demand responds only to prices.</td></tr>
+        <tr><td>Employment in an automating industry rises before it falls: cotton textiles, steel, autos (Bessen 2019)</td><td>Constant elasticities below one cannot produce the rise.</td></tr>
+        <tr><td>Within a decade, employment in exposed occupations falls more than their pay (Kogan et al. 2023)</td><td>In year 0 nearly all of the adjustment falls on pay.</td></tr>
+        <tr><td>Displaced workers earn less for years (Jacobson, LaLonde and Sullivan 1993; Davis and von Wachter 2011)</td><td>A worker who changes occupation earns its wage at once.</td></tr>
+        <tr><td>Labor receives part of output, and its share has fallen (Karabarbounis and Neiman 2014)</td><td>Labor receives all output.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><a href="https://github.com/ericsilver/fow/blob/main/docs/ELASTICITY.md">ELASTICITY.md</a> lists the fifteen facts and seven open problems, each with a test of progress: an across-industry elasticity that holds in both periods; income effects, added only if a 2005&ndash;2024 backcast needs them; an elasticity that falls as a market matures, without a cap on market size; a switching cost estimated from occupational transitions in place of the fixed 5.5% preference for one&rsquo;s own occupation; occupation-level demand that passes a split-half test; a price for AI and robot services; and a backcast of a past technology.</p>
+
+    <h2 id="modules">Modules the model needs but does not contain</h2>
+    <p>Each of these would change a reported result. <a href="https://github.com/ericsilver/fow/blob/main/docs/MODULES_PROPOSED.md">MODULES_PROPOSED.md</a> gives for each the interface, the literature to start from, the simplest version worth building and the metrics that would show it helps.</p>
+    <ul>
+      <li><b>Capital ownership.</b> The model pays all added output to workers, so every real pay gain it reports is an upper bound.</li>
+      <li><b>Job formation and new work.</b> The choice model is built to take new occupations: a new occupation enters as one more option, open to workers who meet its requirement floors and paid through its share of demand. None has been entered. An occupation such as AI wrangler could be added but appears in no result, and tasks are removed without new ones being added, so the most exposed occupations can only fall relative to others.</li>
+      <li><b>Labor force participation.</b> Every worker stays at work whatever the pay.</li>
+      <li><b>Public demand.</b> Police, teachers and other public occupations are priced like consumer goods, so their pay and headcount follow productivity instead of budgets.</li>
+      <li><b>Geography.</b> One national market per occupation, so local concentrations of exposure cannot produce local losses.</li>
+      <li><b>Also welcome:</b> demand that shifts with income, skill formation and retraining, and earnings lost at displacement.</li>
+    </ul>
+
+    <h2 id="metrics">Nineteen outcome metrics let each change to the model be tested against public data</h2>
+    <p>Each metric was chosen because model variants predict different values for it. Eight can be tested now, by backcast or against data from 2022 on; eleven need a forecast committed to the repository, with its date, scenario and model version, before the data arrive. Observed series move for every reason at once, so each score is a contrast: across occupations, or against a trend registered with the forecast. <a href="https://github.com/ericsilver/fow/blob/main/docs/OUTCOME_METRICS.md">OUTCOME_METRICS.md</a> gives the definitions, current model values and scoring rules.</p>
+    <div class="tablewrap contrib">
+    <table>
+      <thead><tr><th>Metric</th><th>Public series</th><th>Tested</th></tr></thead>
+      <tbody>
+        <tr><td>M01 Employment change by occupation against exposure</td><td>BLS Occupational Employment and Wage Statistics</td><td>Now</td></tr>
+        <tr><td>M02 Wage change by occupation against exposure</td><td>Same</td><td>Now</td></tr>
+        <tr><td>M03 Employment response relative to wage response</td><td>From M01 and M02</td><td>Now</td></tr>
+        <tr><td>M04 Industry output and prices against productivity</td><td>BEA GDP by industry; BEA&ndash;BLS production account</td><td>Now</td></tr>
+        <tr><td>M05 Service occupations&rsquo; share of employment</td><td>Occupational Employment and Wage Statistics by major group</td><td>Now and forecast</td></tr>
+        <tr><td>M06 Workers leaving exposed occupations</td><td>Current Population Survey; BLS occupational separations</td><td>Now</td></tr>
+        <tr><td>M07 Young workers entering exposed occupations</td><td>Current Population Survey microdata</td><td>Now</td></tr>
+        <tr><td>M08 Job loss and earnings after displacement</td><td>CPS Displaced Worker Supplement</td><td>Now</td></tr>
+        <tr><td>M09 Work time saved by generative AI</td><td>Real-Time Population Survey (FRED RPSGENAITSALL)</td><td>Forecast</td></tr>
+        <tr><td>M10 Which occupations use AI</td><td>Anthropic Economic Index</td><td>Forecast</td></tr>
+        <tr><td>M11 Robot adoption</td><td>IFR World Robotics; Census robotics spending</td><td>Forecast</td></tr>
+        <tr><td>M12 Continuing workers with lower real pay</td><td>PSID, SIPP, matched CPS</td><td>Forecast</td></tr>
+        <tr><td>M13 Workers falling 5 or more points in the pay distribution</td><td>PSID, SIPP; occupational wage ranks</td><td>Forecast</td></tr>
+        <tr><td>M14 90/10 pay ratio</td><td>CPS usual weekly earnings deciles</td><td>Forecast</td></tr>
+        <tr><td>M15 College pay premium</td><td>CPS usual weekly earnings by education</td><td>Forecast</td></tr>
+        <tr><td>M16 Participation by education and age</td><td>CPS labor force participation series</td><td>Forecast</td></tr>
+        <tr><td>M17 Labor share of output</td><td>BLS labor share; BEA compensation share of income</td><td>Forecast</td></tr>
+        <tr><td>M18 Output per hour</td><td>BLS nonfarm business output per hour</td><td>Forecast</td></tr>
+        <tr><td>M19 Public employment and pay</td><td>BLS government employment; Census public employment survey</td><td>Forecast</td></tr>
+      </tbody>
+    </table>
+    </div>
 
     <p class="ack" id="acknowledgments"><b>Acknowledgments.</b> This simulation continues work I began at Carnegie Mellon with Seth Goldstein and Mark Kamlet. Mark&rsquo;s contribution was invaluable in arriving at a utility function that lets jobs be introduced and removed over time. Seth&rsquo;s insight into, and familiarity with, O*NET&rsquo;s rated requirements made those ratings interpretable and added structure to the simulated job market. Neither has reviewed these pages; the results and any errors are mine.</p>
-    <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a>: Anthropic&rsquo;s Claude wrote and ran the simulation code to my direction, drafted and revised the prose, contributed framings in dialogue, and built the charts and the page. What each of those words means is at <a href="/ai/">aporia.institute/ai</a>.</p>
+    <p class="colophon"><a href="/ai/">AI</a> <a href="/ai/#edited">edited</a> <a href="/ai/#ideated">ideated</a> <a href="/ai/#supported">supported</a>: the synthetic workforce generator and the model are my own work, built with heavy use of AI. Anthropic&rsquo;s Claude wrote and ran the code to my direction, rated which physical tasks robots and driverless vehicles could do, drafted and revised the prose, contributed framings in dialogue, and built the charts and the page. What each of those words means is at <a href="/ai/">aporia.institute/ai</a>.</p>
 
     <h2 id="sources">Sources</h2>
     <ul class="sources">
-      <li>Scenario settings and the two-group results: Anton Korinek, Charles I. Jones, Szymon Sacher, Tess Cotter and Peter McCrory, &ldquo;Economic Scenarios for Transformative AI,&rdquo; The Anthropic Institute Working Paper 2026-02, September 2026. <a href="https://assets.claude.com/cf58f84d46a4a76bf5a5b039ac695fba6b80041c.pdf">PDF</a>.</li>
-      <li>Observed exposure and robot exposure: <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">Anthropic Economic Index</a> (CC-BY). Observed exposure is the measure of Maxim Massenkoff and Peter McCrory (March 2026); robot exposure is from &ldquo;What work can robots do?&rdquo;</li>
-      <li>Task labels: Tyna Eloundou, Sam Manning, Pamela Mishkin and Daniel Rock, &ldquo;GPTs are GPTs: Labor market impact potential of LLMs,&rdquo; <em>Science</em> 384 (2024). <a href="https://doi.org/10.1126/science.adj0998">doi</a>.</li>
-      <li>Alternative task index on the scenarios page: Schaal (2025), <a href="https://arxiv.org/abs/2510.13369">arXiv:2510.13369</a>.</li>
-      <li>Hours saved: Alexander Bick, Adam Blandin and David Deming, Real-Time Population Survey, published by the Federal Reserve Bank of St. Louis as series <a href="https://fred.stlouisfed.org/series/RPSGENAITSALL">RPSGENAITSALL</a>.</li>
-      <li>Workforce: American Community Survey 2015&ndash;19; Occupational Employment and Wage Statistics, May 2015; O*NET 20.1; Bureau of Labor Statistics occupational separations; occupation-to-occupation transitions from Gregor Schubert, Anna Stansbury and Bledi Taska, &ldquo;Monopsony and Outside Options&rdquo; (2020).</li>
-      <li>New entrants&rsquo; response to wages: Chang-Tai Hsieh, Erik Hurst, Charles I. Jones and Peter J. Klenow, &ldquo;The Allocation of Talent and U.S. Economic Growth,&rdquo; <em>Econometrica</em> 87 (2019).</li>
-      <li>Demand elasticities: estimated from the BEA&ndash;BLS production account.</li>
+      <li>Acemoglu, Daron, and Pascual Restrepo. 2019. &ldquo;Automation and New Tasks: How Technology Displaces and Reinstates Labor.&rdquo; <i>Journal of Economic Perspectives</i> 33 (2): 3&ndash;30. <a href="https://doi.org/10.1257/jep.33.2.3">doi:10.1257/jep.33.2.3</a></li>
+      <li>Anthropic. 2026. Anthropic Economic Index data: observed exposure and robot exposure (CC-BY). <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex">huggingface.co/datasets/Anthropic/EconomicIndex</a>. Observed exposure is the measure of Maxim Massenkoff and Peter McCrory (March 2026); robot exposure is from &ldquo;What work can robots do?&rdquo;</li>
+      <li>Autor, David, David Dorn, and Gordon Hanson. 2019. &ldquo;When Work Disappears: Manufacturing Decline and the Falling Marriage Market Value of Young Men.&rdquo; <i>American Economic Review: Insights</i> 1 (2): 161&ndash;178. <a href="https://doi.org/10.1257/aeri.20180010">doi:10.1257/aeri.20180010</a></li>
+      <li>Bessen, James. 2019. &ldquo;Automation and Jobs: When Technology Boosts Employment.&rdquo; <i>Economic Policy</i> 34 (100): 589&ndash;626. <a href="https://doi.org/10.1093/epolic/eiaa001">doi:10.1093/epolic/eiaa001</a>. Elasticities from the April 2019 Economic Policy panel draft.</li>
+      <li>Bick, Alexander, Adam Blandin, and David Deming. 2026. Real-Time Population Survey, generative AI time savings of employed adults, series <a href="https://fred.stlouisfed.org/series/RPSGENAITSALL">RPSGENAITSALL</a>. Federal Reserve Bank of St. Louis.</li>
+      <li>Comin, Diego, Danial Lashkari, and Mart&iacute; Mestieri. 2021. &ldquo;Structural Change With Long-Run Income and Price Effects.&rdquo; <i>Econometrica</i> 89 (1): 311&ndash;374. <a href="https://doi.org/10.3982/ECTA16317">doi:10.3982/ECTA16317</a></li>
+      <li>Davis, Steven J., and Till von Wachter. 2011. &ldquo;Recessions and the Costs of Job Loss.&rdquo; <i>Brookings Papers on Economic Activity</i> 2011 (2): 1&ndash;72. <a href="https://doi.org/10.1353/eca.2011.0016">doi:10.1353/eca.2011.0016</a></li>
+      <li>Durkheim, &Eacute;mile. 1897. <i>Le suicide: &eacute;tude de sociologie</i>. Paris: F&eacute;lix Alcan. Book II, chapter 5.</li>
+      <li>Eloundou, Tyna, Sam Manning, Pamela Mishkin, and Daniel Rock. 2024. &ldquo;GPTs Are GPTs: Labor Market Impact Potential of LLMs.&rdquo; <i>Science</i> 384 (6702): 1306&ndash;1308. <a href="https://doi.org/10.1126/science.adj0998">doi:10.1126/science.adj0998</a></li>
+      <li>Gidron, Noam, and Peter A. Hall. 2017. &ldquo;The Politics of Social Status: Economic and Cultural Roots of the Populist Right.&rdquo; <i>British Journal of Sociology</i> 68 (S1): S57&ndash;S84. <a href="https://doi.org/10.1111/1468-4446.12319">doi:10.1111/1468-4446.12319</a></li>
+      <li>Hsieh, Chang-Tai, Erik Hurst, Charles I. Jones, and Peter J. Klenow. 2019. &ldquo;The Allocation of Talent and U.S. Economic Growth.&rdquo; <i>Econometrica</i> 87 (5): 1439&ndash;1474. <a href="https://doi.org/10.3982/ECTA11427">doi:10.3982/ECTA11427</a></li>
+      <li>Jacobson, Louis S., Robert J. LaLonde, and Daniel G. Sullivan. 1993. &ldquo;Earnings Losses of Displaced Workers.&rdquo; <i>American Economic Review</i> 83 (4): 685&ndash;709.</li>
+      <li>Karabarbounis, Loukas, and Brent Neiman. 2014. &ldquo;The Global Decline of the Labor Share.&rdquo; <i>Quarterly Journal of Economics</i> 129 (1): 61&ndash;103. <a href="https://doi.org/10.1093/qje/qjt032">doi:10.1093/qje/qjt032</a></li>
+      <li>Kogan, Leonid, Dimitris Papanikolaou, Lawrence D. W. Schmidt, and Bryan Seegmiller. 2023. &ldquo;Technology and Labor Displacement: Evidence from Linking Patents with Worker-Level Data.&rdquo; NBER Working Paper 31846. <a href="https://doi.org/10.3386/w31846">doi:10.3386/w31846</a></li>
+      <li>Korinek, Anton, Charles I. Jones, Szymon Sacher, Tess Cotter, and Peter McCrory. 2026. &ldquo;Economic Scenarios for Transformative AI.&rdquo; The Anthropic Institute Working Paper 2026-02. <a href="https://assets.claude.com/cf58f84d46a4a76bf5a5b039ac695fba6b80041c.pdf">PDF</a></li>
+      <li>Merton, Robert K. 1938. &ldquo;Social Structure and Anomie.&rdquo; <i>American Sociological Review</i> 3 (5): 672&ndash;682. <a href="https://doi.org/10.2307/2084686">doi:10.2307/2084686</a></li>
+      <li>Schaal, Jacob. 2025. &ldquo;A Theory-Based AI Automation Exposure Index: Applying Moravec&rsquo;s Paradox to the US Labor Market.&rdquo; <a href="https://arxiv.org/abs/2510.13369">arXiv:2510.13369</a></li>
+      <li>Schubert, Gregor, Anna Stansbury, and Bledi Taska. 2020. &ldquo;Monopsony and Outside Options.&rdquo; SSRN working paper. <a href="https://doi.org/10.2139/ssrn.3599454">doi:10.2139/ssrn.3599454</a></li>
+      <li>Venkataramani, Atheendar S., Elizabeth F. Bair, Rourke L. O&rsquo;Brien, and Alexander C. Tsai. 2020. &ldquo;Association Between Automotive Assembly Plant Closures and Opioid Overdose Mortality in the United States.&rdquo; <i>JAMA Internal Medicine</i> 180 (2): 254&ndash;262. <a href="https://doi.org/10.1001/jamainternmed.2019.5686">doi:10.1001/jamainternmed.2019.5686</a></li>
+      <li>Data: American Community Survey 2015&ndash;19 (IPUMS); Occupational Employment and Wage Statistics, May 2015; O*NET 20.1; Bureau of Labor Statistics occupational separations and entry requirements; the BEA&ndash;BLS production account, for the demand elasticities.</li>
     </ul>
   </article>
   </div>
