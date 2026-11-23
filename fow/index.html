@@ -65,7 +65,7 @@
     <article class="sheet">
 
     <p class="lede">This open simulation extends the Anthropic Institute&rsquo;s <a href="https://www.anthropic.com/institute/econ-scenarios">economic scenarios for transformative AI</a> from two groups of workers to individual workers, and adds robots and driverless vehicles. Every simulated worker carries an education and a work history, so the model can forecast, under each scenario, what automation means for a person from where they stand: which occupations stay open to them, what they earn and where they rank among other workers. Results can be read <a href="/future-of-work/scenarios/">by type of worker</a>, and the <a href="/workforce-explorer/">workforce explorer</a> shows the simulated workers themselves.</p>
-    <p>Under AI, almost no one ends with lower real pay while the added output reaches workers: AI raises output so much, and its tasks are so concentrated in knowledge work, that the occupations it cannot do gain on those it can while nearly everyone&rsquo;s real pay rises. The model&rsquo;s concern is relative standing. New workers who paid for a university education in the skills AI performs lose the most ground, and a degree that buys less standing than it promised can be felt as a betrayal. Robots and driverless vehicles act differently: they lower the standing of professional drivers and the pay of workers who share their labor pool. The code is open, and I am asking for help improving the model&rsquo;s modules, adding new ones and testing them against outcomes.</p>
+    <p>Simulating the automation of tasks by AI raises the social value of nearly every worker&rsquo;s labor: AI adds a great deal of output, and the tasks it performs are concentrated in knowledge work. In the simulation workers are paid the marginal value of their work, so nearly all are materially better off, even as many fall behind others and the occupations AI cannot do gain on those it can. The model&rsquo;s concern is relative standing. New workers who paid for a university education in the skills AI performs lose the most ground, and a degree that buys less standing than it promised can be felt as a betrayal. Robots and driverless vehicles act differently: they lower the standing of professional drivers and the pay of workers who share their labor pool. The code is open, and I am asking for help improving the model&rsquo;s modules, adding new ones and testing them against outcomes.</p>
 
     <section class="start">
       <h2 id="why">Why this work matters</h2>
@@ -170,18 +170,18 @@
     <div class="tablewrap">
     <table class="wide">
       <caption>Results by scenario, 2030</caption>
-      <thead><tr><th>Scenario</th><th>Time removed</th><th>Output</th><th>Wage, cognitive</th><th>Wage, other</th><th>Median real pay</th><th>Lower real pay</th><th>Change occu&shy;pation</th></tr></thead>
+      <thead><tr><th>Scenario</th><th>Time removed</th><th>Output</th><th>Wage, cognitive</th><th>Wage, other</th><th>Median real pay</th><th>Materially worse off</th><th>Worse off if 15% of the gain reaches workers</th><th>Job loses half its tasks or more</th><th>Change occu&shy;pation</th><th>Gini of pay</th></tr></thead>
       <tbody>
-        <tr><td>Measured use, today</td><td>1.9%</td><td>+2.1%</td><td>+1.8%</td><td>+2.7%</td><td>+2.3%</td><td>1.9%</td><td>0.1%</td></tr>
-        <tr><td>Modest</td><td>1.0%</td><td>+1.1%</td><td>+1.1%</td><td>+1.4%</td><td>+1.4%</td><td>0.7%</td><td>0.0%</td></tr>
-        <tr><td>Substantial</td><td>7.7%</td><td>+10.1%</td><td>+9.7%</td><td>+12.1%</td><td>+10.7%</td><td>0.3%</td><td>0.3%</td></tr>
-        <tr><td>Extreme</td><td>26.6%</td><td>+48.1%</td><td>+46.0%</td><td>+58.3%</td><td>+53.6%</td><td>0.0%</td><td>0.8%</td></tr>
-        <tr><td>Robots only</td><td>3.5%</td><td>+2.4%</td><td>+2.4%</td><td>+1.3%</td><td>+2.6%</td><td>7.2%</td><td>0.2%</td></tr>
-        <tr><td>Substantial with robots</td><td>11.1%</td><td>+13.0%</td><td>+12.5%</td><td>+13.9%</td><td>+13.8%</td><td>0.3%</td><td>0.4%</td></tr>
+        <tr><td>Measured use, today</td><td>1.9%</td><td>+2.1%</td><td>+1.8%</td><td>+2.7%</td><td>+2.3%</td><td>1.9%</td><td>26.0%</td><td>0.0%</td><td>0.1%</td><td>0.305 to 0.304</td></tr>
+        <tr><td>Modest</td><td>1.0%</td><td>+1.1%</td><td>+1.1%</td><td>+1.4%</td><td>+1.4%</td><td>0.7%</td><td>18.6%</td><td>0.0%</td><td>0.0%</td><td>0.304 to 0.303</td></tr>
+        <tr><td>Substantial</td><td>7.7%</td><td>+10.1%</td><td>+9.7%</td><td>+12.1%</td><td>+10.7%</td><td>0.3%</td><td>9.6%</td><td>0.0%</td><td>0.3%</td><td>0.304 to 0.299</td></tr>
+        <tr><td>Extreme</td><td>26.6%</td><td>+48.1%</td><td>+46.0%</td><td>+58.3%</td><td>+53.6%</td><td>0.0%</td><td>3.5%</td><td>5.0%</td><td>0.8%</td><td>0.304 to 0.286</td></tr>
+        <tr><td>Robots only</td><td>3.5%</td><td>+2.4%</td><td>+2.4%</td><td>+1.3%</td><td>+2.6%</td><td>7.2%</td><td>41.2%</td><td>0.0%</td><td>0.2%</td><td>0.304 to 0.307</td></tr>
+        <tr><td>Substantial with robots</td><td>11.1%</td><td>+13.0%</td><td>+12.5%</td><td>+13.9%</td><td>+13.8%</td><td>0.3%</td><td>5.5%</td><td>0.0%</td><td>0.4%</td><td>0.304 to 0.303</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="tnote">Lower real pay and change occupation are shares of workers. The measured-use row is solved for today&rsquo;s workforce; the others are 2030. The report&rsquo;s modest and extreme scenarios put the cognitive wage at +0.4% and &minus;11.5% and the other wage at +1.1% and +33.6%. Here the difference between the two groups is 0.3 points in the modest scenario and 12 points in the extreme one.</p>
+    <p class="tnote">Shares are of workers. Materially worse off: lower real pay, with all added output paid to workers; the next column pays workers 15% of it, the share implied by the report&rsquo;s substantial scenario. A job loses half its tasks or more when automation removes at least half of the work time of the worker&rsquo;s occupation. The Gini index is of pay across workers, each paid their occupation&rsquo;s wage, so differences within an occupation are not counted and the level is below survey measures of earnings inequality. The measured-use row is solved for today&rsquo;s workforce; the others are 2030. The report&rsquo;s modest and extreme scenarios put the cognitive wage at +0.4% and &minus;11.5% and the other wage at +1.1% and +33.6%. Here the difference between the two groups is 0.3 points in the modest scenario and 12 points in the extreme one.</p>
 
     <h2>Gains differ little by career stage and schooling, and more by occupation</h2>
 
@@ -243,23 +243,26 @@
       <tbody>
         <tr><td>Share of all work time removed</td><td>45.8%</td><td>34.5%</td><td>76.3%</td></tr>
         <tr><td>Output</td><td>+149%</td><td>+42%</td><td>+377%</td></tr>
-        <tr><td>Lower real pay, highest share at any step</td><td>0.29%</td><td>19.3%</td><td>0.31%</td></tr>
-        <tr><td>Lower real pay at the top</td><td>0%</td><td>5.8%</td><td>0%</td></tr>
+        <tr><td>Materially worse off, highest share at any step</td><td>0.29%</td><td>19.3%</td><td>0.31%</td></tr>
+        <tr><td>Materially worse off at the top</td><td>0%</td><td>5.8%</td><td>0%</td></tr>
         <tr><td>Real pay 5% or more lower at the top</td><td>0%</td><td>2.0%</td><td>0%</td></tr>
+        <tr><td>Job loses half its tasks or more</td><td>49.7%</td><td>32.7%</td><td>89.2%</td></tr>
         <tr><td>Place in the pay distribution falls 5 or more points</td><td>28.9%</td><td>10.9%</td><td>20.8%</td></tr>
         <tr><td>90/10 pay ratio (3.97 today)</td><td>2.93</td><td>5.66</td><td>3.90</td></tr>
+        <tr><td>Gini of pay (0.305 today)</td><td>0.250</td><td>0.371</td><td>0.329</td></tr>
         <tr><td>College pay premium (66.5% today)</td><td>48.0%</td><td>89.3%</td><td>75.3%</td></tr>
         <tr><td>Changed occupation</td><td>3.65%</td><td>4.37%</td><td>9.24%</td></tr>
-        <tr><td>Lower real pay if 15% of the added output reaches workers</td><td>9.2%</td><td>45.6%</td><td>1.2%</td></tr>
+        <tr><td>Worse off if 15% of the added output reaches workers</td><td>9.2%</td><td>45.6%</td><td>1.2%</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="tnote">Year 0: today&rsquo;s workforce, before retirements and new entrants. AI removes the tasks in Eloundou et al.&rsquo;s exposure ratings; robots and driverless vehicles remove the tasks Claude rates feasible by 2046; all three applies AI first and robots to the tasks left. All added output is paid to workers except in the last row, where workers receive 15% of it, the share implied by the substantial scenario of Korinek et al. (2026). Sources: <a href="/future-of-work/papers/exposure-is-not-loss.pdf">Exposure Is Not Loss</a>, Tables 7 and 8; the last row from <code>exit_floors_pe.py</code> in the repository.</p>
+    <p class="tnote">Year 0: today&rsquo;s workforce, before retirements and new entrants. AI removes the tasks in Eloundou et al.&rsquo;s exposure ratings; robots and driverless vehicles remove the tasks Claude rates feasible by 2046; all three applies AI first and robots to the tasks left. No job loses more than 95% of its work time. All added output is paid to workers except in the last row, where workers receive 15% of it, the share implied by the substantial scenario of Korinek et al. (2026). Sources: <a href="/future-of-work/papers/exposure-is-not-loss.pdf">Exposure Is Not Loss</a>, Tables 7 and 8; the last row from <code>exit_floors_pe.py</code> in the repository.</p>
     <figure>
       <a class="figure-open" href="/future-of-work/img/fig4_ladder.png"><img src="/future-of-work/img/fig4_ladder.png" alt="Four panels against the share of all work time removed: share of workers with lower real pay, the same share if half the added output reaches workers, share whose place in the pay distribution falls 5 or more points, and share who change occupation, for AI, robots and driverless vehicles, and all three." width="1152" height="928"></a>
       <figcaption>Shares of today&rsquo;s workers with lower real pay (dashed: 5% or more lower), with lower real pay if half the added output reaches workers, whose place in the pay distribution falls 5 or more points, and who change occupation, each against the share of all work time removed. Source: Exposure Is Not Loss, Figure 4.</figcaption>
     </figure>
     <p>Read as a forecast of loss, an exposure score would have the most exposed workers losing pay. In the simulation, with AI at full exposure, the pay of the most exposed quarter of workers rises 112% while falling 15% against the average. Workers without a college degree make up 81% of those who rise 5 or more points in the pay distribution, most of them from transportation, production, construction, food service and building occupations.</p>
+    <p>Few workers change occupation even when most of their work is automated. At the top of the combined ladder, AI, robots and driverless vehicles take 95% of a taxi driver&rsquo;s work time; taxi employment falls 23% for today&rsquo;s workers and 18% once every job has been re-chosen, and the wage rises 343%. Two features of the model produce the result. Automated time costs nothing and the tasks left in a job carry its whole output, so each remaining driver handles twenty times the rides and is paid their value. And with demand elasticities near one, spending on an occupation&rsquo;s work changes little as its price falls, so its employment changes little. A change of occupation therefore understates how much work changes. The share of workers whose job loses half its tasks or more measures the change in the work itself: 89% at the top of the combined ladder and 5% in the extreme 2030 scenario. The same features keep the model from matching the fall in employment in exposed occupations that Kogan et al. (2023) find (see <a href="#elasticity">the elasticities</a>).</p>
 
     <h2 id="graduates">New college graduates trained for the work AI performs lose the most ground</h2>
     <p>A degree repays its cost through the pay premium it earns over a career. Under AI, the premium falls most for workers in their first eight years, the people who have most recently paid for school. Among early-career graduates at full AI exposure, 85% of those in office and administrative support, 83% in business and finance and 63% in computer and mathematical occupations fall 5 or more points in the pay distribution, against 5% in education and 2% among health care practitioners. Their real pay still rises: early-career graduates in computer and mathematical occupations, where AI removes 86% of work time, gain 96%, against 165% for the average worker.</p>
