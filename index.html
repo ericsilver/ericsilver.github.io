@@ -74,7 +74,7 @@
       <ul>
         <li class="ledger__row"><span class="ledger__label">Fellows</span><span class="ledger__figure">1</span></li>
         <li class="ledger__row is-marked"><span class="ledger__label">Buildings</span><span class="ledger__figure">0</span></li>
-        <li><a href="#papers"><span class="ledger__label">Papers</span><span class="ledger__figure">8</span></a></li>
+        <li><a href="#papers"><span class="ledger__label">Papers</span><span class="ledger__figure">7</span></a></li>
         <li><a href="#essays"><span class="ledger__label">Essays</span><span class="ledger__figure">2</span></a></li>
         <li><a href="#books"><span class="ledger__label">Books</span><span class="ledger__figure">3</span></a></li>
         <li class="ledger__row ledger__row--line"><span class="ledger__label">Research program</span><span>by design, does not arrive</span></li>
@@ -317,30 +317,20 @@
         </section>
 
         <section class="program">
-          <h3>Where Do the People Go?</h3>
+          <h3>The future of work</h3>
 
           <article class="paper">
             <h4><a href="./future-of-work/">An Occupation-Level Simulation of AI, Robots and the Labor Market</a></h4>
             <div class="paper__side">
               <span class="year">2026</span>
-              <p class="status">Working paper, online. Both legs of the program, run under the Anthropic Institute&rsquo;s economic scenarios.</p>
+              <p class="status">Working paper, online.</p>
               <ul class="links">
                 <li><a href="./future-of-work/">summary</a></li>
                 <li><a href="./future-of-work/scenarios/">scenarios</a></li>
                 <li><a href="./workforce-explorer/">workforce explorer</a></li>
               </ul>
             </div>
-            <p class="abstract"><span class="hook">Most published estimates of AI&rsquo;s effect on work give either a score for how exposed each occupation is, or a model of the whole economy with one or two kinds of worker.</span> <span class="rest">This simulation solves for wages, prices and employment in 551 occupations with a simulated workforce that stands for 136 million workers, under the settings of the Anthropic Institute&rsquo;s Economic Scenarios for Transformative AI. In the Institute&rsquo;s substantial-change scenario, AI takes 7.7% of work time by 2030, output is 10% higher, real pay rises 9.7% in cognitive occupations and 12.1% in all others, and 0.3% of workers change occupation. Results can be read for the economy, for an occupation, or for workers who share schooling or work history.</span></p>
-            <button class="more" type="button" aria-expanded="false">Read on</button>
-          </article>
-
-          <article class="paper">
-            <h4>An Assumption-Transparent Simulation of Automation and the Labor Market</h4>
-            <div class="paper__side">
-              <span class="year">2026</span>
-              <p class="status">Working paper, not yet circulated. The modular leg of the &ldquo;Where Do the People Go?&rdquo; program.</p>
-            </div>
-            <p class="abstract"><span class="hook">Forecasts of AI&rsquo;s effect on work usually stop at exposure scores; they do not say where displaced workers end up or what happens to wages.</span> <span class="rest">This is a labor-market simulation built from O*NET primitives (workers with graded capabilities, tasks with level requirements, jobs as bundles of tasks), calibrated so the pre-shock equilibrium reproduces BLS employment and wages by construction. Every assumption is a named, swappable module, so the question becomes which assumptions drive the answer rather than whose forecast to trust.</span></p>
+            <p class="abstract"><span class="hook">Most published estimates of AI&rsquo;s effect on work give either a score for how exposed each occupation is, or a model of the whole economy with one or two kinds of worker.</span> <span class="rest">Neither says where displaced workers end up or what happens to their wages. This simulation is built from O*NET primitives (workers with graded capabilities, tasks with level requirements, jobs as bundles of tasks) and calibrated so the pre-shock equilibrium reproduces BLS employment and wages by construction. It solves for wages, prices and employment in 551 occupations with a simulated workforce that stands for 136 million workers, under the settings of the Anthropic Institute&rsquo;s Economic Scenarios for Transformative AI. In the Institute&rsquo;s substantial-change scenario, AI takes 7.7% of work time by 2030, output is 10% higher, real pay rises 9.7% in cognitive occupations and 12.1% in all others, and 0.3% of workers change occupation. Every assumption is a named, swappable module, so the question becomes which assumptions drive the answer rather than whose forecast to trust. Results can be read for the economy, for an occupation, or for workers who share schooling or work history.</span></p>
             <button class="more" type="button" aria-expanded="false">Read on</button>
           </article>
 
@@ -348,7 +338,7 @@
             <h4>Generating a Credible Synthetic Workforce: Skill Endowments from Observed Occupational Transitions</h4>
             <div class="paper__side">
               <span class="year">2026</span>
-              <p class="status">Working paper, not yet circulated. The population-generation leg of the same program.</p>
+              <p class="status">Working paper, not yet circulated. Builds the simulated workforce that the simulation above runs on.</p>
             </div>
             <p class="abstract"><span class="hook">Any simulation of who can move to which job is only as good as its synthetic workers, and public data never observe an individual&rsquo;s full skill vector.</span> <span class="rest">This generator builds one by requiring that every worker be qualified for the job they actually hold, then grows skills along career paths observed in longitudinal surveys, and checks the population against employment rates, age and education mixes, and churn. The hypothesis is that qualification-by-construction plus observed transitions recovers a workforce realistic enough to forecast on.</span></p>
             <button class="more" type="button" aria-expanded="false">Read on</button>
