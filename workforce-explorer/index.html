@@ -58,6 +58,18 @@
   .list.careers button b { display: block; font-weight: 500; line-height: 1.3; }
   .list.careers button small { display: block; margin-top: 1px; color: var(--mute); font-size: var(--text-xs); line-height: 1.35; }
   #side .card { overflow: visible; }
+  /* One person's card: who this is, a die to draw another, and the path in three lines */
+  .person__head { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-xs) var(--space-md); }
+  .person__head h2 { margin-bottom: 2px; }
+  .person__head .meta { max-width: 62ch; }
+  .person__kv { margin: var(--space-sm) 0; padding-top: var(--space-xs); border-top: var(--rule-hair) solid var(--line); gap: 4px 14px; line-height: 1.4; }
+  .app button.btn.roll { display: inline-flex; align-items: center; gap: 6px; }
+  .app button.btn.roll--main { padding-inline: 12px; background: var(--color-ink); border-color: var(--color-ink); color: var(--color-sheet); }
+  .app button.btn.roll--main:hover { background: var(--color-ink-2); }
+  .die svg { display: block; }
+  .die--rolled svg { animation: die-roll 420ms var(--ease-out); }
+  @keyframes die-roll { from { transform: rotate(-200deg) scale(0.75); } to { transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .die--rolled svg { animation: none; } }
   .combo { position: relative; }
   .combo input { padding-right: 34px; }
   .combo__x { position: absolute; top: 1px; right: 1px; width: 32px; height: 32px; background: none; border: 0; color: var(--mute); font: 400 1.25rem/1 var(--font-display); cursor: pointer; }
@@ -132,12 +144,12 @@
     <a href="/future-of-work/#papers">Papers and code</a>
   </nav>
   <h1>Synthetic workforce explorer</h1>
-  <p class="sub">The simulated workers behind the future-of-work scenarios: 136 million workers built from public data, each with schooling, a job history, and the skills those jobs taught. Choose an experience or a job to see who shares it, what they hold, and what else they could do.</p>
+  <p class="sub">The simulated workers behind the future-of-work scenarios: 136 million workers built from public data, each with schooling, a job history, and the skills those jobs taught. Choose an experience or a job to see who shares it, what they hold, and what else they could do, or follow one simulated person through a 50-year career.</p>
 </header>
 <nav id="nav">
   <button data-tab="exp" class="on">Worker types</button>
   <button data-tab="job">Jobs</button>
-  <button data-tab="life">Careers</button>
+  <button data-tab="life">Individual careers</button>
   <button data-tab="about">How it is built</button>
 </nav>
 <main>
@@ -163,6 +175,6 @@
 <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 <script>document.querySelectorAll('.strip__menu a').forEach((a) => a.addEventListener('click', () => { a.closest('details').open = false; }));</script>
 <script src="data.js"></script>
-<script src="app.js?v=20261124"></script>
+<script src="app.js?v=20261124b"></script>
 </body>
 </html>

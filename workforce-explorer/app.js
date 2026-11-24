@@ -331,7 +331,25 @@ function lifeSuggest(q) {
   const other = ids.length ? [] : OCC.map((o, i) => i).filter(i => JOBS[i] && !LIFE_N.has(i) && hit(i)).sort((a, b) => OCC[b].emp - OCC[a].emp).slice(0, 3);
   return { head: "Matching occupations", ids: ids.slice(0, LIFE_SHOW), more: Math.max(0, ids.length - LIFE_SHOW), other };
 }
-let lifeScroll = 0;
+let lifeScroll = 0, lifeRolled = false;
+/* A die. Its face follows the person shown, and it turns once when a roll put that person there. */
+const PIPS = [[[10, 10]], [[6, 6], [14, 14]], [[6, 6], [10, 10], [14, 14]], [[6, 6], [14, 6], [6, 14], [14, 14]], [[6, 6], [14, 6], [10, 10], [6, 14], [14, 14]], [[6, 6], [6, 10], [6, 14], [14, 6], [14, 10], [14, 14]]];
+const die = () => h("span", { class: "die" + (lifeRolled ? " die--rolled" : ""), "aria-hidden": "true",
+  html: '<svg viewBox="0 0 20 20" width="16" height="16"><rect x="1.75" y="1.75" width="16.5" height="16.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/>' +
+    PIPS[S.life % 6].map(p => '<circle cx="' + p[0] + '" cy="' + p[1] + '" r="1.5" fill="currentColor"/>').join("") + "</svg>" });
+/* Draws another person at random from the careers the side panel lists. */
+function lifeRoll() {
+  const ids = lifeIds().filter(i => i !== S.life);
+  if (!ids.length) return;
+  lifeRolled = true;
+  go({ life: ids[Math.floor(Math.random() * ids.length)], snap: 0 });
+  lifeRolled = false;
+}
+function rollBtn(fk, label, main) {
+  const k = lifeIds().length;
+  return h("button", { class: "btn roll" + (main ? " roll--main" : ""), type: "button", "data-fk": fk, disabled: k < 2 ? "" : null, onclick: lifeRoll,
+    title: k < 2 ? "The list holds one person" : "Draws at random from the " + k.toLocaleString("en-US") + " people listed" }, die(), label);
+}
 function sideLife(s) {
   const ids = lifeIds(), pos = ids.indexOf(S.life), n = x => x.toLocaleString("en-US");
   const first = () => { const x = lifeIds(); return x.length ? x[0] : S.life; };
@@ -398,16 +416,16 @@ function sideLife(s) {
   list.addEventListener("scroll", () => { lifeScroll = list.scrollTop; });
   const step = d => { if (ids.length) go({ life: ids[(Math.max(pos, 0) + d + ids.length) % ids.length], snap: 0 }); };
   const lvl = S.lifeLvl >= 0 ? " whose schooling is " + LV[S.lifeLvl].label.toLowerCase() : "";
-  s.append(h("div", { class: "card" }, h("h3", null, "Choose a career"),
+  s.append(h("div", { class: "card" }, h("h3", null, "Choose one person's career"),
     h("label", { class: "l", for: "life-q" }, "Occupation held during the career"), combo,
     h("label", { class: "l", for: "life-lvl" }, "Highest schooling"), sel,
     h("div", { class: "meta", style: "margin-top:8px" }, S.lifeOcc >= 0
-      ? n(ids.length) + (ids.length === 1 ? " sampled career" : " sampled careers") + lvl + (ids.length === 1 ? " includes " : " include ") + chosen + ". The number is the years spent in that occupation, longest first."
-      : n(ids.length) + " sampled careers" + lvl + ". Each row gives the first and last occupation held." + (ids.length > 150 ? " The first 150 are listed." : "")),
+      ? n(ids.length) + (ids.length === 1 ? " simulated person" : " simulated people") + lvl + " held " + chosen + " at some point, one row each. The number is the person's years in that occupation, longest first."
+      : n(ids.length) + " simulated people" + lvl + ", one row each: the first and last occupation the person held." + (ids.length > 150 ? " The first 150 are listed." : "")),
     list,
     h("div", { class: "row" }, h("button", { class: "btn", "data-fk": "life-prev", onclick: () => step(-1) }, "← Previous"), h("button", { class: "btn", "data-fk": "life-next", onclick: () => step(1) }, "Next →"),
-      h("button", { class: "btn", "data-fk": "life-rand", onclick: () => { if (ids.length) go({ life: ids[Math.floor(Math.random() * ids.length)], snap: 0 }); } }, "Random")),
-    h("div", { class: "meta" }, (pos >= 0 ? "Career " + n(pos + 1) + " of " + n(ids.length) + ". " : "") + "The sample is " + n(M.sample) + " careers drawn at random from the build's " + n(M.careers) + " simulated careers.")));
+      rollBtn("life-rand", "Roll another")),
+    h("div", { class: "meta" }, (pos >= 0 ? "Number " + n(pos + 1) + " of the " + n(ids.length) + " listed. " : "") + "The sample is " + n(M.sample) + " careers drawn at random from the build's " + n(M.careers) + " simulated careers.")));
   // keep the list where it was, and bring the chosen career into view when it is outside
   list.scrollTop = lifeScroll;
   const on = list.querySelector(".on");
@@ -436,10 +454,19 @@ function viewLife(el) {
   add("path", { d: path, fill: "none", style: "stroke:var(--ink)", "stroke-width": 2, "stroke-linejoin": "round" });
   sx.forEach((x, i) => add("path", { d: "M" + X(x) + " " + (H - B + 4) + " l-4 -7 l8 0 z", style: "fill:" + (i === S.snap ? "var(--ink)" : "var(--ctx)") }));
   const span = i => (i + 1 < sp.length ? sp[i + 1][1] : 50) - sp[i][1];
-  el.append(h("div", { class: "card" }, h("h2", null, RUNGS[rg].label),
-    h("div", { class: "meta" }, "Over the career this person learned the requirements of " + nUp + " better-paid job" + (nUp === 1 ? "" : "s") + " and " + nDn + " lower-paid job" + (nDn === 1 ? "" : "s") +
-      ", and was displaced from an occupation " + nDisp + " time" + (nDisp === 1 ? "" : "s") + ". ",
-      h("button", { class: "lnk", onclick: () => goRung(rg) }, "Everyone with this schooling →")),
+  const held = [...LIFE[S.life].yrs], nOcc = held.length, top = nOcc <= 3 ? held : held.slice().sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const yr = y => y ? y + (y === 1 ? " year" : " years") : "entered in the last year";
+  el.append(h("div", { class: "card person" },
+    h("div", { class: "person__head" },
+      h("div", null, h("h2", null, "One simulated person"),
+        h("div", { class: "meta" }, "Person " + (S.life + 1).toLocaleString("en-US") + " of the " + M.sample.toLocaleString("en-US") + " in the sample. The build drew this career from public data; it is not a real person's record.")),
+      rollBtn("life-roll", "Roll another person", true)),
+    h("div", { class: "kv person__kv" },
+      h("b", null, "Schooling"), h("span", null, RUNGS[rg].label + " · ", h("button", { class: "lnk", onclick: () => goRung(rg) }, "everyone with this schooling →")),
+      h("b", null, "Work"), h("span", null, nOcc === 1 ? "All 50 years in one occupation: " : "50 years in " + nOcc + " occupations" + (nOcc <= 3 ? ": " : ", the longest in "),
+        top.map(([o, y], i) => [i ? (i === top.length - 1 ? " and " : ", ") : "", occLink(o), nOcc === 1 ? "" : " (" + yr(y) + ")"]), "."),
+      h("b", null, "Along the way"), h("span", null, "Learned the requirements of " + nUp + " better-paid job" + (nUp === 1 ? "" : "s") + " and " + nDn + " lower-paid job" + (nDn === 1 ? "" : "s") + "; " +
+        (nDisp ? "displaced from an occupation " + nDisp + " time" + (nDisp === 1 ? "" : "s") : "never displaced from an occupation") + ".")),
     svg, h("div", { class: "legend" }, h("span", null, "Line: mean annual wage of the occupation held. Band: one color per job. Triangles: the three years at which this person's skills were recorded.")),
     table([{ t: "Years of experience" }, { t: "Job" }, { t: "Occupation" }, { t: "Pay", num: 1 }, { t: "How they entered" }],
       sp.map((s_, i) => [h("span", null, h("span", { class: "dot", style: "background:" + PALETTE[i % PALETTE.length] }), s_[1] + " to " + (s_[1] + span(i)) + " (" + span(i) + ")"),
@@ -487,7 +514,7 @@ function viewAbout(el) {
   const P = (t, ...k) => h("p", null, t, ...k);
   el.append(h("div", { class: "card" }, h("h2", null, "The population is recorded, not re-simulated"),
     P("This page shows the synthetic workforce that the future-of-work simulation uses: " + M.records.toLocaleString("en-US") + " career records taken from " + M.careers.toLocaleString("en-US") +
-      " simulated careers and weighted to " + fmtW(M.workers) + " workers in " + M.n_occ + " occupations. Every table is a count over those records. The Careers tab shows " + M.sample.toLocaleString("en-US") + " of the careers in full."),
+      " simulated careers and weighted to " + fmtW(M.workers) + " workers in " + M.n_occ + " occupations. Every table is a count over those records. The Individual careers tab shows " + M.sample.toLocaleString("en-US") + " of the careers in full."),
     P("Version 0.4 replaces the earlier explorer, which simulated one person at a time under a previous model. Its life simulator, skill-value and build-your-own views described that model and are gone.")));
   el.append(h("div", { class: "card" }, h("h2", null, "Each career is built from schooling, the jobs a job leads to, and pay"),
     P("A person leaves school at one of " + RUNGS.length + " schooling rungs (level, and field of degree for bachelor's and above) and works for up to 50 years."),
@@ -540,7 +567,7 @@ function render() {
   else if (S.tab === "life") { sideLife(s); viewLife(el); }
   else { s.append(h("div", { class: "card" }, h("h3", null, "Version " + M.version), h("div", { class: "meta" }, "Data built " + M.built + " from the recursive build of 2026-11-06, as the simulation loads it."))); viewAbout(el); }
   if (keep) { const i = $("#side input[type=text]"); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
-  else if (fk) { const e = fk === "life-q" ? $("#life-q") : $('#side [data-fk="' + fk + '"]'); if (e) e.focus({ preventScroll: true }); }
+  else if (fk) { const e = fk === "life-q" ? $("#life-q") : $('[data-fk="' + fk + '"]'); if (e) e.focus({ preventScroll: true }); }
   writeUrl();
 }
 document.querySelectorAll("#nav button").forEach(b => b.addEventListener("click", () => go({ tab: b.dataset.tab })));
