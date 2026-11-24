@@ -327,3 +327,31 @@ details[open] .when-closed { display: none; }
 .subnav__label { padding-right: var(--space-md); border-right: var(--rule-hair) solid var(--color-rule-2); color: var(--color-muted); }
 .subnav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-ink-2); }
 .subnav a[aria-current="page"] { color: var(--color-ink); font-family: var(--font-display); font-weight: 600; text-decoration: none; }
+/* Research blocks and menu (2026-11-24): three blocks, each a lead, a sub-title, a chart and its numbers; the middle one is mirrored. The nav strip's Research item opens the three areas. */
+.plot + .plot { padding-top: 0; }
+.plot__text > .plot__sub { margin-top: var(--space-sm); color: var(--color-sheet); font: 500 var(--text-lead)/1.3 var(--font-display); letter-spacing: var(--tracking-display); text-wrap: balance; }
+.plot__text > .plot__sub + p { margin-top: var(--space-lg); }
+.plot__text cite { font-style: italic; }
+@media (min-width: 60.01rem) {
+  .plot--flip .plot__figure { grid-column: 5 / -1; grid-row: 1; }
+  .plot--flip .plot__text { grid-column: 1 / span 4; grid-row: 1; }
+}
+.ll-line--ink { stroke: var(--color-ink); stroke-width: 2.5; }
+.ll-line--blue { stroke: var(--color-leadlag-tech); }
+.ll-line--accent { stroke: var(--color-leadlag-beer); }
+.ll-dot--ink { fill: var(--color-ink); }
+.ll-dot--blue { fill: var(--color-leadlag-tech); }
+.ll-dot--accent { fill: var(--color-leadlag-beer); }
+.ll-guide { fill: none; stroke-width: 1.5; stroke-dasharray: 2 4; stroke-linecap: round; }
+.ll-band { fill: transparent; }
+.ll-band:hover { fill: color-mix(in oklab, var(--color-ink) 7%, transparent); }
+.ll-tail { fill: var(--color-ink-2); font-family: var(--font-display); font-size: 13px; font-weight: 400; }
+.leadlag figcaption cite { font-style: italic; }
+.strip__group { position: relative; }
+.strip__group > a::after { content: ""; width: 0.4em; height: 0.4em; margin: -0.2em 0 0 0.45em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.strip__group::after { content: ""; position: absolute; top: 100%; left: calc(-1 * var(--space-md)); right: calc(-1 * var(--space-md)); height: var(--space-md); }
+.strip__sub { position: absolute; top: calc(100% + var(--space-sm)); left: calc(-1 * var(--space-md)); z-index: var(--z-dropdown); display: none; min-width: 11rem; margin: 0; padding: var(--space-2xs) var(--space-md); list-style: none; background: var(--color-sheet); border: var(--rule-hair) solid var(--color-rule-2); border-radius: var(--radius-pill); }
+.strip__group:hover > .strip__sub, .strip__group:focus-within > .strip__sub { display: block; }
+.strip__sub li + li { border-top: var(--rule-hair) solid var(--color-rule); }
+.strip__sub a { display: flex; width: 100%; }
+.strip__menu .sub a { min-height: 40px; padding-left: var(--space-md); color: var(--color-ink-2); font-size: var(--text-sm); }
