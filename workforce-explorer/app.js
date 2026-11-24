@@ -32,7 +32,7 @@ const rungsOf = lvl => RUNGS.map((r, i) => i).filter(i => RUNGS[i].level === LV[
 const majName = code => (MAJ.find(m => m.code === code) || {}).name || code;
 
 /* ---------------- state and routing ---------------- */
-const S = { tab: "exp", mode: "school", lvl: -1, rung: -1, hist: 0, stage: 0, openSort: "share", occ: 0, q: "", maj: "", life: 0, lifeLvl: -1, snap: 0, preset: "aei_subst_r0" };
+const S = { tab: "exp", mode: "school", lvl: -1, rung: -1, hist: 0, stage: 0, openSort: "share", occ: 0, q: "", maj: "", life: 0, lifeLvl: -1, lifeOcc: -1, snap: 0, preset: "aei_subst_r0" };
 S.occ = OCC.reduce((b, o, i) => o.emp > OCC[b].emp ? i : b, 0);
 
 function applyCohort(id) {
@@ -53,6 +53,7 @@ function readUrl() {
   if (p.get("soc")) { const i = OCC.findIndex(o => o.soc === p.get("soc")); if (i >= 0) { S.occ = i; S.tab = "job"; } }
   if (p.get("tab") && ["exp", "job", "life", "about"].includes(p.get("tab"))) S.tab = p.get("tab");
   if (p.get("life")) { const i = +p.get("life"); if (i >= 0 && i < D.careers.length) { S.life = i; S.tab = "life"; } }
+  if (p.get("in")) { const i = OCC.findIndex(o => o.soc === p.get("in")); if (i >= 0 && LIFE_N.has(i)) { S.lifeOcc = i; S.tab = "life"; if (!LIFE[S.life].yrs.has(i)) { S.lifeLvl = -1; S.life = lifeIds()[0]; } } }
 }
 /* The scenarios page keeps a field cohort when it holds at least 0.1% of workers, counted before rounding. */
 const rungShare = r => RUNGS[r].w / M.workers;
@@ -70,7 +71,7 @@ function writeUrl() {
   p.set("tab", S.tab);
   if (S.tab === "exp") { const id = (S.mode === "school" && S.rung >= 0 && RUNGS[S.rung].id.includes(":")) ? "field:" + RUNGS[S.rung].id : cohortId(); if (id) p.set("cohort", id); }
   if (S.tab === "job") p.set("soc", OCC[S.occ].soc);
-  if (S.tab === "life") p.set("life", S.life);
+  if (S.tab === "life") { p.set("life", S.life); if (S.lifeOcc >= 0) p.set("in", OCC[S.lifeOcc].soc); }
   history.replaceState(null, "", "#" + p.toString());
 }
 const go = patch => { Object.assign(S, patch); render(); };
@@ -303,19 +304,115 @@ function viewJob(el) {
 }
 
 /* ---------------- careers ---------------- */
-const lifeIds = () => D.careers.map((c, i) => i).filter(i => S.lifeLvl < 0 || RUNGS[D.careers[i][0]].level === LV[S.lifeLvl].id);
+/* For each sampled career: the occupations held in order (the same one twice in a row counts once) and the years spent in each. */
+const LIFE = D.careers.map(c => {
+  const sp = c[4], path = [], yrs = new Map();
+  sp.forEach((s_, i) => { const o = D.jobocc[s_[0]]; if (path[path.length - 1] !== o) path.push(o); yrs.set(o, (yrs.get(o) || 0) + (i + 1 < sp.length ? sp[i + 1][1] : 50) - s_[1]); });
+  return { path, yrs, lvl: levelIdx(RUNGS[c[0]].level) };
+});
+/* How many sampled careers include each occupation, and those occupations with the most common first. */
+const LIFE_N = new Map();
+LIFE.forEach(l => l.yrs.forEach((y, o) => LIFE_N.set(o, (LIFE_N.get(o) || 0) + 1)));
+const LIFE_TOP = [...LIFE_N.keys()].sort((a, b) => LIFE_N.get(b) - LIFE_N.get(a) || OCC[b].emp - OCC[a].emp);
+const LIFE_SHOW = 8;
+function lifeIds(lvl) {
+  const lv = lvl === undefined ? S.lifeLvl : lvl;
+  const ids = LIFE.map((l, i) => i).filter(i => (lv < 0 || LIFE[i].lvl === lv) && (S.lifeOcc < 0 || LIFE[i].yrs.has(S.lifeOcc)));
+  if (S.lifeOcc >= 0) ids.sort((a, b) => LIFE[b].yrs.get(S.lifeOcc) - LIFE[a].yrs.get(S.lifeOcc) || a - b);
+  return ids;
+}
+/* Occupations to suggest for the text typed: those some sampled career includes, a match at the start of the title or of a word first, then the most common. */
+function lifeSuggest(q) {
+  const t = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (!t.length) return { head: "Most common occupations", ids: LIFE_TOP.slice(0, LIFE_SHOW), more: 0, other: [] };
+  const hit = i => { const s = OCC[i].title.toLowerCase(); return t.every(w => s.includes(w)) || OCC[i].soc.includes(q.trim()); };
+  const rank = i => { const s = OCC[i].title.toLowerCase(); return s.startsWith(t[0]) ? 0 : s.split(/[^a-z]+/).some(w => w.startsWith(t[0])) ? 1 : 2; };
+  const ids = LIFE_TOP.filter(hit).sort((a, b) => rank(a) - rank(b) || LIFE_N.get(b) - LIFE_N.get(a));
+  const other = ids.length ? [] : OCC.map((o, i) => i).filter(i => JOBS[i] && !LIFE_N.has(i) && hit(i)).sort((a, b) => OCC[b].emp - OCC[a].emp).slice(0, 3);
+  return { head: "Matching occupations", ids: ids.slice(0, LIFE_SHOW), more: Math.max(0, ids.length - LIFE_SHOW), other };
+}
+let lifeScroll = 0;
 function sideLife(s) {
-  const ids = lifeIds();
-  const sel = h("select", { onchange: e => { S.lifeLvl = +e.target.value; const x = lifeIds(); go({ life: x.length ? x[0] : 0, snap: 0 }); } },
-    h("option", { value: -1 }, "Any schooling"), LV.map((l, i) => h("option", { value: i }, l.label)));
+  const ids = lifeIds(), pos = ids.indexOf(S.life), n = x => x.toLocaleString("en-US");
+  const first = () => { const x = lifeIds(); return x.length ? x[0] : S.life; };
+  const setOcc = o => { S.lifeOcc = o; if (!lifeIds().length) S.lifeLvl = -1; const x = lifeIds(); lifeScroll = 0; go({ life: o < 0 && x.includes(S.life) ? S.life : first(), snap: 0 }); };
+
+  // the occupation search: a text box with a list of suggestions under it
+  const chosen = S.lifeOcc >= 0 ? OCC[S.lifeOcc].title : "";
+  let opts = [], act = -1, dirty = false;
+  const pop = h("ul", { class: "combo__pop", id: "life-pop", role: "listbox", "aria-label": "Occupations", hidden: "", onmousedown: e => e.preventDefault() });
+  const mark = i => {
+    act = i;
+    pop.querySelectorAll('[role="option"]').forEach((li, k) => li.setAttribute("aria-selected", k === i ? "true" : "false"));
+    if (i >= 0) inp.setAttribute("aria-activedescendant", "life-opt-" + i); else inp.removeAttribute("aria-activedescendant");
+  };
+  const close = () => { pop.hidden = true; inp.setAttribute("aria-expanded", "false"); mark(-1); };
+  const open = () => {
+    const r = lifeSuggest(dirty ? inp.value : "");
+    opts = r.ids;
+    pop.replaceChildren(...[
+      opts.length ? h("li", { class: "hd", role: "presentation" }, h("span", null, r.head), h("span", null, "sampled careers")) : null,
+      opts.map((o, i) => h("li", { id: "life-opt-" + i, role: "option", "aria-selected": "false", onclick: () => { close(); setOcc(o); }, onmousemove: () => { if (act !== i) mark(i); } },
+        h("span", null, OCC[o].title), h("span", { class: "n" }, n(LIFE_N.get(o))))),
+      r.more ? h("li", { class: "hd", role: "presentation" }, n(r.more) + " more match. Keep typing to narrow the list.") : null,
+      opts.length ? null : h("li", { class: "none", role: "presentation" }, r.other.length ? "No sampled career includes a matching occupation. The Jobs tab describes every occupation:" : "No occupation matches.",
+        r.other.map(o => h("button", { class: "lnk", type: "button", onclick: () => goJob(o) }, OCC[o].title)))].flat().filter(Boolean));
+    pop.hidden = false; inp.setAttribute("aria-expanded", "true"); act = -1; inp.removeAttribute("aria-activedescendant");
+  };
+  const inp = h("input", { type: "text", id: "life-q", role: "combobox", autocomplete: "off", spellcheck: "false", "aria-autocomplete": "list", "aria-expanded": "false", "aria-controls": "life-pop",
+    placeholder: "Search " + LIFE_N.size + " occupations, such as nurse", value: chosen,
+    oninput: () => { if (!inp.value && S.lifeOcc >= 0) { setOcc(-1); return; } dirty = true; open(); },
+    onclick: () => { if (pop.hidden) { if (chosen && !dirty) inp.select(); open(); } },
+    onkeydown: e => {
+      const down = e.key === "ArrowDown";
+      if (down || e.key === "ArrowUp") {
+        e.preventDefault();
+        if (pop.hidden) open();
+        if (opts.length) mark(act < 0 ? (down ? 0 : opts.length - 1) : (act + (down ? 1 : -1) + opts.length) % opts.length);
+      } else if (e.key === "Enter") {
+        if (!pop.hidden && opts.length) { e.preventDefault(); const o = opts[act >= 0 ? act : 0]; close(); setOcc(o); }
+      } else if (e.key === "Escape") {
+        if (!pop.hidden) e.preventDefault();
+        close(); inp.value = chosen; dirty = false;
+      }
+    },
+    onblur: () => { close(); inp.value = chosen; dirty = false; } });
+  const combo = h("div", { class: "combo" }, inp,
+    chosen ? h("button", { class: "combo__x", type: "button", "aria-label": "Clear the occupation", title: "Clear the occupation", "data-fk": "life-q", onclick: () => setOcc(-1) }, "×") : null, pop);
+
+  // schooling, with the number of careers each level would leave
+  const sel = h("select", { id: "life-lvl", onchange: e => { S.lifeLvl = +e.target.value; lifeScroll = 0; go({ life: first(), snap: 0 }); } },
+    h("option", { value: -1 }, "Any schooling (" + n(lifeIds(-1).length) + ")"),
+    LV.map((l, i) => { const k = lifeIds(i).length; return h("option", { value: i, disabled: k ? null : "" }, l.label + " (" + n(k) + ")"); }));
   sel.value = S.lifeLvl;
-  const pos = ids.indexOf(S.life);
+
+  // the careers themselves
+  const list = h("div", { class: "list careers" });
+  for (const i of ids.slice(0, 150)) {
+    const l = LIFE[i], p = l.path, a = OCC[p[0]].title, b = OCC[p[p.length - 1]].title, k = l.yrs.size, y = S.lifeOcc >= 0 ? l.yrs.get(S.lifeOcc) : 0;
+    list.append(h("button", { type: "button", class: i === S.life ? "on" : null, "aria-current": i === S.life ? "true" : null, "data-fk": "life-" + i, onclick: () => go({ life: i, snap: 0 }) },
+      S.lifeOcc >= 0 ? h("span", null, y + " yr") : null,
+      h("b", null, p.length === 1 ? a : a + (p.length > 2 ? " → … → " : " → ") + b),
+      h("small", null, LV[l.lvl].label + " · " + k + (k === 1 ? " occupation" : " occupations"))));
+  }
+  list.addEventListener("scroll", () => { lifeScroll = list.scrollTop; });
   const step = d => { if (ids.length) go({ life: ids[(Math.max(pos, 0) + d + ids.length) % ids.length], snap: 0 }); };
-  s.append(h("div", { class: "card" }, h("h3", null, "Choose a career"), sel,
-    h("div", { class: "row" }, h("button", { class: "btn", onclick: () => step(-1) }, "← Previous"), h("button", { class: "btn", onclick: () => step(1) }, "Next →"),
-      h("button", { class: "btn", onclick: () => { if (ids.length) go({ life: ids[Math.floor(Math.random() * ids.length)], snap: 0 }); } }, "Random")),
-    h("div", { class: "meta" }, "Career " + (pos + 1).toLocaleString("en-US") + " of " + ids.length.toLocaleString("en-US") + " in a random sample of " + M.sample.toLocaleString("en-US") +
-      " from the build's " + M.careers.toLocaleString("en-US") + " simulated careers.")));
+  const lvl = S.lifeLvl >= 0 ? " whose schooling is " + LV[S.lifeLvl].label.toLowerCase() : "";
+  s.append(h("div", { class: "card" }, h("h3", null, "Choose a career"),
+    h("label", { class: "l", for: "life-q" }, "Occupation held during the career"), combo,
+    h("label", { class: "l", for: "life-lvl" }, "Highest schooling"), sel,
+    h("div", { class: "meta", style: "margin-top:8px" }, S.lifeOcc >= 0
+      ? n(ids.length) + (ids.length === 1 ? " sampled career" : " sampled careers") + lvl + (ids.length === 1 ? " includes " : " include ") + chosen + ". The number is the years spent in that occupation, longest first."
+      : n(ids.length) + " sampled careers" + lvl + ". Each row gives the first and last occupation held." + (ids.length > 150 ? " The first 150 are listed." : "")),
+    list,
+    h("div", { class: "row" }, h("button", { class: "btn", "data-fk": "life-prev", onclick: () => step(-1) }, "← Previous"), h("button", { class: "btn", "data-fk": "life-next", onclick: () => step(1) }, "Next →"),
+      h("button", { class: "btn", "data-fk": "life-rand", onclick: () => { if (ids.length) go({ life: ids[Math.floor(Math.random() * ids.length)], snap: 0 }); } }, "Random")),
+    h("div", { class: "meta" }, (pos >= 0 ? "Career " + n(pos + 1) + " of " + n(ids.length) + ". " : "") + "The sample is " + n(M.sample) + " careers drawn at random from the build's " + n(M.careers) + " simulated careers.")));
+  // keep the list where it was, and bring the chosen career into view when it is outside
+  list.scrollTop = lifeScroll;
+  const on = list.querySelector(".on");
+  if (on && (on.offsetTop < list.scrollTop || on.offsetTop + on.offsetHeight > list.scrollTop + list.clientHeight)) list.scrollTop = Math.max(0, on.offsetTop - (list.clientHeight - on.offsetHeight) / 2);
+  lifeScroll = list.scrollTop;
 }
 function viewLife(el) {
   const c = D.careers[S.life];
@@ -436,12 +533,14 @@ function render() {
   document.querySelectorAll("#nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === S.tab));
   const s = $("#side"), el = $("#content");
   const keep = document.activeElement && document.activeElement.tagName === "INPUT";
+  const fk = document.activeElement && document.activeElement.getAttribute ? document.activeElement.getAttribute("data-fk") : null;
   s.innerHTML = ""; el.innerHTML = "";
   if (S.tab === "exp") { sideExp(s); viewExp(el); }
   else if (S.tab === "job") { sideJob(s); viewJob(el); }
   else if (S.tab === "life") { sideLife(s); viewLife(el); }
   else { s.append(h("div", { class: "card" }, h("h3", null, "Version " + M.version), h("div", { class: "meta" }, "Data built " + M.built + " from the recursive build of 2026-11-06, as the simulation loads it."))); viewAbout(el); }
   if (keep) { const i = $("#side input[type=text]"); if (i) { i.focus(); i.setSelectionRange(i.value.length, i.value.length); } }
+  else if (fk) { const e = fk === "life-q" ? $("#life-q") : $('#side [data-fk="' + fk + '"]'); if (e) e.focus({ preventScroll: true }); }
   writeUrl();
 }
 document.querySelectorAll("#nav button").forEach(b => b.addEventListener("click", () => go({ tab: b.dataset.tab })));
