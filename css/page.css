@@ -300,6 +300,7 @@ details[open] .when-closed { display: none; }
 .ll-tick { fill: var(--color-ink-2); font-size: 12px; font-variant-numeric: tabular-nums; }
 .ll-xlab { fill: var(--color-ink); font-size: 13px; font-weight: 500; }
 .ll-xtitle { fill: var(--color-muted); font-size: 12px; }
+.ll-xtitle--main { fill: var(--color-ink); font-size: 13px; font-weight: 600; }
 .ll-ytitle { fill: var(--color-ink); font-size: 13px; font-weight: 600; }
 .ll-name { fill: var(--color-ink); font-size: 13px; font-weight: 600; }
 .ll-val { fill: var(--color-ink-2); font-family: var(--font-outlier); font-size: 12.5px; }
