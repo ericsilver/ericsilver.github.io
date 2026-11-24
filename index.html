@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script>document.documentElement.classList.add('js');</script>
-<link rel="stylesheet" href="./css/page.css?v=20261124c">
+<link rel="stylesheet" href="./css/page.css?v=20261124d">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -273,7 +273,7 @@
   <!-- block:ai -->
   <section class="plot plot--flip band--ink band--tone-2" id="future-of-work" aria-labelledby="ai-head">
     <div class="container grid-12">
-      <figure class="plot__figure leadlag">
+      <figure class="plot__figure leadlag ladder" id="ai-ladder" data-steps='[{"t":"1.9%","o":"+2%","d":"0%","m":"0.1%","w":"0.1%","p":"65.9%","top":"pay +1.8%, 0.6% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=0p25&amp;robots=r0&amp;scope=economy","n":"2.1% of work time"},{"t":"4.5%","o":"+6%","d":"0%","m":"0.1%","w":"0%","p":"65.3%","top":"pay +4.6%, 1.1% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=0p5&amp;robots=r0&amp;scope=economy","n":"5.1% of work time"},{"t":"6.6%","o":"+9%","d":"0.3%","m":"0.3%","w":"0.3%","p":"64.5%","top":"pay +7.3%, 1.5% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=0p5&amp;robots=r0&amp;scope=economy","n":"5.1% of work time"},{"t":"9.1%","o":"+12%","d":"0.3%","m":"0.3%","w":"0.3%","p":"64.2%","top":"pay +10%, 2% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=1&amp;robots=r0&amp;scope=economy","n":"10.5% of work time"},{"t":"13.6%","o":"+20%","d":"0.8%","m":"0.4%","w":"0.3%","p":"62.6%","top":"pay +16%, 3% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=1p5&amp;robots=r0&amp;scope=economy","n":"16.4% of work time"},{"t":"18.5%","o":"+29%","d":"3.1%","m":"0.6%","w":"0.2%","p":"61.2%","top":"pay +24%, 4% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=1p5&amp;robots=r0&amp;scope=economy","n":"16.4% of work time"},{"t":"22.9%","o":"+39%","d":"5.9%","m":"0.7%","w":"0%","p":"59.5%","top":"pay +32%, 5% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=2&amp;robots=r0&amp;scope=economy","n":"21.6% of work time"},{"t":"27.3%","o":"+51%","d":"7.8%","m":"0.9%","w":"0%","p":"57.9%","top":"pay +41%, 7% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=3&amp;robots=r0&amp;scope=economy","n":"30.8% of work time"},{"t":"32.3%","o":"+68%","d":"12.6%","m":"1.3%","w":"0%","p":"55.8%","top":"pay +54%, 8% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=3&amp;robots=r0&amp;scope=economy","n":"30.8% of work time"},{"t":"36.7%","o":"+88%","d":"21.5%","m":"1.7%","w":"0%","p":"53.3%","top":"pay +69%, 10% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=3&amp;robots=r0&amp;scope=economy","n":"30.8% of work time"},{"t":"41.4%","o":"+114%","d":"25.0%","m":"2.5%","w":"0%","p":"50.7%","top":"pay +87%, 13% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=3&amp;robots=r0&amp;scope=economy","n":"30.8% of work time"},{"t":"45.8%","o":"+149%","d":"28.9%","m":"3.7%","w":"0%","p":"48.0%","top":"pay +112%, 15% behind the average","u":"./future-of-work/scenarios/?index=elo&amp;level=3&amp;robots=r0&amp;scope=economy","n":"30.8% of work time"}]'>
         <ul class="leadlag__key">
           <li><svg class="ll-swatch" viewBox="0 0 30 10" aria-hidden="true"><line class="ll-line ll-line--accent" x1="1" x2="29" y1="5" y2="5"/><circle class="ll-dot ll-dot--accent" cx="15" cy="5" r="3.5"/></svg>Ranked 5 or more points lower in pay</li>
           <li><svg class="ll-swatch" viewBox="0 0 30 10" aria-hidden="true"><line class="ll-line ll-line--blue" x1="1" x2="29" y1="5" y2="5"/><circle class="ll-dot ll-dot--blue" cx="15" cy="5" r="3.5"/></svg>Changed occupation</li>
@@ -300,18 +300,19 @@
           <line class="ll-base" x1="482.1" x2="482.1" y1="382" y2="387"/>
           <text class="ll-tick" x="482.1" y="403" text-anchor="middle">40%</text>
           <text class="ll-xtitle" x="301.0" y="428" text-anchor="middle">Share of all work time done by AI, in twelve steps up to every task it is rated able to do</text>
-          <rect class="ll-band" x="56.0" y="84" width="33.9" height="298"><title>AI does 1.9% of all work time (output +2%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0.1%</title></rect>
-          <rect class="ll-band" x="89.9" y="84" width="25.2" height="298"><title>AI does 4.5% of all work time (output +6%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="115.1" y="84" width="25.0" height="298"><title>AI does 6.6% of all work time (output +9%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%</title></rect>
-          <rect class="ll-band" x="140.0" y="84" width="37.4" height="298"><title>AI does 9.1% of all work time (output +12%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%</title></rect>
-          <rect class="ll-band" x="177.4" y="84" width="49.8" height="298"><title>AI does 13.6% of all work time (output +20%): ranked 5 or more points lower in pay, 0.8% of workers; changed occupation, 0.4%; paid less in real terms, 0.3%</title></rect>
-          <rect class="ll-band" x="227.2" y="84" width="49.3" height="298"><title>AI does 18.5% of all work time (output +29%): ranked 5 or more points lower in pay, 3.1% of workers; changed occupation, 0.6%; paid less in real terms, 0.2%</title></rect>
-          <rect class="ll-band" x="276.5" y="84" width="47.1" height="298"><title>AI does 22.9% of all work time (output +39%): ranked 5 or more points lower in pay, 5.9% of workers; changed occupation, 0.7%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="323.6" y="84" width="50.1" height="298"><title>AI does 27.3% of all work time (output +51%): ranked 5 or more points lower in pay, 7.8% of workers; changed occupation, 0.9%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="373.7" y="84" width="49.8" height="298"><title>AI does 32.3% of all work time (output +68%): ranked 5 or more points lower in pay, 12.6% of workers; changed occupation, 1.3%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="423.5" y="84" width="48.4" height="298"><title>AI does 36.7% of all work time (output +88%): ranked 5 or more points lower in pay, 21.5% of workers; changed occupation, 1.7%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="471.9" y="84" width="48.4" height="298"><title>AI does 41.4% of all work time (output +114%): ranked 5 or more points lower in pay, 25.0% of workers; changed occupation, 2.5%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="520.3" y="84" width="25.7" height="298"><title>AI does 45.8% of all work time (output +149%): ranked 5 or more points lower in pay, 28.9% of workers; changed occupation, 3.7%; paid less in real terms, 0%</title></rect>
+          <rect class="ll-band" data-i="0" data-x="76.3" x="56.0" y="84" width="33.9" height="298" tabindex="-1" role="button" aria-label="AI does 1.9% of all work time (output +2%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0.1%"/>
+          <rect class="ll-band" data-i="1" data-x="103.5" x="89.9" y="84" width="25.2" height="298" tabindex="-1" role="button" aria-label="AI does 4.5% of all work time (output +6%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="2" data-x="126.7" x="115.1" y="84" width="25.0" height="298" tabindex="-1" role="button" aria-label="AI does 6.6% of all work time (output +9%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%"/>
+          <rect class="ll-band" data-i="3" data-x="153.4" x="140.0" y="84" width="37.4" height="298" tabindex="-1" role="button" aria-label="AI does 9.1% of all work time (output +12%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%"/>
+          <rect class="ll-band" data-i="4" data-x="201.4" x="177.4" y="84" width="49.8" height="298" tabindex="-1" role="button" aria-label="AI does 13.6% of all work time (output +20%): ranked 5 or more points lower in pay, 0.8% of workers; changed occupation, 0.4%; paid less in real terms, 0.3%"/>
+          <rect class="ll-band" data-i="5" data-x="252.9" x="227.2" y="84" width="49.3" height="298" tabindex="-1" role="button" aria-label="AI does 18.5% of all work time (output +29%): ranked 5 or more points lower in pay, 3.1% of workers; changed occupation, 0.6%; paid less in real terms, 0.2%"/>
+          <rect class="ll-band" data-i="6" data-x="300.0" x="276.5" y="84" width="47.1" height="298" tabindex="-1" role="button" aria-label="AI does 22.9% of all work time (output +39%): ranked 5 or more points lower in pay, 5.9% of workers; changed occupation, 0.7%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="7" data-x="347.1" x="323.6" y="84" width="50.1" height="298" tabindex="-1" role="button" aria-label="AI does 27.3% of all work time (output +51%): ranked 5 or more points lower in pay, 7.8% of workers; changed occupation, 0.9%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="8" data-x="400.2" x="373.7" y="84" width="49.8" height="298" tabindex="-1" role="button" aria-label="AI does 32.3% of all work time (output +68%): ranked 5 or more points lower in pay, 12.6% of workers; changed occupation, 1.3%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="9" data-x="446.8" x="423.5" y="84" width="48.4" height="298" tabindex="-1" role="button" aria-label="AI does 36.7% of all work time (output +88%): ranked 5 or more points lower in pay, 21.5% of workers; changed occupation, 1.7%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="10" data-x="497.1" x="471.9" y="84" width="48.4" height="298" tabindex="-1" role="button" aria-label="AI does 41.4% of all work time (output +114%): ranked 5 or more points lower in pay, 25.0% of workers; changed occupation, 2.5%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="11" data-x="543.6" x="520.3" y="84" width="25.7" height="298" tabindex="0" role="button" aria-label="AI does 45.8% of all work time (output +149%): ranked 5 or more points lower in pay, 28.9% of workers; changed occupation, 3.7%; paid less in real terms, 0%"/>
+          <line class="ll-cross" x1="543.6" x2="543.6" y1="84" y2="382"/>
           <polyline class="ll-line ll-line--accent" points="56.0,382.0 76.3,382.0 103.5,382.0 126.7,379.3 153.4,379.3 201.4,373.9 252.9,351.7 300.0,325.3 347.1,306.7 400.2,260.5 446.8,173.8 497.1,139.9 543.6,102.6"/>
           <polyline class="ll-line ll-line--blue" points="56.0,382.0 76.3,381.3 103.5,380.9 126.7,379.0 153.4,378.8 201.4,378.0 252.9,376.6 300.0,375.6 347.1,372.9 400.2,369.2 446.8,365.8 497.1,358.3 543.6,346.7"/>
           <polyline class="ll-line ll-line--ink" points="56.0,382.0 76.3,381.4 103.5,382.0 126.7,379.2 153.4,379.5 201.4,379.5 252.9,379.7 300.0,382.0 347.1,382.0 400.2,382.0 446.8,382.0 497.1,382.0 543.6,382.0"/>
@@ -376,18 +377,19 @@
           <line class="ll-base" x1="259.1" x2="259.1" y1="338" y2="343"/>
           <text class="ll-tick" x="259.1" y="359" text-anchor="middle">40%</text>
           <text class="ll-xtitle" x="166.0" y="380" text-anchor="middle">Share of all work time done by AI</text>
-          <rect class="ll-band" x="40.0" y="76" width="17.4" height="262"><title>AI does 1.9% of all work time (output +2%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0.1%</title></rect>
-          <rect class="ll-band" x="57.4" y="76" width="13.0" height="262"><title>AI does 4.5% of all work time (output +6%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="70.4" y="76" width="12.8" height="262"><title>AI does 6.6% of all work time (output +9%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%</title></rect>
-          <rect class="ll-band" x="83.2" y="76" width="19.2" height="262"><title>AI does 9.1% of all work time (output +12%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%</title></rect>
-          <rect class="ll-band" x="102.4" y="76" width="25.6" height="262"><title>AI does 13.6% of all work time (output +20%): ranked 5 or more points lower in pay, 0.8% of workers; changed occupation, 0.4%; paid less in real terms, 0.3%</title></rect>
-          <rect class="ll-band" x="128.0" y="76" width="25.4" height="262"><title>AI does 18.5% of all work time (output +29%): ranked 5 or more points lower in pay, 3.1% of workers; changed occupation, 0.6%; paid less in real terms, 0.2%</title></rect>
-          <rect class="ll-band" x="153.4" y="76" width="24.2" height="262"><title>AI does 22.9% of all work time (output +39%): ranked 5 or more points lower in pay, 5.9% of workers; changed occupation, 0.7%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="177.6" y="76" width="25.8" height="262"><title>AI does 27.3% of all work time (output +51%): ranked 5 or more points lower in pay, 7.8% of workers; changed occupation, 0.9%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="203.4" y="76" width="25.6" height="262"><title>AI does 32.3% of all work time (output +68%): ranked 5 or more points lower in pay, 12.6% of workers; changed occupation, 1.3%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="229.0" y="76" width="24.9" height="262"><title>AI does 36.7% of all work time (output +88%): ranked 5 or more points lower in pay, 21.5% of workers; changed occupation, 1.7%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="253.9" y="76" width="24.9" height="262"><title>AI does 41.4% of all work time (output +114%): ranked 5 or more points lower in pay, 25.0% of workers; changed occupation, 2.5%; paid less in real terms, 0%</title></rect>
-          <rect class="ll-band" x="278.8" y="76" width="13.2" height="262"><title>AI does 45.8% of all work time (output +149%): ranked 5 or more points lower in pay, 28.9% of workers; changed occupation, 3.7%; paid less in real terms, 0%</title></rect>
+          <rect class="ll-band" data-i="0" data-x="50.4" x="40.0" y="76" width="17.4" height="262" tabindex="-1" role="button" aria-label="AI does 1.9% of all work time (output +2%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0.1%"/>
+          <rect class="ll-band" data-i="1" data-x="64.4" x="57.4" y="76" width="13.0" height="262" tabindex="-1" role="button" aria-label="AI does 4.5% of all work time (output +6%): ranked 5 or more points lower in pay, 0% of workers; changed occupation, 0.1%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="2" data-x="76.3" x="70.4" y="76" width="12.8" height="262" tabindex="-1" role="button" aria-label="AI does 6.6% of all work time (output +9%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%"/>
+          <rect class="ll-band" data-i="3" data-x="90.1" x="83.2" y="76" width="19.2" height="262" tabindex="-1" role="button" aria-label="AI does 9.1% of all work time (output +12%): ranked 5 or more points lower in pay, 0.3% of workers; changed occupation, 0.3%; paid less in real terms, 0.3%"/>
+          <rect class="ll-band" data-i="4" data-x="114.8" x="102.4" y="76" width="25.6" height="262" tabindex="-1" role="button" aria-label="AI does 13.6% of all work time (output +20%): ranked 5 or more points lower in pay, 0.8% of workers; changed occupation, 0.4%; paid less in real terms, 0.3%"/>
+          <rect class="ll-band" data-i="5" data-x="141.3" x="128.0" y="76" width="25.4" height="262" tabindex="-1" role="button" aria-label="AI does 18.5% of all work time (output +29%): ranked 5 or more points lower in pay, 3.1% of workers; changed occupation, 0.6%; paid less in real terms, 0.2%"/>
+          <rect class="ll-band" data-i="6" data-x="165.5" x="153.4" y="76" width="24.2" height="262" tabindex="-1" role="button" aria-label="AI does 22.9% of all work time (output +39%): ranked 5 or more points lower in pay, 5.9% of workers; changed occupation, 0.7%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="7" data-x="189.7" x="177.6" y="76" width="25.8" height="262" tabindex="-1" role="button" aria-label="AI does 27.3% of all work time (output +51%): ranked 5 or more points lower in pay, 7.8% of workers; changed occupation, 0.9%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="8" data-x="217.0" x="203.4" y="76" width="25.6" height="262" tabindex="-1" role="button" aria-label="AI does 32.3% of all work time (output +68%): ranked 5 or more points lower in pay, 12.6% of workers; changed occupation, 1.3%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="9" data-x="241.0" x="229.0" y="76" width="24.9" height="262" tabindex="-1" role="button" aria-label="AI does 36.7% of all work time (output +88%): ranked 5 or more points lower in pay, 21.5% of workers; changed occupation, 1.7%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="10" data-x="266.8" x="253.9" y="76" width="24.9" height="262" tabindex="-1" role="button" aria-label="AI does 41.4% of all work time (output +114%): ranked 5 or more points lower in pay, 25.0% of workers; changed occupation, 2.5%; paid less in real terms, 0%"/>
+          <rect class="ll-band" data-i="11" data-x="290.7" x="278.8" y="76" width="13.2" height="262" tabindex="0" role="button" aria-label="AI does 45.8% of all work time (output +149%): ranked 5 or more points lower in pay, 28.9% of workers; changed occupation, 3.7%; paid less in real terms, 0%"/>
+          <line class="ll-cross" x1="290.7" x2="290.7" y1="76" y2="338"/>
           <polyline class="ll-line ll-line--accent" points="40.0,338.0 50.4,338.0 64.4,338.0 76.3,335.6 90.1,335.6 114.8,330.9 141.3,311.4 165.5,288.3 189.7,272.1 217.0,231.6 241.0,155.7 266.8,125.9 290.7,93.3"/>
           <polyline class="ll-line ll-line--blue" points="40.0,338.0 50.4,337.4 64.4,337.0 76.3,335.4 90.1,335.2 114.8,334.5 141.3,333.3 165.5,332.4 189.7,330.1 217.0,326.8 241.0,323.8 266.8,317.2 290.7,307.1"/>
           <polyline class="ll-line ll-line--ink" points="40.0,338.0 50.4,337.5 64.4,338.0 76.3,335.5 90.1,335.8 114.8,335.8 141.3,336.0 165.5,338.0 189.7,338.0 217.0,338.0 241.0,338.0 266.8,338.0 290.7,338.0"/>
@@ -431,6 +433,27 @@
           <text class="ll-val" x="298" y="311.1">3.7%</text>
           <text class="ll-val" x="298" y="342.0">0%</text>
           </svg>
+        <div class="ladder__readout">
+          <p class="ladder__step"><span class="ladder__step-v" data-f="time">45.8%</span> of all work time done by AI<span class="ladder__hint" data-f="hint">The last step. Point at the chart for another; click to hold it.</span></p>
+          <dl class="ladder__stats">
+            <div><dt>Output</dt><dd data-f="output">+149%</dd></div>
+            <div class="k-accent"><dt>Ranked 5 or more points lower in pay</dt><dd data-f="down5">28.9%</dd></div>
+            <div class="k-blue"><dt>Changed occupation</dt><dd data-f="moved">3.7%</dd></div>
+            <div class="k-ink"><dt>Paid less in real terms</dt><dd data-f="worse">0%</dd></div>
+            <div><dt>College pay premium (66.5% today)</dt><dd data-f="prem">48.0%</dd></div>
+            <div><dt>Most exposed quarter of workers</dt><dd class="ladder__long" data-f="top">pay +112%, 15% behind the average</dd></div>
+          </dl>
+          <p class="ladder__open"><a data-f="link" href="./future-of-work/scenarios/?index=elo&amp;level=3&amp;robots=r0&amp;scope=economy">Open the nearest scenario in the dashboard</a><span data-f="linknote">Eloundou task labels, 30.8% of work time</span></p>
+        </div>
+        <div class="ladder__more">
+          <p class="ladder__more-head">Ask the dashboard</p>
+          <ul>
+            <li><a href="./future-of-work/scenarios/?index=aei&amp;level=subst&amp;robots=r0&amp;scope=cohort&amp;cohort=school_stage%3Aba%7Cearly">What happens to recent graduates?</a></li>
+            <li><a href="./future-of-work/scenarios/?index=aei&amp;level=subst&amp;robots=r0&amp;scope=occ&amp;soc=43-4051">What happens in one occupation, such as customer service?</a></li>
+            <li><a href="./future-of-work/scenarios/?index=aei&amp;level=subst&amp;robots=r40&amp;scope=economy">What changes if robots arrive too?</a></li>
+            <li><a href="./workforce-explorer/">Where could people with a given job or degree move?</a></li>
+          </ul>
+        </div>
         <figcaption>Today&rsquo;s workforce: 591,529 simulated careers weighted to 136 million workers, before anyone retires or joins. All added output is paid to workers. Source: the runs behind Figure 4 of <cite>Exposure Is Not Loss</cite>.</figcaption>
       </figure>
       <div class="plot__text">
@@ -460,6 +483,45 @@
       </div>
     </div>
   </section>
+  <script>
+  (() => {
+    const root = document.getElementById('ai-ladder');
+    if (!root) return;
+    const S = JSON.parse(root.dataset.steps), last = S.length - 1;
+    const f = (k) => root.querySelector('[data-f="' + k + '"]');
+    let pinned = null;
+    function show(i) {
+      const s = S[i];
+      f('time').textContent = s.t;
+      f('output').textContent = s.o;
+      f('down5').textContent = s.d;
+      f('moved').textContent = s.m;
+      f('worse').textContent = s.w;
+      f('prem').textContent = s.p;
+      f('top').textContent = s.top;
+      f('link').setAttribute('href', s.u);
+      f('linknote').textContent = 'Eloundou task labels, ' + s.n;
+      f('hint').textContent = pinned === i ? 'Held. Click the step again to release it.' : (i === last ? 'The last step. ' : 'Step ' + (i + 1) + ' of ' + S.length + '. ') + 'Point at the chart for another; click to hold it.';
+      root.querySelectorAll('.ll-band').forEach((r) => { r.classList.toggle('is-on', +r.dataset.i === i); r.classList.toggle('is-pinned', +r.dataset.i === pinned); });
+      root.querySelectorAll('svg.leadlag__svg').forEach((svg) => { const x = svg.querySelector('.ll-band[data-i="' + i + '"]').dataset.x, l = svg.querySelector('.ll-cross'); l.setAttribute('x1', x); l.setAttribute('x2', x); });
+    }
+    const rest = () => show(pinned === null ? last : pinned);
+    root.querySelectorAll('.ll-band').forEach((r) => {
+      const i = +r.dataset.i;
+      r.addEventListener('pointerenter', () => show(i));
+      r.addEventListener('focus', () => show(i));
+      r.addEventListener('click', () => { pinned = pinned === i ? null : i; show(i); });
+      r.addEventListener('keydown', (e) => {
+        const to = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? last : null;
+        if (to !== null && to >= 0 && to <= last) { e.preventDefault(); r.ownerSVGElement.querySelector('.ll-band[data-i="' + to + '"]').focus(); }
+        else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pinned = pinned === i ? null : i; show(i); }
+        else if (e.key === 'Escape') { pinned = null; show(i); }
+      });
+    });
+    root.querySelectorAll('svg.leadlag__svg').forEach((svg) => { svg.addEventListener('pointerleave', rest); svg.addEventListener('focusout', (e) => { if (!svg.contains(e.relatedTarget)) rest(); }); });
+    show(last);
+  })();
+  </script>
   <!-- /block:ai -->
 
   <!-- block:prognosis -->
@@ -609,6 +671,9 @@
     </div>
   </section>
   <!-- /block:prognosis -->
+
+
+
 
 
 
