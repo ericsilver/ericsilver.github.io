@@ -328,7 +328,11 @@ details[open] .when-closed { display: none; }
 .subnav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--color-ink-2); }
 .subnav a[aria-current="page"] { color: var(--color-ink); font-family: var(--font-display); font-weight: 600; text-decoration: none; }
 /* Research blocks and menu (2026-11-24): three blocks, each a lead, a sub-title, a chart and its numbers; the middle one is mirrored. The nav strip's Research item opens the three areas. */
-.plot + .plot { padding-top: 0; }
+/* Each block sits on its own tone, stepping from ink toward the paper of the section below */
+.band--tone-2 { background: oklch(21% 0.022 248); }
+.band--tone-3 { background: oklch(26% 0.024 251); }
+.band--tone-2 .legend tr { border-bottom-color: oklch(37% 0.018 245); }
+.band--tone-3 .legend tr { border-bottom-color: oklch(43% 0.018 245); }
 .plot__text > .plot__sub { margin-top: var(--space-sm); color: var(--color-sheet); font: 500 var(--text-lead)/1.3 var(--font-display); letter-spacing: var(--tracking-display); text-wrap: balance; }
 .plot__text > .plot__sub + p { margin-top: var(--space-lg); }
 .plot__text cite { font-style: italic; }
